@@ -1,0 +1,37 @@
+{
+  "name": "wc26",
+  "version": "0.1.0",
+  "private": true,
+  "packageManager": "pnpm@11.5.0",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "export:players:fbref": "node scripts/export-fbref-players.mjs",
+    "export:matches": "node scripts/export-match-fixtures.mjs",
+    "import:countries": "node scripts/import-qualified-countries.mjs",
+    "import:countries:csv": "node scripts/import-qualified-countries.mjs --csv",
+    "import:countries:write": "node scripts/import-qualified-countries.mjs --write",
+    "import:country-stories": "node scripts/export-country-stories.mjs",
+    "formation:svg": "node scripts/generate-formation-svg.mjs --input samples/formation-mexico-input.json --json-output generated/formation-mexico-example.json --svg-output generated/formation-mexico-example.svg",
+    "formation:country-update": "node scripts/generate-country-formation-update.mjs --input samples/country-formation-mexico-input.json",
+    "extract:match-summary:formation": "node scripts/extract-match-summary-formation.mjs"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.108.1",
+    "next": "16.2.9",
+    "react": "19.2.4",
+    "react-dom": "19.2.4"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.9",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}

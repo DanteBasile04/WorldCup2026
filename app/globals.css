@@ -1,0 +1,72 @@
+@import "tailwindcss";
+
+:root {
+  /* Obsidian surfaces */
+  --background: #060610;
+  --foreground: #f0f0f5;
+  --surface: #0e0e18;
+  --surface-elevated: #161622;
+  --surface-bright: #1e1e2e;
+
+  /* Crimson & gold accents */
+  --accent-crimson: #c41e3a;
+  --accent-crimson-light: #e0243f;
+  --accent-gold: #c9a84c;
+  --accent-gold-light: #e0c36a;
+
+  /* Spacing rhythm (4px base) */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+
+  /* Soft rounding */
+  --radius-soft: 0.75rem;
+  --radius-card: 1.25rem;
+  --radius-hero: 1.5rem;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-elevated: var(--surface-elevated);
+  --color-surface-bright: var(--surface-bright);
+  --color-accent-crimson: var(--accent-crimson);
+  --color-accent-crimson-light: var(--accent-crimson-light);
+  --color-accent-gold: var(--accent-gold);
+  --color-accent-gold-light: var(--accent-gold-light);
+  --font-sans: var(--font-body);
+  --font-heading: var(--font-headline);
+  --font-mono: var(--font-score);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+/* Glass / blur utilities */
+.glass {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-strong {
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+a {
+  text-underline-offset: 4px;
+}

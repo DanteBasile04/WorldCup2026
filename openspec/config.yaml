@@ -1,0 +1,53 @@
+# openspec/config.yaml
+schema: spec-driven
+
+context: |
+  Tech stack: Next.js 16.2.9 + TypeScript 5 + React 19 + Tailwind CSS v4
+  Backend: Supabase (supabase-js v2, public read-only hub)
+  Architecture: App Router, server components by default, direct Supabase queries
+  Package manager: pnpm 11.5.0
+  Linting: ESLint 9 with eslint-config-next (core-web-vitals + typescript)
+  Testing: No test runner installed (strict TDD disabled)
+  Deployment: Likely Vercel (standard Next.js)
+  Node: Target ES2017, bundler module resolution
+
+rules:
+  proposal:
+    - Include rollback plan for risky changes
+  specs:
+    - Use Given/When/Then for scenarios
+    - Use RFC 2119 keywords (MUST, SHALL, SHOULD, MAY)
+  design:
+    - Include sequence diagrams for complex flows
+    - Document architecture decisions with rationale
+  tasks:
+    - Group by phase, use hierarchical numbering
+    - Keep tasks completable in one session
+  apply:
+    - Follow existing code patterns
+    tdd: false
+    test_command: ""
+  verify:
+    test_command: ""
+    build_command: "pnpm build"
+    coverage_threshold: 0
+  archive:
+    - Warn before merging destructive deltas
+
+testing:
+  strict_tdd: false
+  reason: No test runner detected in dependencies or config
+  layers:
+    unit: false
+    integration: false
+    e2e: false
+  coverage: false
+  linter:
+    available: true
+    command: "pnpm lint"
+  type_checker:
+    available: true
+    command: "pnpm build"
+  formatter:
+    available: false
+    command: ""

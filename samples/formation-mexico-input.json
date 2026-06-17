@@ -1,0 +1,16 @@
+{
+  "team": { "name": "Mexico", "formation": "4-1-2-3" },
+  "players": [
+    { "number": 1, "name": "Raul RANGEL", "role": "GK", "slot": "GK" },
+    { "number": 23, "name": "Jesus GALLARDO", "role": "DF", "slot": "LB" },
+    { "number": 5, "name": "Johan VASQUEZ", "role": "DF", "slot": "LCB" },
+    { "number": 3, "name": "Cesar MONTES", "role": "DF", "slot": "RCB" },
+    { "number": 15, "name": "Israel REYES", "role": "DF", "slot": "RB" },
+    { "number": 6, "name": "Erik LIRA", "role": "MF", "slot": "DM" },
+    { "number": 8, "name": "Alvaro FIDALGO", "role": "MF", "slot": "LCM" },
+    { "number": 26, "name": "Brian GUTIERREZ", "role": "MF", "slot": "RCM" },
+    { "number": 25, "name": "Roberto ALVARADO", "role": "FW", "slot": "LW" },
+    { "number": 9, "name": "Raul JIMENEZ", "role": "FW", "slot": "ST" },
+    { "number": 16, "name": "Julian QUINONES", "role": "FW", "slot": "RW" }
+  ]
+}
