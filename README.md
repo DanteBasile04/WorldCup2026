@@ -1,8 +1,8 @@
 # World Cup 2026
 
-Next.js App Router app backed by Supabase public read-only data.
+Aplicación en Next.js (App Router) conectada a Supabase con datos públicos de solo lectura.
 
-## Setup
+## Inicio rápido
 
 ```bash
 pnpm install
@@ -10,87 +10,90 @@ cp .env.example .env.local
 pnpm dev
 ```
 
-Set the Supabase publishable key in `.env.local`:
+Configurá estas variables en `.env.local`:
 
 ```bash
 NEXT_PUBLIC_SUPABASE_URL=https://xenpsrdxdozzlszaktwa.supabase.co
-NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=your-publishable-key
+NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=tu_publishable_key
 ```
 
-## Verification
+## Verificación
 
 ```bash
 pnpm lint
 pnpm build
 ```
 
-## One-time country import
+## Importación inicial de selecciones
 
-Export the currently qualified 2026 World Cup teams to a CSV that can be imported manually into
-`public.country` from the Supabase dashboard:
+Genera un CSV con las selecciones clasificadas para importarlo manualmente en `public.country` desde Supabase:
 
 ```bash
 pnpm import:countries -- --dry-run
 pnpm import:countries
 ```
 
-This generates `generated/countries-import.csv` with the columns `name`, `federation`,
-`flag_url`, and `emblem_url`. It intentionally omits `slug` so the database default can generate
-it, and it does not include optional enrichment fields such as `colors`, `story`, `trophies`, or
-`formation`.
+Se genera `generated/countries-import.csv` con estas columnas:
 
-### Import into Supabase
+- `name`
+- `federation`
+- `flag_url`
+- `emblem_url`
 
-1. Run `pnpm import:countries`.
-2. Open Supabase Dashboard → **Table Editor** → `country`.
-3. Click **Insert** → **Import data from CSV**.
-4. Upload `generated/countries-import.csv`.
-5. Confirm the CSV maps only `name`, `federation`, `flag_url`, and `emblem_url`.
-6. Complete the import and let Supabase generate `slug` automatically.
+No incluye `slug` porque lo genera la base de datos, ni campos opcionales como `colors`, `story`, `trophies` o `formation`.
 
-If you still want the script to write directly to Supabase, use:
+### Importar en Supabase
+
+1. Ejecutá `pnpm import:countries`.
+2. Abrí Supabase Dashboard → **Table Editor** → `country`.
+3. Elegí **Insert** → **Import data from CSV**.
+4. Subí `generated/countries-import.csv`.
+5. Confirmá el mapeo solo para `name`, `federation`, `flag_url` y `emblem_url`.
+6. Dejá que Supabase genere `slug` automáticamente.
+
+Si querés que el script escriba directo en Supabase:
 
 ```bash
 pnpm import:countries:write
 ```
 
-Direct-write mode still reads the qualified teams table from the 2026 FIFA World Cup Wikipedia
-page, uses Wikimedia upload URLs for flags, resolves likely team emblems from national-team page
-images only when the filename looks like a crest/logo, then inserts missing rows or fills empty
-`federation`, `flag_url`, and `emblem_url` fields. Existing populated import fields are preserved
-by default; pass `--overwrite-media` if you intentionally want to replace them.
+Ese modo sigue leyendo la tabla de clasificados desde Wikipedia 2026, usa URLs de Wikimedia para banderas y resuelve escudos probables desde páginas de selecciones. Por defecto preserva datos ya cargados; usá `--overwrite-media` solo si querés reemplazarlos a propósito.
 
-## Formation SVG generator
+## Generador de formaciones SVG
 
-The primary contract is now **structured input JSON -> reusable layout -> compact inline SVG string**.
-That SVG is intended to be stored directly in `public.country.formation` in Supabase.
-The renderer keeps the output clean: pitch only, player marker, shirt number, and player label below the marker.
+El contrato principal es:
 
-Generate the Mexico example fixture:
+**JSON estructurado -> layout reutilizable -> SVG inline compacto**
+
+Ese SVG está pensado para guardarse directamente en `public.country.formation` dentro de Supabase.
+
+### Ejemplo base
 
 ```bash
 pnpm formation:svg
 pnpm formation:country-update
 ```
 
-This reads `samples/formation-mexico-input.json` and writes:
+Esto lee `samples/formation-mexico-input.json` y genera:
 
-- `generated/formation-mexico-example.json` — normalized formation document with assigned pitch coordinates
-- `generated/formation-mexico-example.svg` — compact inline SVG ready to persist as text
+- `generated/formation-mexico-example.json`
+- `generated/formation-mexico-example.svg`
 
-The country-update flow reads `samples/country-formation-mexico-input.json` and writes:
+El flujo `formation:country-update` lee `samples/country-formation-mexico-input.json` y genera:
 
-- `generated/mexico-formation-update.json` — payload with `country`, normalized formation `document`, inline `formationSvg`, and ready-to-run `sql`
-- `generated/mexico-formation-update.svg` — compact inline SVG ready to persist as text
-- `generated/mexico-formation-update.sql` — escaped SQL statement ready to update `public.country.formation`
+- `generated/mexico-formation-update.json`
+- `generated/mexico-formation-update.svg`
+- `generated/mexico-formation-update.sql`
 
-Use this when your main contract is **country slug/name + formation + players -> Supabase-ready update artifact**:
+Usalo cuando tu contrato sea:
+
+**país + formación + jugadores -> artefacto listo para Supabase**
 
 ```bash
 pnpm formation:country-update
 ```
 
-You can point it at any structured input JSON and override outputs if needed:
+También podés apuntar a otro JSON y cambiar la carpeta de salida:
 
 ```bash
 node scripts/generate-country-formation-update.mjs \
@@ -98,7 +101,45 @@ node scripts/generate-country-formation-update.mjs \
   --output-dir generated/custom
 ```
 
-Input shape example:
+### Preview local antes de exportar
+
+Si querés revisar visualmente la formación antes de exportarla o escribirla en la base:
+
+```bash
+pnpm formation:preview --input samples/country-formation-mexico-input.json --open
+```
+
+Eso genera una página HTML local y la abre en el navegador.
+
+También admite otros formatos:
+
+```bash
+pnpm formation:preview --text "mexico 4-3-3
+1 Ochoa GK
+2 Araujo DF
+3 Montes DF
+4 Vasquez DF
+5 Gallardo DF
+6 Alvarez MF
+7 Chavez MF
+8 Herrera MF
+9 Gimenez FW
+10 Vega FW
+11 Lozano FW" --open
+
+pnpm formation:preview --slug mexico --formation 4-3-3 --players "1,Ochoa,GK;2,Araujo,DF;3,Montes,DF;4,Vasquez,DF;5,Gallardo,DF;6,Alvarez,MF;7,Chavez,MF;8,Herrera,MF;9,Gimenez,FW;10,Vega,FW;11,Lozano,FW" --open
+```
+
+Flags útiles:
+
+- `--open` → abre el preview en el navegador
+- `--output <path>` → guarda el HTML en otra ruta
+- `--stdout` → imprime el HTML
+- `--stdin` → lee input compacto desde stdin
+
+Por defecto se escribe en `generated/preview-formation.html`.
+
+### Estructura del input
 
 ```json
 {
@@ -110,41 +151,15 @@ Input shape example:
 }
 ```
 
-- `country.slug` is preferred for SQL targeting
-- `country.name` is used as a fallback when no slug is provided
-- the PDF / match-summary parser remains an optional adapter that can still emit this structured input shape
+Reglas:
 
-You can also use the generator with any other structured source:
+- `country.slug` es la mejor opción para generar SQL
+- `country.name` queda como fallback
+- `team.name` y `team.formation` son obligatorios
+- `players` es obligatorio
+- `slot` es opcional, pero recomendado para mantener estabilidad en el layout
 
-```bash
-node scripts/generate-formation-svg.mjs --input samples/formation-mexico-input.json
-```
-
-If you omit `--svg-output`, the script prints the SVG string to stdout. Optional outputs:
-
-```bash
-node scripts/generate-formation-svg.mjs \
-  --input samples/formation-mexico-input.json \
-  --json-output generated/formation-output.json \
-  --svg-output generated/formation-output.svg
-```
-
-### Input shape
-
-```json
-{
-  "team": { "name": "Mexico", "formation": "4-1-2-3" },
-  "players": [
-    { "number": 1, "name": "Raul RANGEL", "role": "GK", "slot": "GK" }
-  ]
-}
-```
-
-- `team.name` and `team.formation` are required
-- `players` is required
-- `slot` is optional when players can be assigned by role order, but explicit slots are preferred for stable output
-
-### Supported layouts
+### Layouts soportados
 
 - `4-1-2-3`
 - `4-4-2`
@@ -160,46 +175,46 @@ node scripts/generate-formation-svg.mjs \
 - `5-3-2`
 - `5-2-3`
 
-Unsupported formations fail fast with a clear error that lists the available layout keys.
+Si la formación no está soportada, el script falla con un error claro mostrando las opciones válidas.
 
-### PDF / match summary compatibility
+### Compatibilidad con PDF / match summary
 
-The old FIFA Match Summary flow remains only as an **optional source adapter**:
+El flujo viejo de FIFA Match Summary sigue existiendo como adaptador opcional:
 
 ```bash
 pnpm extract:match-summary:formation
 pnpm extract:match-summary:formation -- --lineup-file path/to/formation.txt
 ```
 
-That wrapper converts match-summary text into the same structured formation input before calling the
-generic SVG generator. In other words, the PDF is just one possible source, not the main contract.
+Ese wrapper transforma el texto al mismo input estructurado antes de llamar al generador genérico.
 
-## One-time country story export
+## Exportación inicial de historias de selecciones
 
-Export the Spanish Wikipedia lead text for each qualified national team to a CSV for manual story
-import:
+Exporta el lead de Wikipedia en español de cada selección clasificada a un CSV para importación manual:
 
 ```bash
 pnpm import:country-stories
 ```
 
-This generates `generated/country-stories-import.csv` with `slug`, `name`, and `story`. The
-script reuses the qualified-team discovery from the countries importer, resolves each national-team
-article on Spanish Wikipedia when available, and exports only the introductory lead text as plain
-text.
+Genera `generated/country-stories-import.csv` con:
 
-### Import stories into Supabase
+- `slug`
+- `name`
+- `story`
 
-1. Run `pnpm import:country-stories`.
-2. Open `generated/country-stories-import.csv` and use `slug` or `name` to match the existing
-   `public.country` rows.
-3. Import or merge only the `story` values into `public.country.story`.
-4. If the script reports manual follow-up teams, leave those stories blank until you source them
-   yourself.
+### Importar historias en Supabase
 
-Use `SUPABASE_COUNTRY_IMPORT_KEY` in `.env.local` only for `pnpm import:countries:write` if writes
-require a server-side key. Do not commit real secret or service-role keys. Use `--skip-emblems` to
-avoid emblem lookup or `--shallow-emblems` to skip the slower infobox fallback.
+1. Ejecutá `pnpm import:country-stories`.
+2. Abrí `generated/country-stories-import.csv`.
+3. Matcheá por `slug` o `name` con `public.country`.
+4. Importá o mergeá solo los valores de `story`.
+5. Si el script marca selecciones para revisión manual, dejalas vacías hasta conseguir la fuente.
 
-> Manual CSV import does not perform the same read/merge/update logic as direct-write mode. Use it
-> on an empty `country` table, or clear/import carefully if rows already exist.
+## Notas
+
+- `SUPABASE_COUNTRY_IMPORT_KEY` en `.env.local` se usa solo para `pnpm import:countries:write`.
+- No subas claves reales ni service-role keys al repo.
+- `--skip-emblems` evita la búsqueda de escudos.
+- `--shallow-emblems` evita el fallback más lento por infobox.
+
+> La importación manual por CSV no hace el mismo merge/update que el modo direct-write. Usala sobre una tabla vacía o controlá bien los datos existentes antes de importar.

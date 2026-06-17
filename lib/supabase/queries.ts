@@ -1,6 +1,21 @@
 import { createSupabaseServerClient, getSupabaseConfig } from "./server";
 import type { Country, Group, GroupStanding, Match } from "./database.types";
 
+// Narrow local type for player rows. The user will regenerate database.types.ts;
+// until then, this type mirrors the live DB schema so the slice compiles without
+// editing generated types.
+export type PlayerRow = {
+  id: number;
+  country_id: number;
+  name: string;
+  height_cm: number | null;
+  weight_kg: number | null;
+  preferred_foot: string | null;
+  current_club: string | null;
+  position: string;
+  age: number | null;
+};
+
 export type QueryResult<T> = {
   data: T;
   error: string | null;
@@ -13,6 +28,10 @@ export type MatchWithTeams = Match & {
 };
 
 export type StandingWithCountry = GroupStanding & {
+  country: Country | null;
+};
+
+export type PlayerWithCountry = PlayerRow & {
   country: Country | null;
 };
 
@@ -294,10 +313,11 @@ export type TeamDetailData = {
   country: Country | null;
   standings: StandingWithCountry[];
   matches: MatchWithTeams[];
+  players: PlayerWithCountry[];
 };
 
 export async function getTeamDetailData(slug: string): Promise<QueryResult<TeamDetailData>> {
-  const fallback: TeamDetailData = { country: null, standings: [], matches: [] };
+  const fallback: TeamDetailData = { country: null, standings: [], matches: [], players: [] };
   const missing = missingConfigResult<TeamDetailData>(fallback);
   if (missing) return missing;
 
@@ -316,7 +336,7 @@ export async function getTeamDetailData(slug: string): Promise<QueryResult<TeamD
       return { data: fallback, error: null };
     }
 
-    const [standingsRes, matchesRes] = await Promise.all([
+    const [standingsRes, matchesRes, playersRes] = await Promise.all([
       supabase
         .from("group_standing")
         .select("*")
@@ -327,6 +347,11 @@ export async function getTeamDetailData(slug: string): Promise<QueryResult<TeamD
         .select("*")
         .or(`local_country_id.eq.${country.id},away_country_id.eq.${country.id}`)
         .order("date", { ascending: true }),
+      supabase
+        .from("player")
+        .select("*")
+        .eq("country_id", country.id)
+        .order("id", { ascending: true }),
     ]);
 
     if (standingsRes.error) {
@@ -335,12 +360,23 @@ export async function getTeamDetailData(slug: string): Promise<QueryResult<TeamD
     if (matchesRes.error) {
       return { data: fallback, error: matchesRes.error.message };
     }
+    if (playersRes.error) {
+      return { data: fallback, error: playersRes.error.message };
+    }
+
+    const players: PlayerRow[] = (playersRes.data ?? []) as PlayerRow[];
+
+    const playersWithCountry: PlayerWithCountry[] = players.map((p) => ({
+      ...p,
+      country,
+    }));
 
     return {
       data: {
         country,
         standings: (standingsRes.data ?? []).map((s) => ({ ...s, country })),
         matches: await hydrateMatches(matchesRes.data ?? []),
+        players: playersWithCountry,
       },
       error: null,
     };

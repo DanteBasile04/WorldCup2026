@@ -16,6 +16,9 @@
     "import:country-stories": "node scripts/export-country-stories.mjs",
     "formation:svg": "node scripts/generate-formation-svg.mjs --input samples/formation-mexico-input.json --json-output generated/formation-mexico-example.json --svg-output generated/formation-mexico-example.svg",
     "formation:country-update": "node scripts/generate-country-formation-update.mjs --input samples/country-formation-mexico-input.json",
+    "formation:upload": "node scripts/upload-formation.mjs",
+    "formation:validate": "node scripts/backfill-next-match-id.mjs",
+    "formation:preview": "node scripts/preview-formation.mjs",
     "extract:match-summary:formation": "node scripts/extract-match-summary-formation.mjs"
   },
   "dependencies": {

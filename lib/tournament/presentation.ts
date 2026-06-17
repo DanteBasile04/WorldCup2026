@@ -53,12 +53,161 @@ export const DENSITY_FLAGS: Record<
   },
 };
 
+// -- Team theme token (useOn-agnostic) -------------------------------------
+
+/**
+ * A resolved team-color branding token without a use-context.
+ * Produced by `textToThemeToken` from textual or hex `country.colors` values.
+ * When `isNeutral` is true, accent falls back to the global crimson and
+ * consumers should avoid relying on the color for critical readability.
+ */
+export type TeamThemeToken = {
+  accent: string;
+  accentMuted: string;
+  isNeutral: boolean;
+};
+
+// -- Textual color name map ------------------------------------------------
+
+/**
+ * Canonical mapping from textual color names found in `country.colors`
+ * to hex theme tokens. All current DB values are covered.
+ * Keys are lowercase; values are WCAG-AA-ready hex strings tested
+ * against the obsidian background (#060610).
+ */
+export const COLOR_NAME_MAP: Record<string, string> = {
+  red: "#DC2626",
+  white: "#FFFFFF",
+  blue: "#3B82F6",
+  yellow: "#EAB308",
+  green: "#22C55E",
+  black: "#6B7280", // pure black fails contrast; use dark gray
+  "light blue": "#93C5FD",
+  orange: "#F97316",
+  burgundy: "#E11D48", // deepened for contrast on dark bg
+};
+
+/** Neutral fallback used when no team color is contrast-safe */
+export const NEUTRAL_TOKEN: TeamThemeToken = {
+  accent: "var(--accent-crimson)",
+  accentMuted: "rgba(196, 30, 58, 0.3)",
+  isNeutral: true,
+};
+
+// -- Text-to-theme-token bridge (test-ready pure helpers) ------------------
+
+/**
+ * Split a raw `country.colors` string into trimmed candidate tokens.
+ * Handles comma separation, the known "Yellow. Green" period-separator
+ * typo, and JSON arrays like ["Red","White"] or ["#DC2626","#FFFFFF"].
+ *
+ * Testable edge cases:
+ * - null → []
+ * - "" → []
+ * - "Red, White" → ["Red", "White"]
+ * - "Yellow. Green" (typo) → ["Yellow", "Green"]
+ * - "Light blue, Red" → ["Light blue", "Red"]
+ * - JSON '["Red","White"]' → ["Red", "White"]
+ */
+export function splitColorCandidates(raw: string): string[] {
+  // Try JSON parse for array or string values
+  try {
+    const parsed = JSON.parse(raw);
+    if (Array.isArray(parsed)) {
+      return parsed.filter((v): v is string => typeof v === "string").map((s) => s.trim());
+    }
+    if (typeof parsed === "string") {
+      return [parsed.trim()];
+    }
+  } catch {
+    // Not JSON — fall through to manual splitting
+  }
+
+  // Handle comma-separated values and the period-separator typo
+  return raw
+    .split(/[,\.]/)
+    .map((s) => s.trim())
+    .filter((s) => s.length > 0);
+}
+
+/**
+ * Resolve a single trimmed color candidate to a canonical hex string.
+ * Checks hex format (with or without # prefix) first, then falls back
+ * to the textual name map (case-insensitive).
+ *
+ * Testable edge cases:
+ * - "#DC2626" → "#DC2626" (hex with prefix)
+ * - "DC2626"  → "#DC2626" (hex without prefix, normalised)
+ * - "Red"     → "#DC2626" (name lookup)
+ * - "red"     → "#DC2626" (case-insensitive)
+ * - "lTd"     → null (unmappable)
+ * - ""        → null (empty)
+ */
+export function resolveColorHex(candidate: string): string | null {
+  const trimmed = candidate.trim();
+  if (!trimmed) return null;
+
+  // Already has # prefix — validate directly
+  if (trimmed.startsWith("#") && SAFE_COLOR_RE.test(trimmed)) {
+    return trimmed;
+  }
+
+  // Try adding # prefix for bare hex values
+  const withHash = `#${trimmed}`;
+  if (SAFE_COLOR_RE.test(withHash)) {
+    return withHash;
+  }
+
+  // Try as textual color name (case-insensitive)
+  const normalized = trimmed.toLowerCase();
+  return COLOR_NAME_MAP[normalized] ?? null;
+}
+
+/**
+ * Convert a `country.colors` value into a contrast-safe theme token.
+ *
+ * Accepts textual color names ("Red, White"), hex values ("#DC2626"),
+ * JSON arrays, mixed input, null, or empty strings. Returns the first
+ * candidate that passes the WCAG AA contrast ratio against the obsidian
+ * background, or the neutral fallback when no candidate is contrast-safe.
+ *
+ * This is the primary bridge from textual DB values to usable accent
+ * tokens until `country.colors` is normalised to hex in the database.
+ */
+export function textToThemeToken(raw: string | null): TeamThemeToken {
+  if (!raw || raw.trim().length === 0) return NEUTRAL_TOKEN;
+
+  const candidates = splitColorCandidates(raw);
+  const bgRgb = hexToRgb(OBSIDIAN_BG);
+  if (!bgRgb) return NEUTRAL_TOKEN;
+  const bgLuminance = relativeLuminance(...bgRgb);
+
+  for (const candidate of candidates) {
+    const hex = resolveColorHex(candidate);
+    if (!hex) continue;
+
+    const rgb = hexToRgb(hex);
+    if (!rgb) continue;
+
+    const fgLuminance = relativeLuminance(...rgb);
+    if (contrastRatio(fgLuminance, bgLuminance) >= MIN_CONTRAST_RATIO) {
+      return {
+        accent: hex,
+        accentMuted: `rgba(${rgb[0]}, ${rgb[1]}, ${rgb[2]}, 0.3)`,
+        isNeutral: false,
+      };
+    }
+  }
+
+  return NEUTRAL_TOKEN;
+}
+
 // -- Safe team-color parser with contrast check ----------------------------
 
 export type TeamPalette = {
   accent: string;
   accentMuted: string;
-  useOn: "badge" | "border" | "hero";
+  useOn: "badge" | "border" | "hero" | "card";
   isNeutral: boolean;
 };
 
