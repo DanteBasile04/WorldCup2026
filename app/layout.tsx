@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Montserrat, Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const montserrat = Montserrat({
@@ -36,7 +37,10 @@ export default function RootLayout({
       lang="en"
       className={`${montserrat.variable} ${plusJakartaSans.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full bg-background text-foreground">{children}</body>
+      <body className="min-h-full bg-background text-foreground">
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }
