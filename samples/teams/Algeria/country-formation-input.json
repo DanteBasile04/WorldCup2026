@@ -1,0 +1,111 @@
+{
+  "country": {
+    "slug": "algeria",
+    "name": "Algeria"
+  },
+  "team": {
+    "name": "Algeria",
+    "formation": "4-4-2"
+  },
+  "players": [
+    {
+      "number": 23,
+      "name": "LucaZIDANE",
+      "position": "GK",
+      "role": "GK",
+      "slot": "GK"
+    },
+    {
+      "number": 2,
+      "name": "AissaMANDI",
+      "position": "DF",
+      "role": "DF",
+      "slot": "LB"
+    },
+    {
+      "number": 17,
+      "name": "Rafik BELGHALI",
+      "position": "DF",
+      "role": "DF",
+      "slot": "LCB"
+    },
+    {
+      "number": 3,
+      "name": "Achref ABADA",
+      "position": "DF",
+      "role": "DF",
+      "slot": "RCB"
+    },
+    {
+      "number": 21,
+      "name": "Ramy BENSEBAINI",
+      "position": "DF",
+      "role": "DF",
+      "slot": "RB"
+    },
+    {
+      "number": 19,
+      "name": "Nabil BENTALEE",
+      "position": "MF",
+      "role": "MF",
+      "slot": "LM"
+    },
+    {
+      "number": 10,
+      "name": "Fares CHAIBI",
+      "position": "MF",
+      "role": "MF",
+      "slot": "LCM"
+    },
+    {
+      "number": 14,
+      "name": "Hicham BOUDAOUI",
+      "position": "MF",
+      "role": "MF",
+      "slot": "RCM"
+    },
+    {
+      "number": 22,
+      "name": "IbrahimMAZA",
+      "position": "MF",
+      "role": "MF",
+      "slot": "RM"
+    },
+    {
+      "number": 8,
+      "name": "AmineGOUIRI",
+      "position": "FW",
+      "role": "FW",
+      "slot": "LST"
+    },
+    {
+      "number": 11,
+      "name": "AniSHADJMOUSSA",
+      "position": "FW",
+      "role": "FW",
+      "slot": "RST"
+    }
+  ],
+  "match": {
+    "opponent_name": "Argentina",
+    "opponent_slug": "argentina",
+    "team_score": null,
+    "opponent_score": null,
+    "date": "16 June 2026",
+    "venue": "Kansas City Stadium",
+    "competition": null,
+    "match_id": "Captura de pantalla 2026-06-18 163413",
+    "side": "away"
+  },
+  "source": {
+    "team_artifact_match_id": "Captura de pantalla 2026-06-18 163413",
+    "team_artifact_side": "away",
+    "parsed_match_path": "C:\\Users\\Dante\\Desktop\\Programacion\\WorldCup2026\\wc26\\generated\\match-summary-ingest-final-2026-06-18\\parsed\\Captura de pantalla 2026-06-18 163413.parsed.json",
+    "heuristic_repairs": [
+      "Promoted substitutes for Algeria 4-4-2: 3 Achref ABADA -> RCB."
+    ],
+    "warnings": [
+      "Formation export for Algeria promoted 1 substitute to complete 11 players."
+    ]
+  }
+}

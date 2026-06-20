@@ -1,5 +1,18 @@
 #!/usr/bin/env node
 
+/**
+ * Generate formation update payload files (JSON, SVG, SQL).
+ *
+ * Writes three output files for a single country formation:
+ *   - JSON: full update payload including document, formationJson, formationSvg, and sql
+ *   - SVG: the rendered formation SVG
+ *   - SQL: the UPDATE statement for both formation and formation_json columns
+ *
+ * Usage:
+ *   node scripts/generate-country-formation-update.mjs --input <path>
+ *   node scripts/generate-country-formation-update.mjs --input <path> --output-dir generated
+ */
+
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { createCountryFormationUpdate } from "./lib/formation-svg.mjs";

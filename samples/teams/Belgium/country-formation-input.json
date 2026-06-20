@@ -1,0 +1,100 @@
+{
+  "country": {
+    "slug": "belgium",
+    "name": "Belgium"
+  },
+  "team": {
+    "name": "Belgium",
+    "formation": "4-3-3"
+  },
+  "players": [
+    {
+      "number": 1,
+      "name": "Thibaut COURTOIS",
+      "position": "GK",
+      "role": "GK",
+      "slot": "GK"
+    },
+    {
+      "number": 4,
+      "name": "Brandon MECHELE",
+      "position": "DF",
+      "role": "DF",
+      "slot": "LB"
+    },
+    {
+      "number": 15,
+      "name": "Thomas MEUNIER",
+      "position": "DF",
+      "role": "DF",
+      "slot": "LCB"
+    },
+    {
+      "number": 21,
+      "name": "Timothy CASTAGNE",
+      "position": "DF",
+      "role": "DF",
+      "slot": "RCB"
+    },
+    {
+      "number": 25,
+      "name": "Nathan NGOV",
+      "position": "DF",
+      "role": "DF",
+      "slot": "RB"
+    },
+    {
+      "number": 7,
+      "name": "KevinDEBRUVNE",
+      "position": "MF",
+      "role": "MF",
+      "slot": "LCM"
+    },
+    {
+      "number": 8,
+      "name": "Vouri TIELEMANS",
+      "position": "MF",
+      "role": "MF",
+      "slot": "CM"
+    },
+    {
+      "number": 24,
+      "name": "Amadou ONANA",
+      "position": "MF",
+      "role": "MF",
+      "slot": "RCM"
+    },
+    {
+      "number": 17,
+      "name": "Charles DEKETELAERE",
+      "position": "FW",
+      "role": "FW",
+      "slot": "LW"
+    },
+    {
+      "number": 10,
+      "name": "Leandro TROSSARD",
+      "position": "FW",
+      "role": "FW",
+      "slot": "ST"
+    },
+    {
+      "number": 11,
+      "name": "Jeremy DOKU",
+      "position": "FW",
+      "role": "FW",
+      "slot": "RW"
+    }
+  ],
+  "match": {
+    "opponent_name": "Egypt",
+    "opponent_slug": "egypt",
+    "team_score": null,
+    "opponent_score": null,
+    "date": "15 June 2026",
+    "venue": "Seattle Stadium",
+    "competition": null,
+    "match_id": "Captura de pantalla 2026-06-18 163244",
+    "side": "home"
+  }
+}

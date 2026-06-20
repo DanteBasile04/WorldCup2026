@@ -12,10 +12,10 @@
  *   1. JSON file (like samples/country-formation-mexico-input.json):
  *      node scripts/preview-formation.mjs --input samples/country-formation-mexico-input.json
  *
- *   2. Compact text format (--text or --stdin):
+ *   2. Text authoring format (--text or --stdin):
  *      node scripts/preview-formation.mjs --text "argentina 4-3-3
  *            1 Martinez GK
- *            4 Montiel DF
+ *            4 | Gonzalo Montiel | DF | Montiel | LB
  *            ..."
  *
  *      echo "argentina 4-3-3
@@ -23,7 +23,7 @@
  *
  *   3. Command-line arguments:
  *      node scripts/preview-formation.mjs --slug argentina --formation "4-3-3" \
- *            --players "1,Martinez,GK;4,Montiel,DF;..."
+ *            --players "1,Martinez,GK;4,Gonzalo Montiel,DF,Montiel,LB;..."
  *
  * Output:
  *   --output <path>   Write HTML to file (default: generated/preview-formation.html)
@@ -33,12 +33,13 @@
  * Examples:
  *   pnpm formation:preview --input samples/country-formation-mexico-input.json
  *   pnpm formation:preview --input samples/country-formation-mexico-input.json --open
- *   pnpm formation:preview --text "mexico 4-1-2-3\n1 RANGEL GK\n23 GALLARDO DF\n5 VASQUEZ DF\n3 MONTES DF\n15 REYES DF\n6 LIRA MF\n8 FIDALGO MF\n26 GUTIERREZ MF\n25 ALVARADO FW\n9 JIMENEZ FW\n16 QUINONES FW"
+ *   pnpm formation:preview --text "mexico 4-1-2-3\n1 Raul RANGEL GK\n23 | Jesus GALLARDO | DF | Gallardo | LB\n5 | Johan VASQUEZ | DF | Vasquez | LCB\n3 | Cesar MONTES | DF | Montes | RCB\n15 | Israel REYES | DF | Reyes | RB\n6 | Erik LIRA | MF | Lira | DM\n8 | Alvaro FIDALGO | MF | Fidalgo | LCM\n26 | Brian GUTIERREZ | MF | Gutierrez | RCM\n25 | Roberto ALVARADO | FW | Alvarado | LW\n9 | Raul JIMENEZ | FW | Jimenez | ST\n16 | Julian QUINONES | FW | Quinones | RW"
  */
 
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { execFileSync } from "node:child_process";
 import { dirname, resolve } from "node:path";
+import { parseFormationAuthoringText, parseFormationPlayersArgument } from "./lib/formation-authoring.mjs";
 import { createCountryFormationUpdate } from "./lib/formation-svg.mjs";
 
 // ---------------------------------------------------------------------------
@@ -88,7 +89,7 @@ function resolveFormationInput() {
     return JSON.parse(raw);
   }
 
-  // Priority 2: --text compact format
+  // Priority 2: --text authoring format
   if (textInput) {
     return parseCompactText(textInput);
   }
@@ -104,86 +105,23 @@ function resolveFormationInput() {
   }
 
   throw new Error(
-    "No input provided. Use --input <file.json>, --text <compact>, --slug/--formation/--players, or --stdin.",
+    "No input provided. Use --input <file.json>, --text <authoring-text>, --slug/--formation/--players, or --stdin.",
   );
 }
 
 /**
- * Parse compact text format:
- *
- *   argentina 4-3-3
- *   1 Martinez GK
- *   4 Montiel DF
- *   ...
- *
- * Each player line: number, name (multiple words allowed), role (GK/DF/MF/FW)
+ * Parse text authoring format.
  */
 function parseCompactText(text) {
-  const lines = String(text).split(/\r?\n/).map((l) => l.trim()).filter(Boolean);
-  if (lines.length < 2) {
-    throw new Error("Compact text requires at least a header line and one player line.");
-  }
-
-  const headerLine = lines[0];
-  const headerMatch = headerLine.match(/^(\S+)\s+([\d-]+(?:-\d+)*)/);
-  if (!headerMatch) {
-    throw new Error(
-      `Header line must be "<country-slug> <formation>" (e.g. "argentina 4-3-3"). Got: "${headerLine}"`,
-    );
-  }
-
-  const slug = headerMatch[1];
-  const formation = headerMatch[2];
-
-  const players = [];
-  for (let i = 1; i < lines.length; i++) {
-    const line = lines[i];
-    const playerMatch = line.match(/^(\d+)\s+(.+?)\s+(GK|DF|MF|FW|DEF|MID|FWD|ATT)$/i);
-    if (!playerMatch) {
-      throw new Error(
-        `Player line ${i + 1} must be "<number> <name> <role>". Got: "${line}"`,
-      );
-    }
-    players.push({
-      number: Number.parseInt(playerMatch[1], 10),
-      name: playerMatch[2].trim(),
-      role: playerMatch[3].toUpperCase(),
-    });
-  }
-
-  if (players.length === 0) {
-    throw new Error("No players parsed from input.");
-  }
-
-  return {
-    country: { slug },
-    team: { formation },
-    players,
-  };
+  return parseFormationAuthoringText(text);
 }
 
 /**
  * Parse CLI arguments: --slug, --formation, --players
- * Players format: "1,Martinez,GK;4,Montiel,DF;..."
+ * Players format: "1,Martinez,GK;4,Gonzalo Montiel,DF,Montiel,LB;..."
  */
 function parseCliArgs(slug, formation, playersStr) {
-  const players = playersStr.split(";").map((entry, i) => {
-    const parts = entry.trim().split(",");
-    if (parts.length !== 3) {
-      throw new Error(
-        `Player entry ${i + 1} must be "number,name,role". Got: "${entry}"`,
-      );
-    }
-    const number = Number.parseInt(parts[0], 10);
-    const name = parts[1].trim();
-    const role = parts[2].trim().toUpperCase();
-
-    if (!Number.isFinite(number)) {
-      throw new Error(`Invalid player number in entry ${i + 1}: "${parts[0]}"`);
-    }
-
-    return { number, name, role };
-  });
+  const players = parseFormationPlayersArgument(playersStr);
 
   return {
     country: { slug },
@@ -201,7 +139,7 @@ function readStdinSync() {
     return parseCompactText(buffer);
   } catch {
     throw new Error(
-      "Could not read from stdin. Use --input <file> or --text <compact> instead.",
+      "Could not read from stdin. Use --input <file> or --text <authoring-text> instead.",
     );
   }
 }
@@ -246,6 +184,7 @@ function generatePreviewHtml(payload) {
           <td>${escapeHtml(String(p.number))}</td>
           <td>${escapeHtml(p.name)}</td>
           <td>${escapeHtml(p.role)}</td>
+          <td>${escapeHtml(p.label)}</td>
           <td>${escapeHtml(p.slot)}</td>
         </tr>`,
     )
@@ -545,6 +484,7 @@ function generatePreviewHtml(payload) {
             <th>#</th>
             <th>Name</th>
             <th>Role</th>
+            <th>Label</th>
             <th>Slot</th>
           </tr>
         </thead>

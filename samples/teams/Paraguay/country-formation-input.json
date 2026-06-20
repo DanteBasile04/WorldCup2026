@@ -1,0 +1,100 @@
+{
+  "country": {
+    "slug": "paraguay",
+    "name": "Paraguay"
+  },
+  "team": {
+    "name": "Paraguay",
+    "formation": "4-4-2"
+  },
+  "players": [
+    {
+      "number": 12,
+      "name": "OrandoGILL",
+      "position": "GK",
+      "role": "GK",
+      "slot": "GK"
+    },
+    {
+      "number": 3,
+      "name": "Omar ALDERETE",
+      "position": "DF",
+      "role": "DF",
+      "slot": "LB"
+    },
+    {
+      "number": 4,
+      "name": "JuanJoseCACERES",
+      "position": "DF",
+      "role": "DF",
+      "slot": "LCB"
+    },
+    {
+      "number": 15,
+      "name": "Gustavo GOMEZ",
+      "position": "DF",
+      "role": "DF",
+      "slot": "RCB"
+    },
+    {
+      "number": 6,
+      "name": "Junior ALONSO",
+      "position": "DF",
+      "role": "DF",
+      "slot": "RB"
+    },
+    {
+      "number": 14,
+      "name": "Andres CUBAS",
+      "position": "MF",
+      "role": "MF",
+      "slot": "LM"
+    },
+    {
+      "number": 8,
+      "name": "DiegoGOMEZ",
+      "position": "MF",
+      "role": "MF",
+      "slot": "LCM"
+    },
+    {
+      "number": 10,
+      "name": "Miguel ALMIRON",
+      "position": "MF",
+      "role": "MF",
+      "slot": "RCM"
+    },
+    {
+      "number": 16,
+      "name": "DamianBOBADILLA",
+      "position": "MF",
+      "role": "MF",
+      "slot": "RM"
+    },
+    {
+      "number": 9,
+      "name": "Antonio SANABRIA",
+      "position": "FW",
+      "role": "FW",
+      "slot": "LST"
+    },
+    {
+      "number": 19,
+      "name": "Julio ENCISO",
+      "position": "FW",
+      "role": "FW",
+      "slot": "RST"
+    }
+  ],
+  "match": {
+    "opponent_name": "United States",
+    "opponent_slug": "united-states",
+    "team_score": null,
+    "opponent_score": null,
+    "date": "12 June 2026",
+    "venue": "Los Angeles Stadium",
+    "competition": null,
+    "match_id": "Captura de pantalla 2026-06-18 160255",
+    "side": "away"
+  }
+}

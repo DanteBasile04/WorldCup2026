@@ -1,0 +1,100 @@
+{
+  "country": {
+    "slug": "bosnia-and-herzegovina",
+    "name": "Bosnia and Herzegovina"
+  },
+  "team": {
+    "name": "Bosnia and Herzegovina",
+    "formation": "4-3-3"
+  },
+  "players": [
+    {
+      "number": 1,
+      "name": "Nikola VASILJ",
+      "position": "GK",
+      "role": "GK",
+      "slot": "GK"
+    },
+    {
+      "number": 4,
+      "name": "Tarik MUHAREMOVIC",
+      "position": "DF",
+      "role": "DF",
+      "slot": "LB"
+    },
+    {
+      "number": 5,
+      "name": "SeadKOLASINAC",
+      "position": "DF",
+      "role": "DF",
+      "slot": "LCB"
+    },
+    {
+      "number": 18,
+      "name": "NikolaKATIC",
+      "position": "DF",
+      "role": "DF",
+      "slot": "RCB"
+    },
+    {
+      "number": 7,
+      "name": "AmarDEDIC",
+      "position": "DF",
+      "role": "DF",
+      "slot": "RB"
+    },
+    {
+      "number": 13,
+      "name": "IvanBASIC",
+      "position": "MF",
+      "role": "MF",
+      "slot": "LCM"
+    },
+    {
+      "number": 6,
+      "name": "Benjamin TAHIROVIC",
+      "position": "MF",
+      "role": "MF",
+      "slot": "CM"
+    },
+    {
+      "number": 15,
+      "name": "Amar MEMIC",
+      "position": "MF",
+      "role": "MF",
+      "slot": "RCM"
+    },
+    {
+      "number": 20,
+      "name": "Esmir BAJURAKTAREVIC",
+      "position": "FW",
+      "role": "FW",
+      "slot": "LW"
+    },
+    {
+      "number": 10,
+      "name": "Ermedin DEMIROVIC",
+      "position": "FW",
+      "role": "FW",
+      "slot": "ST"
+    },
+    {
+      "number": 25,
+      "name": "21 JovoLUKIC",
+      "position": "FW",
+      "role": "FW",
+      "slot": "RW"
+    }
+  ],
+  "match": {
+    "opponent_name": "Canada",
+    "opponent_slug": "canada",
+    "team_score": null,
+    "opponent_score": null,
+    "date": "12 June 2026",
+    "venue": "Toronto Stadium",
+    "competition": null,
+    "match_id": "Captura de pantalla 2026-06-18 160037",
+    "side": "away"
+  }
+}

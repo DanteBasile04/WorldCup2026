@@ -3,8 +3,11 @@
 /**
  * Local formation upload tool — private CLI for authoring team formations.
  *
- * Accepts a compact input format and writes the formation SVG directly
- * to the country.formation column in Supabase (service_role key required).
+ * Accepts JSON or text authoring input and writes both formation artifacts:
+ *   - country.formation: published inline SVG
+ *   - country.formation_json: structured formation document for future UI rendering
+ *
+ * Requires a Supabase write-capable key in --write mode.
  *
  * THIS IS A PRIVATE LOCAL TOOL. Do not expose as a public route, server
  * action, or visible UI component.
@@ -14,23 +17,23 @@
  *   1. JSON file (like samples/country-formation-mexico-input.json):
  *      node scripts/upload-formation.mjs --input samples/country-formation-mexico-input.json
  *
- *   2. Compact text format (stdin or --text):
+ *   2. Text authoring format (stdin or --text):
  *      echo "argentina 4-3-3
  *            1 Martinez GK
- *            4 Montiel DF
+ *            4 | Gonzalo Montiel | DF | Montiel | LB
  *            ..." | node scripts/upload-formation.mjs --stdin
  *
  *      node scripts/upload-formation.mjs --text "argentina 4-3-3
  *            1 Martinez GK
- *            4 Montiel DF
+ *            4 | Gonzalo Montiel | DF | Montiel | LB
  *            ..."
  *
  *   3. Command-line arguments:
- *      node scripts/upload-formation.mjs --slug argentina --formation "4-3-3" --players "1,Martinez,GK;4,Montiel,DF;..."
+ *      node scripts/upload-formation.mjs --slug argentina --formation "4-3-3" --players "1,Martinez,GK;4,Gonzalo Montiel,DF,Montiel,LB;..."
  *
  * Output:
  *   --dry-run (default): Validates input, generates SVG, prints SQL — does NOT write to DB.
- *   --write:              Uploads formation SVG to country.formation via Supabase.
+ *   --write:              Uploads both formation SVG and formation JSON via Supabase.
  *   --sql-only:           Prints the SQL UPDATE statement without executing.
  *
  * Environment variables (for --write mode):
@@ -41,6 +44,7 @@
 import { createClient } from "@supabase/supabase-js";
 import { existsSync, readFileSync } from "node:fs";
 import { resolve } from "node:path";
+import { parseFormationAuthoringText, parseFormationPlayersArgument } from "./lib/formation-authoring.mjs";
 import { createCountryFormationUpdate } from "./lib/formation-svg.mjs";
 
 const argv = process.argv.slice(2);
@@ -120,7 +124,7 @@ function resolveFormationInput() {
     return JSON.parse(raw);
   }
 
-  // Priority 2: --text compact format
+  // Priority 2: --text authoring format
   if (textInput) {
     return parseCompactText(textInput);
   }
@@ -136,87 +140,23 @@ function resolveFormationInput() {
   }
 
   throw new Error(
-    "No input provided. Use --input <file.json>, --text <compact>, --slug/--formation/--players, or --stdin.",
+    "No input provided. Use --input <file.json>, --text <authoring-text>, --slug/--formation/--players, or --stdin.",
   );
 }
 
 /**
- * Parse compact text format:
- *
- *   argentina 4-3-3
- *   1 Martinez GK
- *   4 Montiel DF
- *   ...
- *
- * Each player line: number, name (multiple words allowed), role (GK/DF/MF/FW)
+ * Parse text authoring format.
  */
 function parseCompactText(text) {
-  const lines = String(text).split(/\r?\n/).map((l) => l.trim()).filter(Boolean);
-  if (lines.length < 2) {
-    throw new Error("Compact text requires at least a header line and one player line.");
-  }
-
-  // First line: "slug formation" or "slug formation"
-  const headerLine = lines[0];
-  const headerMatch = headerLine.match(/^(\S+)\s+([\d-]+(?:-\d+)*)/);
-  if (!headerMatch) {
-    throw new Error(
-      `Header line must be "<country-slug> <formation>" (e.g. "argentina 4-3-3"). Got: "${headerLine}"`,
-    );
-  }
-
-  const slug = headerMatch[1];
-  const formation = headerMatch[2];
-
-  const players = [];
-  for (let i = 1; i < lines.length; i++) {
-    const line = lines[i];
-    const playerMatch = line.match(/^(\d+)\s+(.+?)\s+(GK|DF|MF|FW|DEF|MID|FWD|ATT)$/i);
-    if (!playerMatch) {
-      throw new Error(
-        `Player line ${i + 1} must be "<number> <name> <role>". Got: "${line}"`,
-      );
-    }
-    players.push({
-      number: Number.parseInt(playerMatch[1], 10),
-      name: playerMatch[2].trim(),
-      role: playerMatch[3].toUpperCase(),
-    });
-  }
-
-  if (players.length === 0) {
-    throw new Error("No players parsed from input.");
-  }
-
-  return {
-    country: { slug },
-    team: { formation },
-    players,
-  };
+  return parseFormationAuthoringText(text);
 }
 
 /**
  * Parse CLI arguments: --slug, --formation, --players
- * Players format: "1,Martinez,GK;4,Montiel,DF;..."
+ * Players format: "1,Martinez,GK;4,Gonzalo Montiel,DF,Montiel,LB;..."
  */
 function parseCliArgs(slug, formation, playersStr) {
-  const players = playersStr.split(";").map((entry, i) => {
-    const parts = entry.trim().split(",");
-    if (parts.length !== 3) {
-      throw new Error(
-        `Player entry ${i + 1} must be "number,name,role". Got: "${entry}"`,
-      );
-    }
-    const number = Number.parseInt(parts[0], 10);
-    const name = parts[1].trim();
-    const role = parts[2].trim().toUpperCase();
-
-    if (!Number.isFinite(number)) {
-      throw new Error(`Invalid player number in entry ${i + 1}: "${parts[0]}"`);
-    }
-
-    return { number, name, role };
-  });
+  const players = parseFormationPlayersArgument(playersStr);
 
   return {
     country: { slug },
@@ -237,7 +177,7 @@ function readStdinSync() {
     return parseCompactText(buffer);
   } catch {
     throw new Error(
-      "Could not read from stdin. Use --input <file> or --text <compact> instead.",
+      "Could not read from stdin. Use --input <file> or --text <authoring-text> instead.",
     );
   }
 }
@@ -260,7 +200,7 @@ async function uploadFormation(payload) {
   // Verify the country exists before updating
   const { data: country, error: readError } = await supabase
     .from("country")
-    .select("id, name, slug, formation")
+    .select("id, name, slug, formation, formation_json")
     .eq(whereKey.column, whereKey.value)
     .maybeSingle();
 
@@ -278,19 +218,25 @@ async function uploadFormation(payload) {
     console.log("  Continuing will overwrite it.\n");
   }
 
+  const updateData = { formation: payload.formationSvg };
+  if (payload.formationJson != null) {
+    updateData.formation_json = payload.formationJson;
+  }
+
   const { error: updateError } = await supabase
     .from("country")
-    .update({ formation: payload.formationSvg })
+    .update(updateData)
     .eq("id", country.id);
 
   if (updateError) {
     throw new Error(`Failed to update country: ${updateError.message}`);
   }
 
-  console.log(`\n✓ Updated formation for ${country.name} (slug: ${country.slug}).`);
+  console.log(`\n✓ Updated formation assets for ${country.name} (slug: ${country.slug}).`);
   console.log(`  Formation: ${payload.document.team.formation}`);
   console.log(`  Players: ${payload.document.players.length}`);
   console.log(`  SVG: ${payload.formationSvg.length} chars written to country.formation`);
+  console.log(`  JSON: ${JSON.stringify(payload.formationJson).length} chars written to country.formation_json`);
 }
 
 // ---------------------------------------------------------------------------
@@ -319,11 +265,14 @@ function loadEnvFile(fileName) {
 
 function createSupabaseClient() {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL ?? process.env.SUPABASE_URL;
+  // Write operations must prefer the private key over the publishable (anon) key.
+  // The publishable key lacks INSERT/UPDATE permissions on country.formation,
+  // so it must not shadow the import key when both are present in .env.local.
   const key =
-    process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY ??
     process.env.SUPABASE_COUNTRY_IMPORT_KEY ??
     process.env.SUPABASE_SECRET_KEY ??
-    process.env.SUPABASE_SERVICE_ROLE_KEY;
+    process.env.SUPABASE_SERVICE_ROLE_KEY ??
+    process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY;
 
   if (!url) {
     throw new Error("Missing NEXT_PUBLIC_SUPABASE_URL or SUPABASE_URL.");

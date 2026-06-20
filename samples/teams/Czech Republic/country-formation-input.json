@@ -1,0 +1,112 @@
+{
+  "country": {
+    "slug": "czech-republic",
+    "name": "Czech Republic"
+  },
+  "team": {
+    "name": "Czech Republic",
+    "formation": "5-3-2"
+  },
+  "players": [
+    {
+      "number": 1,
+      "name": "q Mate]KOVAR",
+      "position": "GK",
+      "role": "GK",
+      "slot": "GK"
+    },
+    {
+      "number": 20,
+      "name": "Jaroslav ZELENV",
+      "position": "DF",
+      "role": "DF",
+      "slot": "LWB"
+    },
+    {
+      "number": 6,
+      "name": "Vladimir COUFAL",
+      "position": "DF",
+      "role": "DF",
+      "slot": "LCB"
+    },
+    {
+      "number": 4,
+      "name": "RObINHRANAC",
+      "position": "DF",
+      "role": "DF",
+      "slot": "CB"
+    },
+    {
+      "number": 7,
+      "name": "LadislavKREJCI",
+      "position": "DF",
+      "role": "DF",
+      "slot": "RCB"
+    },
+    {
+      "number": 2,
+      "name": "DavidZIMA",
+      "position": "DF",
+      "role": "DF",
+      "slot": "RWB"
+    },
+    {
+      "number": 22,
+      "name": "Tomas SOUCEK",
+      "position": "MF",
+      "role": "MF",
+      "slot": "LCM"
+    },
+    {
+      "number": 17,
+      "name": "Lukas PROVOD",
+      "position": "MF",
+      "role": "MF",
+      "slot": "CM"
+    },
+    {
+      "number": 24,
+      "name": "Alexandr SOUKA",
+      "position": "MF",
+      "role": "MF",
+      "slot": "RCM"
+    },
+    {
+      "number": 10,
+      "name": "Patrik SCHICK",
+      "position": "FW",
+      "role": "FW",
+      "slot": "LST"
+    },
+    {
+      "number": 15,
+      "name": "PavelSULC",
+      "position": "FW",
+      "role": "FW",
+      "slot": "RST"
+    }
+  ],
+  "match": {
+    "opponent_name": "South Korea",
+    "opponent_slug": "south-korea",
+    "team_score": null,
+    "opponent_score": null,
+    "date": "11 June 2026",
+    "venue": "Guadalajara Stadium",
+    "competition": null,
+    "match_id": "Captura de pantalla 2026-06-18 155648",
+    "side": "away"
+  },
+  "source": {
+    "team_artifact_match_id": "Captura de pantalla 2026-06-18 155648",
+    "team_artifact_side": "away",
+    "parsed_match_path": "C:\\Users\\Dante\\Desktop\\Programacion\\WorldCup2026\\wc26\\generated\\match-summary-ingest-final-2026-06-18\\parsed\\Captura de pantalla 2026-06-18 155648.parsed.json",
+    "heuristic_repairs": [
+      "Promoted substitutes for Czech Republic 5-3-2: 2 DavidZIMA -> RWB.",
+      "Omitted lower-confidence starter rows for Czech Republic: 6 Stepan CHALOUPEK."
+    ],
+    "warnings": [
+      "Formation export for Czech Republic promoted 1 substitute to complete 11 players."
+    ]
+  }
+}

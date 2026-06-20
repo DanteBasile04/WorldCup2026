@@ -1,0 +1,100 @@
+{
+  "country": {
+    "slug": "united-states",
+    "name": "United States"
+  },
+  "team": {
+    "name": "United States",
+    "formation": "5-3-2"
+  },
+  "players": [
+    {
+      "number": 24,
+      "name": "Matt FREESE",
+      "position": "GK",
+      "role": "GK",
+      "slot": "GK"
+    },
+    {
+      "number": 16,
+      "name": "Alex FREEMAN",
+      "position": "DF",
+      "role": "DF",
+      "slot": "LWB"
+    },
+    {
+      "number": 6,
+      "name": "Antonee ROBINSON",
+      "position": "DF",
+      "role": "DF",
+      "slot": "LCB"
+    },
+    {
+      "number": 3,
+      "name": "Chris RICHARDS",
+      "position": "DF",
+      "role": "DF",
+      "slot": "CB"
+    },
+    {
+      "number": 13,
+      "name": "Tim REAM",
+      "position": "DF",
+      "role": "DF",
+      "slot": "RCB"
+    },
+    {
+      "number": 2,
+      "name": "SerginoDEST",
+      "position": "DF",
+      "role": "DF",
+      "slot": "RWB"
+    },
+    {
+      "number": 8,
+      "name": "Weston McKENNIE",
+      "position": "MF",
+      "role": "MF",
+      "slot": "LCM"
+    },
+    {
+      "number": 4,
+      "name": "Tyler ADAMS",
+      "position": "MF",
+      "role": "MF",
+      "slot": "CM"
+    },
+    {
+      "number": 17,
+      "name": "Malik TILLMAN",
+      "position": "MF",
+      "role": "MF",
+      "slot": "RCM"
+    },
+    {
+      "number": 10,
+      "name": "Christian PULISIC",
+      "position": "FW",
+      "role": "FW",
+      "slot": "LST"
+    },
+    {
+      "number": 20,
+      "name": "FolarinBALOGUN &",
+      "position": "FW",
+      "role": "FW",
+      "slot": "RST"
+    }
+  ],
+  "match": {
+    "opponent_name": "Paraguay",
+    "opponent_slug": "paraguay",
+    "team_score": null,
+    "opponent_score": null,
+    "date": "12 June 2026",
+    "venue": "Los Angeles Stadium",
+    "competition": null,
+    "match_id": "Captura de pantalla 2026-06-18 160255",
+    "side": "home"
+  }
+}

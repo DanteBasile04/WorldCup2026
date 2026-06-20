@@ -1,0 +1,100 @@
+{
+  "country": {
+    "slug": "dr-congo",
+    "name": "DR Congo"
+  },
+  "team": {
+    "name": "DR Congo",
+    "formation": "5-3-2"
+  },
+  "players": [
+    {
+      "number": 1,
+      "name": "LionelMPASI",
+      "position": "GK",
+      "role": "GK",
+      "slot": "GK"
+    },
+    {
+      "number": 22,
+      "name": "ChancelMBEMBA",
+      "position": "DF",
+      "role": "DF",
+      "slot": "LWB"
+    },
+    {
+      "number": 3,
+      "name": "Steve KAPUADI",
+      "position": "DF",
+      "role": "DF",
+      "slot": "LCB"
+    },
+    {
+      "number": 2,
+      "name": "Aaron WAN-BISSAKA",
+      "position": "DF",
+      "role": "DF",
+      "slot": "CB"
+    },
+    {
+      "number": 4,
+      "name": "Axel TUANZEBE",
+      "position": "DF",
+      "role": "DF",
+      "slot": "RCB"
+    },
+    {
+      "number": 26,
+      "name": "Arthur MASUAKU",
+      "position": "DF",
+      "role": "DF",
+      "slot": "RWB"
+    },
+    {
+      "number": 8,
+      "name": "Samuel MOUTOUSSAMY",
+      "position": "MF",
+      "role": "MF",
+      "slot": "LCM"
+    },
+    {
+      "number": 6,
+      "name": "Ngalayel MUKAU",
+      "position": "MF",
+      "role": "MF",
+      "slot": "CM"
+    },
+    {
+      "number": 25,
+      "name": "EdOKAVEMBE",
+      "position": "MF",
+      "role": "MF",
+      "slot": "RCM"
+    },
+    {
+      "number": 17,
+      "name": "CedricBAKAMBU",
+      "position": "FW",
+      "role": "FW",
+      "slot": "LST"
+    },
+    {
+      "number": 20,
+      "name": "Voane WISSA",
+      "position": "FW",
+      "role": "FW",
+      "slot": "RST"
+    }
+  ],
+  "match": {
+    "opponent_name": "Portugal",
+    "opponent_slug": "portugal",
+    "team_score": null,
+    "opponent_score": null,
+    "date": "17 June 2026",
+    "venue": "Houston Stadium",
+    "competition": null,
+    "match_id": "Captura de pantalla 2026-06-18 163449",
+    "side": "away"
+  }
+}

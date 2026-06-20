@@ -1,0 +1,113 @@
+{
+  "country": {
+    "slug": "qatar",
+    "name": "Qatar"
+  },
+  "team": {
+    "name": "Qatar",
+    "formation": "5-3-2"
+  },
+  "players": [
+    {
+      "number": 1,
+      "name": "MAHMOUD ABUNADA",
+      "position": "GK",
+      "role": "GK",
+      "slot": "GK"
+    },
+    {
+      "number": 5,
+      "name": "UASSEMGABER",
+      "position": "DF",
+      "role": "DF",
+      "slot": "LWB"
+    },
+    {
+      "number": 4,
+      "name": "ISSA LAVE",
+      "position": "DF",
+      "role": "DF",
+      "slot": "LCB"
+    },
+    {
+      "number": 2,
+      "name": "PEDRO MIGUEL",
+      "position": "DF",
+      "role": "DF",
+      "slot": "CB"
+    },
+    {
+      "number": 14,
+      "name": "HOMAM AHMED",
+      "position": "DF",
+      "role": "DF",
+      "slot": "RCB"
+    },
+    {
+      "number": 16,
+      "name": "BOUALEM KHOUKHI",
+      "position": "DF",
+      "role": "DF",
+      "slot": "RWB"
+    },
+    {
+      "number": 12,
+      "name": "KARIMBOUDIAF ¢",
+      "position": "MF",
+      "role": "MF",
+      "slot": "LCM"
+    },
+    {
+      "number": 23,
+      "name": "ASSIMMADIBO",
+      "position": "MF",
+      "role": "MF",
+      "slot": "CM"
+    },
+    {
+      "number": 17,
+      "name": "AHMED ALGANEHI",
+      "position": "MF",
+      "role": "MF",
+      "slot": "RCM"
+    },
+    {
+      "number": 11,
+      "name": "AKRAM AFIF",
+      "position": "FW",
+      "role": "FW",
+      "slot": "LST"
+    },
+    {
+      "number": 8,
+      "name": "EDMILSONJUNIOR",
+      "position": "FW",
+      "role": "FW",
+      "slot": "RST"
+    }
+  ],
+  "match": {
+    "opponent_name": "Switzerland",
+    "opponent_slug": "switzerland",
+    "team_score": null,
+    "opponent_score": null,
+    "date": "13 June 2026",
+    "venue": "San Francisco Bay Area Stadium",
+    "competition": null,
+    "match_id": "Captura de pantalla 2026-06-18 160108",
+    "side": "home"
+  },
+  "source": {
+    "team_artifact_match_id": "Captura de pantalla 2026-06-18 160108",
+    "team_artifact_side": "home",
+    "parsed_match_path": "C:\\Users\\Dante\\Desktop\\Programacion\\WorldCup2026\\wc26\\generated\\match-summary-ingest-final-2026-06-18\\parsed\\Captura de pantalla 2026-06-18 160108.parsed.json",
+    "heuristic_repairs": [
+      "Promoted substitutes for Qatar 5-3-2: 12 KARIMBOUDIAF ¢ -> LCM, 17 AHMED ALGANEHI -> RCM.",
+      "Omitted lower-confidence starter rows for Qatar: 13 AVOUBALOUI, 2 YUSUF ABDURISAG."
+    ],
+    "warnings": [
+      "Formation for Qatar was inferred heuristically as 5-3-2.",
+      "Formation export for Qatar promoted 2 substitutes to complete 11 players."
+    ]
+  }
+}

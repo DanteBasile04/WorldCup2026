@@ -1,0 +1,100 @@
+{
+  "country": {
+    "slug": "cape-verde",
+    "name": "Cape Verde"
+  },
+  "team": {
+    "name": "Cape Verde",
+    "formation": "4-4-2"
+  },
+  "players": [
+    {
+      "number": 1,
+      "name": "VOZINHA",
+      "position": "GK",
+      "role": "GK",
+      "slot": "GK"
+    },
+    {
+      "number": 3,
+      "name": "DINEVY BORGES",
+      "position": "DF",
+      "role": "DF",
+      "slot": "LB"
+    },
+    {
+      "number": 4,
+      "name": "PICOLOPES",
+      "position": "DF",
+      "role": "DF",
+      "slot": "LCB"
+    },
+    {
+      "number": 22,
+      "name": "STEVEN MOREIRA",
+      "position": "DF",
+      "role": "DF",
+      "slot": "RCB"
+    },
+    {
+      "number": 13,
+      "name": "SIDNV LOPES CABRAL",
+      "position": "DF",
+      "role": "DF",
+      "slot": "RB"
+    },
+    {
+      "number": 10,
+      "name": "JAMIRO MONTEIRO",
+      "position": "MF",
+      "role": "MF",
+      "slot": "LM"
+    },
+    {
+      "number": 6,
+      "name": "KEVINPINA",
+      "position": "MF",
+      "role": "MF",
+      "slot": "LCM"
+    },
+    {
+      "number": 7,
+      "name": "JOVANECABRAL",
+      "position": "MF",
+      "role": "MF",
+      "slot": "RCM"
+    },
+    {
+      "number": 15,
+      "name": "LAROSDUARTE",
+      "position": "MF",
+      "role": "MF",
+      "slot": "RM"
+    },
+    {
+      "number": 19,
+      "name": "DAILONLIVRAMENTO",
+      "position": "FW",
+      "role": "FW",
+      "slot": "LST"
+    },
+    {
+      "number": 20,
+      "name": "RVAN MENDES",
+      "position": "FW",
+      "role": "FW",
+      "slot": "RST"
+    }
+  ],
+  "match": {
+    "opponent_name": "Spain",
+    "opponent_slug": "spain",
+    "team_score": null,
+    "opponent_score": null,
+    "date": "15 June 2026",
+    "venue": "Atlanta Stadium",
+    "competition": null,
+    "match_id": "Captura de pantalla 2026-06-18 163325",
+    "side": "away"
+  }
+}

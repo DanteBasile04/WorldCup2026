@@ -1,0 +1,100 @@
+{
+  "country": {
+    "slug": "australia",
+    "name": "Australia"
+  },
+  "team": {
+    "name": "Australia",
+    "formation": "5-3-2"
+  },
+  "players": [
+    {
+      "number": 18,
+      "name": "Patrick BEACH",
+      "position": "GK",
+      "role": "GK",
+      "slot": "GK"
+    },
+    {
+      "number": 4,
+      "name": "JacobITALIANO",
+      "position": "DF",
+      "role": "DF",
+      "slot": "LWB"
+    },
+    {
+      "number": 19,
+      "name": "Harry SOUTTAR",
+      "position": "DF",
+      "role": "DF",
+      "slot": "LCB"
+    },
+    {
+      "number": 3,
+      "name": "Alessandro CIRCATI",
+      "position": "DF",
+      "role": "DF",
+      "slot": "CB"
+    },
+    {
+      "number": 21,
+      "name": "Cameron BURGESS",
+      "position": "DF",
+      "role": "DF",
+      "slot": "RCB"
+    },
+    {
+      "number": 6,
+      "name": "JordanBOS",
+      "position": "DF",
+      "role": "DF",
+      "slot": "RWB"
+    },
+    {
+      "number": 13,
+      "name": "Aiden ONEILL",
+      "position": "MF",
+      "role": "MF",
+      "slot": "LCM"
+    },
+    {
+      "number": 8,
+      "name": "Connor METCALFE &",
+      "position": "MF",
+      "role": "MF",
+      "slot": "CM"
+    },
+    {
+      "number": 24,
+      "name": "Paul OKON-ENGSTLER",
+      "position": "MF",
+      "role": "MF",
+      "slot": "RCM"
+    },
+    {
+      "number": 9,
+      "name": "Mohamed TOURE",
+      "position": "FW",
+      "role": "FW",
+      "slot": "LST"
+    },
+    {
+      "number": 17,
+      "name": "NestoryIRANKUNDA &",
+      "position": "FW",
+      "role": "FW",
+      "slot": "RST"
+    }
+  ],
+  "match": {
+    "opponent_name": "Turkey",
+    "opponent_slug": "turkey",
+    "team_score": null,
+    "opponent_score": null,
+    "date": "13 June 2026",
+    "venue": "BC Place Vancouver",
+    "competition": null,
+    "match_id": "Captura de pantalla 2026-06-18 160330",
+    "side": "home"
+  }
+}

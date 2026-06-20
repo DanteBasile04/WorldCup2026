@@ -1,5 +1,7 @@
+import Link from "next/link";
 import { getLandingData } from "@/lib/supabase/queries";
 import { buildLandingVm } from "@/lib/tournament/view-models";
+import { resolveSiteHeroUrl } from "@/lib/supabase/storage";
 import { TabBar } from "@/components/tournament/tab-bar";
 import { StandingsCard } from "@/components/tournament/standings-card";
 import { Bracket } from "@/components/tournament/bracket";
@@ -32,7 +34,12 @@ export default async function Home({
     0,
   );
 
-  // Collect unique flag URLs for the mosaic (deduped, limited)
+  // Resolve the dedicated site hero banner — preferred over flag mosaic.
+  // Falls back to null when Supabase config is missing.
+  const heroBannerUrl = resolveSiteHeroUrl();
+
+  // Collect unique flag URLs for the mosaic (deduped, limited).
+  // Used as the decorative fallback when no banner asset is available.
   const flagUrls = vm.groups
     .flatMap((g) => g.rows.map((r) => r.flagUrl))
     .filter((url): url is string => url != null)
@@ -42,9 +49,17 @@ export default async function Home({
   return (
     <main className="flex min-h-screen w-full flex-col">
       {/* Full-bleed presentation hero */}
-      <section className="glass-strong relative w-full overflow-hidden px-6 py-10 sm:px-12 md:px-20 lg:px-28">
-        {/* Flag mosaic background — decorative, low opacity */}
-        {flagUrls.length > 0 && (
+      <section className="glass-strong relative w-full overflow-hidden px-6 py-10 sm:px-12 md:px-20 lg:px-28 lg:py-14">
+        {/* Hero background — dedicated banner or decorative flag mosaic */}
+        {heroBannerUrl ? (
+          /* Preferred: dedicated banner image covering the hero surface */
+          <div
+            className="pointer-events-none absolute inset-0 bg-cover bg-center opacity-10"
+            style={{ backgroundImage: `url(${heroBannerUrl})` }}
+            aria-hidden="true"
+          />
+        ) : flagUrls.length > 0 ? (
+          /* Fallback: flag mosaic when no banner asset is available */
           <div
             className="pointer-events-none absolute inset-0 opacity-[0.06]"
             aria-hidden="true"
@@ -59,46 +74,74 @@ export default async function Home({
               ))}
             </div>
           </div>
-        )}
+        ) : null}
 
         {/* Hero content — inner readable wrapper */}
-        <div className="relative z-10 mx-auto max-w-5xl">
+        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(4,13,34,0.88)_0%,rgba(4,13,34,0.74)_28%,rgba(4,13,34,0.4)_50%,rgba(4,13,34,0.74)_72%,rgba(4,13,34,0.88)_100%)]" />
+
+        <div className="relative z-10 mx-auto max-w-6xl">
           <p className="font-heading text-sm font-semibold uppercase tracking-[0.3em] text-[var(--accent-crimson-light)]">
             FIFA World Cup 2026
           </p>
-          <div className="mt-6 grid gap-8 lg:grid-cols-[1.5fr_1fr] lg:items-end">
-            <div>
-              <h1 className="font-heading max-w-3xl text-4xl font-bold tracking-tight text-white sm:text-6xl">
-                Groups, teams, and fixtures in one public read-only hub.
+          <div className="mt-6 grid gap-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(12rem,0.55fr)_minmax(18rem,0.9fr)] lg:items-center lg:gap-10">
+            <div className="max-w-2xl">
+              <h1 className="font-heading text-4xl font-bold tracking-tight text-white sm:text-6xl">
+                The road to glory starts here.
               </h1>
               <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-300">
-                Browse the current tournament structure from Supabase-backed
-                public data. No login is required.
+                Follow every group, every qualified nation, and the full knockout
+                path from a single public read-only hub backed by Supabase.
               </p>
+              <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+                <Link
+                  href="/?view=groups#groups-panel"
+                  className="inline-flex items-center justify-center rounded-full bg-white px-5 py-3 text-sm font-semibold text-slate-950 transition hover:bg-slate-200"
+                >
+                  View groups
+                </Link>
+                <Link
+                  href="/?view=knockout#knockout-panel"
+                  className="inline-flex items-center justify-center rounded-full border border-white/20 bg-white/10 px-5 py-3 text-sm font-semibold text-white transition hover:bg-white/20"
+                >
+                  View bracket
+                </Link>
+              </div>
             </div>
-            <div className="grid grid-cols-3 gap-3 text-center">
-              <div className="rounded-[var(--radius-soft)] bg-[var(--surface)] p-4">
-                <p className="font-heading text-3xl font-bold text-white">
-                  {vm.groups.length}
+            <div className="hidden min-h-[18rem] lg:block" aria-hidden="true" />
+            <div className="justify-self-start lg:justify-self-end">
+              <div className="rounded-[var(--radius-hero)] border border-white/10 bg-[rgba(7,15,35,0.72)] p-5 backdrop-blur-sm">
+                <p className="text-sm font-medium uppercase tracking-[0.24em] text-slate-400">
+                  Tournament at a glance
                 </p>
-                <p className="text-xs uppercase tracking-wide text-slate-400">
-                  Groups
-                </p>
-              </div>
-              <div className="rounded-[var(--radius-soft)] bg-[var(--surface)] p-4">
-                <p className="font-heading text-3xl font-bold text-white">
-                  {totalTeams}
-                </p>
-                <p className="text-xs uppercase tracking-wide text-slate-400">
-                  Teams
-                </p>
-              </div>
-              <div className="rounded-[var(--radius-soft)] bg-[var(--surface)] p-4">
-                <p className="font-heading text-3xl font-bold text-white">
-                  {vm.knockout.length}
-                </p>
-                <p className="text-xs uppercase tracking-wide text-slate-400">
-                  Knockout
+                <div className="mt-5 grid grid-cols-3 gap-3 text-center">
+                  <div className="rounded-[var(--radius-soft)] bg-white/5 p-4">
+                    <p className="font-heading text-3xl font-bold text-white">
+                      {vm.groups.length}
+                    </p>
+                    <p className="text-xs uppercase tracking-wide text-slate-400">
+                      Groups
+                    </p>
+                  </div>
+                  <div className="rounded-[var(--radius-soft)] bg-white/5 p-4">
+                    <p className="font-heading text-3xl font-bold text-white">
+                      {totalTeams}
+                    </p>
+                    <p className="text-xs uppercase tracking-wide text-slate-400">
+                      Teams
+                    </p>
+                  </div>
+                  <div className="rounded-[var(--radius-soft)] bg-white/5 p-4">
+                    <p className="font-heading text-3xl font-bold text-white">
+                      {vm.knockout.length}
+                    </p>
+                    <p className="text-xs uppercase tracking-wide text-slate-400">
+                      Knockout
+                    </p>
+                  </div>
+                </div>
+                <p className="mt-5 max-w-sm text-sm leading-6 text-slate-300">
+                  Jump between the group stage and the final bracket without
+                  losing context.
                 </p>
               </div>
             </div>
@@ -122,7 +165,10 @@ export default async function Home({
 
       {/* Groups panel — constrained readable width */}
       {activeView === "groups" && (
-        <section className="mx-auto w-full max-w-6xl px-6 pb-10 pt-6 sm:px-10">
+        <section
+          id="groups-panel"
+          className="mx-auto w-full max-w-6xl px-6 pb-10 pt-6 sm:px-10"
+        >
           {vm.groups.length === 0 ? (
             <div className="rounded-[var(--radius-soft)] border border-dashed border-white/10 bg-white/[0.02] p-6 text-sm text-slate-500">
               No group standings are available yet.
@@ -145,7 +191,10 @@ export default async function Home({
 
       {/* Knockout panel — wider surface for bracket grid */}
       {activeView === "knockout" && (
-        <section className="mx-auto w-full max-w-[90rem] px-6 pb-10 pt-6 sm:px-10">
+        <section
+          id="knockout-panel"
+          className="mx-auto w-full max-w-[90rem] px-6 pb-10 pt-6 sm:px-10"
+        >
           {vm.knockout.length === 0 ? (
             <div className="rounded-[var(--radius-soft)] border border-dashed border-white/10 bg-white/[0.02] p-6 text-sm text-slate-500">
               Knockout bracket data is not yet available. Placeholder structure

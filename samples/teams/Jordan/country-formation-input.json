@@ -1,0 +1,100 @@
+{
+  "country": {
+    "slug": "jordan",
+    "name": "Jordan"
+  },
+  "team": {
+    "name": "Jordan",
+    "formation": "4-3-3"
+  },
+  "players": [
+    {
+      "number": 1,
+      "name": "VAZEED ABULAILA",
+      "position": "GK",
+      "role": "GK",
+      "slot": "GK"
+    },
+    {
+      "number": 3,
+      "name": "ABDALLAHNASIB",
+      "position": "DF",
+      "role": "DF",
+      "slot": "LB"
+    },
+    {
+      "number": 5,
+      "name": "VAZANALARAB",
+      "position": "DF",
+      "role": "DF",
+      "slot": "LCB"
+    },
+    {
+      "number": 23,
+      "name": "EHSANHADDAD",
+      "position": "DF",
+      "role": "DF",
+      "slot": "RCB"
+    },
+    {
+      "number": 16,
+      "name": "MOHAMMAD ABUALNADI",
+      "position": "DF",
+      "role": "DF",
+      "slot": "RB"
+    },
+    {
+      "number": 20,
+      "name": "MOHANNAD ABUTAHA",
+      "position": "MF",
+      "role": "MF",
+      "slot": "LCM"
+    },
+    {
+      "number": 8,
+      "name": "NOOR ALRAWABDEH",
+      "position": "MF",
+      "role": "MF",
+      "slot": "CM"
+    },
+    {
+      "number": 21,
+      "name": "NIZAR ALRASHDAN",
+      "position": "MF",
+      "role": "MF",
+      "slot": "RCM"
+    },
+    {
+      "number": 10,
+      "name": "MOUSAALTAMARI",
+      "position": "FW",
+      "role": "FW",
+      "slot": "LW"
+    },
+    {
+      "number": 9,
+      "name": "ALIOLWAN",
+      "position": "FW",
+      "role": "FW",
+      "slot": "ST"
+    },
+    {
+      "number": 11,
+      "name": "ODEHFAKHOURY",
+      "position": "FW",
+      "role": "FW",
+      "slot": "RW"
+    }
+  ],
+  "match": {
+    "opponent_name": "Austria",
+    "opponent_slug": "austria",
+    "team_score": null,
+    "opponent_score": null,
+    "date": "16 June 2026",
+    "venue": "San Francisco Bay Area Stadium",
+    "competition": null,
+    "match_id": "Captura de pantalla 2026-06-18 163429",
+    "side": "away"
+  }
+}

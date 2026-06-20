@@ -1,0 +1,100 @@
+{
+  "country": {
+    "slug": "brazil",
+    "name": "Brazil"
+  },
+  "team": {
+    "name": "Brazil",
+    "formation": "4-3-3"
+  },
+  "players": [
+    {
+      "number": 1,
+      "name": "ALISSON",
+      "position": "GK",
+      "role": "GK",
+      "slot": "GK"
+    },
+    {
+      "number": 3,
+      "name": "GABRIEL MAGALHAES",
+      "position": "DF",
+      "role": "DF",
+      "slot": "LB"
+    },
+    {
+      "number": 4,
+      "name": "MARQUINHOS",
+      "position": "DF",
+      "role": "DF",
+      "slot": "LCB"
+    },
+    {
+      "number": 24,
+      "name": "ROGERIBANEZ",
+      "position": "DF",
+      "role": "DF",
+      "slot": "RCB"
+    },
+    {
+      "number": 16,
+      "name": "DOUGLAS SANTOS",
+      "position": "DF",
+      "role": "DF",
+      "slot": "RB"
+    },
+    {
+      "number": 20,
+      "name": "LUCAS PAQUETA",
+      "position": "MF",
+      "role": "MF",
+      "slot": "LCM"
+    },
+    {
+      "number": 8,
+      "name": "BRUNO GUIMARAES",
+      "position": "MF",
+      "role": "MF",
+      "slot": "CM"
+    },
+    {
+      "number": 5,
+      "name": "CASEMIRO",
+      "position": "MF",
+      "role": "MF",
+      "slot": "RCM"
+    },
+    {
+      "number": 11,
+      "name": "RAPHINHA",
+      "position": "FW",
+      "role": "FW",
+      "slot": "LW"
+    },
+    {
+      "number": 7,
+      "name": "VINICIUS JUNIOR &",
+      "position": "FW",
+      "role": "FW",
+      "slot": "ST"
+    },
+    {
+      "number": 25,
+      "name": "IGORTHIAGO",
+      "position": "FW",
+      "role": "FW",
+      "slot": "RW"
+    }
+  ],
+  "match": {
+    "opponent_name": "Morocco",
+    "opponent_slug": "morocco",
+    "team_score": null,
+    "opponent_score": null,
+    "date": "13 June 2026",
+    "venue": "New York/New Jersey Stadium",
+    "competition": null,
+    "match_id": "Captura de pantalla 2026-06-18 160209",
+    "side": "home"
+  }
+}

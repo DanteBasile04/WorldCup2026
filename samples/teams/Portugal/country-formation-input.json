@@ -1,0 +1,100 @@
+{
+  "country": {
+    "slug": "portugal",
+    "name": "Portugal"
+  },
+  "team": {
+    "name": "Portugal",
+    "formation": "4-4-2"
+  },
+  "players": [
+    {
+      "number": 1,
+      "name": "DIOGO COSTA",
+      "position": "GK",
+      "role": "GK",
+      "slot": "GK"
+    },
+    {
+      "number": 13,
+      "name": "RENATO VEIGA",
+      "position": "DF",
+      "role": "DF",
+      "slot": "LB"
+    },
+    {
+      "number": 20,
+      "name": "JOAO CANCELO",
+      "position": "DF",
+      "role": "DF",
+      "slot": "LCB"
+    },
+    {
+      "number": 25,
+      "name": "NUNOMENDES",
+      "position": "DF",
+      "role": "DF",
+      "slot": "RCB"
+    },
+    {
+      "number": 4,
+      "name": "TOMAS ARAUJO",
+      "position": "DF",
+      "role": "DF",
+      "slot": "RB"
+    },
+    {
+      "number": 23,
+      "name": "VITINHA",
+      "position": "MF",
+      "role": "MF",
+      "slot": "LM"
+    },
+    {
+      "number": 8,
+      "name": "BRUNO FERNANDES",
+      "position": "MF",
+      "role": "MF",
+      "slot": "LCM"
+    },
+    {
+      "number": 15,
+      "name": "JOAONEVES &",
+      "position": "MF",
+      "role": "MF",
+      "slot": "RCM"
+    },
+    {
+      "number": 10,
+      "name": "BERNARDOSILVA",
+      "position": "MF",
+      "role": "MF",
+      "slot": "RM"
+    },
+    {
+      "number": 7,
+      "name": "CRISTIANO RONALDO",
+      "position": "FW",
+      "role": "FW",
+      "slot": "LST"
+    },
+    {
+      "number": 18,
+      "name": "PEDRONETO",
+      "position": "FW",
+      "role": "FW",
+      "slot": "RST"
+    }
+  ],
+  "match": {
+    "opponent_name": "DR Congo",
+    "opponent_slug": "dr-congo",
+    "team_score": null,
+    "opponent_score": null,
+    "date": "17 June 2026",
+    "venue": "Houston Stadium",
+    "competition": null,
+    "match_id": "Captura de pantalla 2026-06-18 163449",
+    "side": "home"
+  }
+}

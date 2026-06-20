@@ -1,0 +1,111 @@
+{
+  "country": {
+    "slug": "curacao",
+    "name": "Curaçao"
+  },
+  "team": {
+    "name": "Curaçao",
+    "formation": "4-4-2"
+  },
+  "players": [
+    {
+      "number": 1,
+      "name": "EloyROOM",
+      "position": "GK",
+      "role": "GK",
+      "slot": "GK"
+    },
+    {
+      "number": 5,
+      "name": "Sherel FLORANUS",
+      "position": "DF",
+      "role": "DF",
+      "slot": "LB"
+    },
+    {
+      "number": 18,
+      "name": "Armando OBISPO",
+      "position": "DF",
+      "role": "DF",
+      "slot": "LCB"
+    },
+    {
+      "number": 2,
+      "name": "Shurandy SAMBO",
+      "position": "DF",
+      "role": "DF",
+      "slot": "RCB"
+    },
+    {
+      "number": 24,
+      "name": "Deveron FONVILLE",
+      "position": "DF",
+      "role": "DF",
+      "slot": "RB"
+    },
+    {
+      "number": 10,
+      "name": "Leandro BACUNA",
+      "position": "MF",
+      "role": "MF",
+      "slot": "LM"
+    },
+    {
+      "number": 7,
+      "name": "Juninho BACUNA",
+      "position": "MF",
+      "role": "MF",
+      "slot": "LCM"
+    },
+    {
+      "number": 8,
+      "name": "Livano COMENENCIA",
+      "position": "MF",
+      "role": "MF",
+      "slot": "RCM"
+    },
+    {
+      "number": 21,
+      "name": "TahithCHONG",
+      "position": "MF",
+      "role": "MF",
+      "slot": "RM"
+    },
+    {
+      "number": 9,
+      "name": "JuergenLOCADIA",
+      "position": "FW",
+      "role": "FW",
+      "slot": "LST"
+    },
+    {
+      "number": 12,
+      "name": "Sontje HANSEN",
+      "position": "FW",
+      "role": "FW",
+      "slot": "RST"
+    }
+  ],
+  "match": {
+    "opponent_name": "Germany",
+    "opponent_slug": "germany",
+    "team_score": null,
+    "opponent_score": null,
+    "date": "14 June 2026",
+    "venue": "Houston Stadium",
+    "competition": null,
+    "match_id": "Captura de pantalla 2026-06-18 160454",
+    "side": "away"
+  },
+  "source": {
+    "team_artifact_match_id": "Captura de pantalla 2026-06-18 160454",
+    "team_artifact_side": "away",
+    "parsed_match_path": "C:\\Users\\Dante\\Desktop\\Programacion\\WorldCup2026\\wc26\\generated\\match-summary-ingest-final-2026-06-18\\parsed\\Captura de pantalla 2026-06-18 160454.parsed.json",
+    "heuristic_repairs": [
+      "Promoted substitutes for Curaçao 4-4-2: 2 Shurandy SAMBO -> RCB."
+    ],
+    "warnings": [
+      "Formation export for Curaçao promoted 1 substitute to complete 11 players."
+    ]
+  }
+}

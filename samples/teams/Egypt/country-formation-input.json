@@ -1,0 +1,100 @@
+{
+  "country": {
+    "slug": "egypt",
+    "name": "Egypt"
+  },
+  "team": {
+    "name": "Egypt",
+    "formation": "3-5-2"
+  },
+  "players": [
+    {
+      "number": 23,
+      "name": "MOSTAFA SHOUBIR",
+      "position": "GK",
+      "role": "GK",
+      "slot": "GK"
+    },
+    {
+      "number": 3,
+      "name": "MOHAMEDHANY",
+      "position": "DF",
+      "role": "DF",
+      "slot": "LCB"
+    },
+    {
+      "number": 2,
+      "name": "VASSERIBRAHIM",
+      "position": "DF",
+      "role": "DF",
+      "slot": "CB"
+    },
+    {
+      "number": 13,
+      "name": "AHMEDFATOUH",
+      "position": "DF",
+      "role": "DF",
+      "slot": "RCB"
+    },
+    {
+      "number": 17,
+      "name": "MOHANAD LASHIN",
+      "position": "MF",
+      "role": "MF",
+      "slot": "LM"
+    },
+    {
+      "number": 11,
+      "name": "MOSTAFA ZICO",
+      "position": "MF",
+      "role": "MF",
+      "slot": "LCM"
+    },
+    {
+      "number": 8,
+      "name": "EMAMASHOUR",
+      "position": "MF",
+      "role": "MF",
+      "slot": "CM"
+    },
+    {
+      "number": 14,
+      "name": "HAMDYFATHY",
+      "position": "MF",
+      "role": "MF",
+      "slot": "RCM"
+    },
+    {
+      "number": 19,
+      "name": "MARAWANATTIA",
+      "position": "MF",
+      "role": "MF",
+      "slot": "RM"
+    },
+    {
+      "number": 10,
+      "name": "MOHAMED SALAH",
+      "position": "FW",
+      "role": "FW",
+      "slot": "LST"
+    },
+    {
+      "number": 22,
+      "name": "OMAR MARMOUSH",
+      "position": "FW",
+      "role": "FW",
+      "slot": "RST"
+    }
+  ],
+  "match": {
+    "opponent_name": "Belgium",
+    "opponent_slug": "belgium",
+    "team_score": null,
+    "opponent_score": null,
+    "date": "15 June 2026",
+    "venue": "Seattle Stadium",
+    "competition": null,
+    "match_id": "Captura de pantalla 2026-06-18 163244",
+    "side": "away"
+  }
+}

@@ -1,0 +1,111 @@
+{
+  "country": {
+    "slug": "japan",
+    "name": "Japan"
+  },
+  "team": {
+    "name": "Japan",
+    "formation": "5-2-3"
+  },
+  "players": [
+    {
+      "number": 1,
+      "name": "J ZionSUZUKI",
+      "position": "GK",
+      "role": "GK",
+      "slot": "GK"
+    },
+    {
+      "number": 24,
+      "name": "Kaishu SAND",
+      "position": "MF",
+      "role": "MF",
+      "slot": "LWB"
+    },
+    {
+      "number": 16,
+      "name": "Tsuyoshi WATANABE",
+      "position": "DF",
+      "role": "DF",
+      "slot": "LCB"
+    },
+    {
+      "number": 3,
+      "name": "Shogo TANIGUCHI",
+      "position": "DF",
+      "role": "DF",
+      "slot": "CB"
+    },
+    {
+      "number": 21,
+      "name": "Hiroki ITO",
+      "position": "DF",
+      "role": "DF",
+      "slot": "RCB"
+    },
+    {
+      "number": 4,
+      "name": "RitsuDOAN @",
+      "position": "MF",
+      "role": "MF",
+      "slot": "RWB"
+    },
+    {
+      "number": 8,
+      "name": "TakefusaKUBO",
+      "position": "MF",
+      "role": "MF",
+      "slot": "LCM"
+    },
+    {
+      "number": 11,
+      "name": "Daizen MAEDA",
+      "position": "MF",
+      "role": "MF",
+      "slot": "RCM"
+    },
+    {
+      "number": 13,
+      "name": "Keito NAKAMURA",
+      "position": "MF",
+      "role": "MF",
+      "slot": "LW"
+    },
+    {
+      "number": 18,
+      "name": "AyaseUEDA",
+      "position": "FW",
+      "role": "FW",
+      "slot": "ST"
+    },
+    {
+      "number": 15,
+      "name": "DaichiKAMADA",
+      "position": "MF",
+      "role": "MF",
+      "slot": "RW"
+    }
+  ],
+  "match": {
+    "opponent_name": "Netherlands",
+    "opponent_slug": "netherlands",
+    "team_score": null,
+    "opponent_score": null,
+    "date": "14 June 2026",
+    "venue": "Dallas Stadium",
+    "competition": null,
+    "match_id": "Captura de pantalla 2026-06-18 160521",
+    "side": "away"
+  },
+  "source": {
+    "team_artifact_match_id": "Captura de pantalla 2026-06-18 160521",
+    "team_artifact_side": "away",
+    "parsed_match_path": "C:\\Users\\Dante\\Desktop\\Programacion\\WorldCup2026\\wc26\\generated\\match-summary-ingest-final-2026-06-18\\parsed\\Captura de pantalla 2026-06-18 160521.parsed.json",
+    "heuristic_repairs": [],
+    "warnings": [
+      "starter player 4 RitsuDOAN MF 1@ (2) recovered role MF from OCR text.",
+      "Formation for Japan was inferred heuristically as 5-2-3.",
+      "Formation export for Japan recovered 1 player role value from OCR text."
+    ]
+  }
+}

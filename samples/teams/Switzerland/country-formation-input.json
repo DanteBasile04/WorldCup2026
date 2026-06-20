@@ -1,0 +1,100 @@
+{
+  "country": {
+    "slug": "switzerland",
+    "name": "Switzerland"
+  },
+  "team": {
+    "name": "Switzerland",
+    "formation": "3-4-3"
+  },
+  "players": [
+    {
+      "number": 1,
+      "name": "GregorKOBEL",
+      "position": "GK",
+      "role": "GK",
+      "slot": "GK"
+    },
+    {
+      "number": 5,
+      "name": "Manuel AKANJI",
+      "position": "DF",
+      "role": "DF",
+      "slot": "LCB"
+    },
+    {
+      "number": 4,
+      "name": "NicOELVEDI",
+      "position": "DF",
+      "role": "DF",
+      "slot": "CB"
+    },
+    {
+      "number": 13,
+      "name": "Ricardo RODRIGUEZ",
+      "position": "DF",
+      "role": "DF",
+      "slot": "RCB"
+    },
+    {
+      "number": 10,
+      "name": "Granit XHAKA",
+      "position": "MF",
+      "role": "MF",
+      "slot": "LM"
+    },
+    {
+      "number": 6,
+      "name": "DenisZAKARIA",
+      "position": "MF",
+      "role": "MF",
+      "slot": "LCM"
+    },
+    {
+      "number": 8,
+      "name": "RemoFREULER",
+      "position": "MF",
+      "role": "MF",
+      "slot": "RCM"
+    },
+    {
+      "number": 20,
+      "name": "Michel AEBISCHER",
+      "position": "MF",
+      "role": "MF",
+      "slot": "RM"
+    },
+    {
+      "number": 11,
+      "name": "DanNDOVE",
+      "position": "FW",
+      "role": "FW",
+      "slot": "LW"
+    },
+    {
+      "number": 7,
+      "name": "BreelEMBOLO",
+      "position": "FW",
+      "role": "FW",
+      "slot": "ST"
+    },
+    {
+      "number": 17,
+      "name": "Ruben VARGAS",
+      "position": "FW",
+      "role": "FW",
+      "slot": "RW"
+    }
+  ],
+  "match": {
+    "opponent_name": "Qatar",
+    "opponent_slug": "qatar",
+    "team_score": null,
+    "opponent_score": null,
+    "date": "13 June 2026",
+    "venue": "San Francisco Bay Area Stadium",
+    "competition": null,
+    "match_id": "Captura de pantalla 2026-06-18 160108",
+    "side": "away"
+  }
+}

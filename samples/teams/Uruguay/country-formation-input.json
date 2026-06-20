@@ -1,0 +1,100 @@
+{
+  "country": {
+    "slug": "uruguay",
+    "name": "Uruguay"
+  },
+  "team": {
+    "name": "Uruguay",
+    "formation": "4-4-2"
+  },
+  "players": [
+    {
+      "number": 23,
+      "name": "H Fernando MUSLERA",
+      "position": "GK",
+      "role": "GK",
+      "slot": "GK"
+    },
+    {
+      "number": 3,
+      "name": "Sebastian CACERES",
+      "position": "DF",
+      "role": "DF",
+      "slot": "LB"
+    },
+    {
+      "number": 13,
+      "name": "Guillermo VARELA",
+      "position": "DF",
+      "role": "DF",
+      "slot": "LCB"
+    },
+    {
+      "number": 17,
+      "name": "Matias VINA",
+      "position": "DF",
+      "role": "DF",
+      "slot": "RCB"
+    },
+    {
+      "number": 16,
+      "name": "Mathias OLIVERA",
+      "position": "DF",
+      "role": "DF",
+      "slot": "RB"
+    },
+    {
+      "number": 8,
+      "name": "Federico VALVERDE",
+      "position": "MF",
+      "role": "MF",
+      "slot": "LM"
+    },
+    {
+      "number": 5,
+      "name": "ManuelUGARTE",
+      "position": "MF",
+      "role": "MF",
+      "slot": "LCM"
+    },
+    {
+      "number": 6,
+      "name": "Rodrigo BENTANCUR",
+      "position": "MF",
+      "role": "MF",
+      "slot": "RCM"
+    },
+    {
+      "number": 20,
+      "name": "MaxiARAUJO",
+      "position": "MF",
+      "role": "MF",
+      "slot": "RM"
+    },
+    {
+      "number": 9,
+      "name": "DarwinNUNEZ",
+      "position": "FW",
+      "role": "FW",
+      "slot": "LST"
+    },
+    {
+      "number": 21,
+      "name": "Federico VINAS",
+      "position": "FW",
+      "role": "FW",
+      "slot": "RST"
+    }
+  ],
+  "match": {
+    "opponent_name": "Saudi Arabia",
+    "opponent_slug": "saudi-arabia",
+    "team_score": null,
+    "opponent_score": null,
+    "date": "15 June 2026",
+    "venue": "Miami Stadium",
+    "competition": null,
+    "match_id": "Captura de pantalla 2026-06-18 163303",
+    "side": "away"
+  }
+}

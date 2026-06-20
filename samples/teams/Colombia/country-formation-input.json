@@ -1,0 +1,100 @@
+{
+  "country": {
+    "slug": "colombia",
+    "name": "Colombia"
+  },
+  "team": {
+    "name": "Colombia",
+    "formation": "5-3-2"
+  },
+  "players": [
+    {
+      "number": 12,
+      "name": "Camilo VARGAS",
+      "position": "GK",
+      "role": "GK",
+      "slot": "GK"
+    },
+    {
+      "number": 17,
+      "name": "Johan MOJICA",
+      "position": "DF",
+      "role": "DF",
+      "slot": "LWB"
+    },
+    {
+      "number": 14,
+      "name": "GustavoPUERTA",
+      "position": "DF",
+      "role": "DF",
+      "slot": "LCB"
+    },
+    {
+      "number": 3,
+      "name": "JhonLUCUMI",
+      "position": "DF",
+      "role": "DF",
+      "slot": "CB"
+    },
+    {
+      "number": 2,
+      "name": "l' Daniel MUNOZ",
+      "position": "DF",
+      "role": "DF",
+      "slot": "RCB"
+    },
+    {
+      "number": 23,
+      "name": "Davinson SANCHEZ",
+      "position": "DF",
+      "role": "DF",
+      "slot": "RWB"
+    },
+    {
+      "number": 11,
+      "name": "Jhon ARIAS",
+      "position": "MF",
+      "role": "MF",
+      "slot": "LCM"
+    },
+    {
+      "number": 10,
+      "name": "James RODRIGUEZ",
+      "position": "MF",
+      "role": "MF",
+      "slot": "CM"
+    },
+    {
+      "number": 16,
+      "name": "Jefferson LERMA",
+      "position": "MF",
+      "role": "MF",
+      "slot": "RCM"
+    },
+    {
+      "number": 7,
+      "name": "LuisDIAZ",
+      "position": "FW",
+      "role": "FW",
+      "slot": "LST"
+    },
+    {
+      "number": 25,
+      "name": "LuisSUAREZ",
+      "position": "FW",
+      "role": "FW",
+      "slot": "RST"
+    }
+  ],
+  "match": {
+    "opponent_name": "Uzbekistan",
+    "opponent_slug": "uzbekistan",
+    "team_score": null,
+    "opponent_score": null,
+    "date": "17 June 2026",
+    "venue": "Mexico City Stadium",
+    "competition": null,
+    "match_id": "Captura de pantalla 2026-06-18 163503",
+    "side": "away"
+  }
+}

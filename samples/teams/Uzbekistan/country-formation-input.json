@@ -1,0 +1,113 @@
+{
+  "country": {
+    "slug": "uzbekistan",
+    "name": "Uzbekistan"
+  },
+  "team": {
+    "name": "Uzbekistan",
+    "formation": "4-3-3"
+  },
+  "players": [
+    {
+      "number": 1,
+      "name": "Utkir VUSUPOV",
+      "position": "GK",
+      "role": "GK",
+      "slot": "GK"
+    },
+    {
+      "number": 18,
+      "name": "Abdulla ABDULLAEV",
+      "position": "DF",
+      "role": "DF",
+      "slot": "LB"
+    },
+    {
+      "number": 2,
+      "name": "Abdukodir KHUSANOV",
+      "position": "DF",
+      "role": "DF",
+      "slot": "LCB"
+    },
+    {
+      "number": 13,
+      "name": "Sherzod NASRULLAEV",
+      "position": "DF",
+      "role": "DF",
+      "slot": "RCB"
+    },
+    {
+      "number": 24,
+      "name": "Behruzjon KARIMOV",
+      "position": "DF",
+      "role": "DF",
+      "slot": "RB"
+    },
+    {
+      "number": 11,
+      "name": "OstonURUNOV",
+      "position": "MF",
+      "role": "MF",
+      "slot": "LCM"
+    },
+    {
+      "number": 7,
+      "name": "Otabek SHUKUROV",
+      "position": "MF",
+      "role": "MF",
+      "slot": "CM"
+    },
+    {
+      "number": 22,
+      "name": "Abbosbek FAVZULLAEV &",
+      "position": "MF",
+      "role": "MF",
+      "slot": "RCM"
+    },
+    {
+      "number": 9,
+      "name": "odiljon XAMROBEKOV",
+      "position": "FW",
+      "role": "FW",
+      "slot": "LW"
+    },
+    {
+      "number": 14,
+      "name": "Eldor SHOMURODOV",
+      "position": "FW",
+      "role": "FW",
+      "slot": "ST"
+    },
+    {
+      "number": 20,
+      "name": "Azizbek AMONOV ¢",
+      "position": "FW",
+      "role": "FW",
+      "slot": "RW"
+    }
+  ],
+  "match": {
+    "opponent_name": "Colombia",
+    "opponent_slug": "colombia",
+    "team_score": null,
+    "opponent_score": null,
+    "date": "17 June 2026",
+    "venue": "Mexico City Stadium",
+    "competition": null,
+    "match_id": "Captura de pantalla 2026-06-18 163503",
+    "side": "home"
+  },
+  "source": {
+    "team_artifact_match_id": "Captura de pantalla 2026-06-18 163503",
+    "team_artifact_side": "home",
+    "parsed_match_path": "C:\\Users\\Dante\\Desktop\\Programacion\\WorldCup2026\\wc26\\generated\\match-summary-ingest-final-2026-06-18\\parsed\\Captura de pantalla 2026-06-18 163503.parsed.json",
+    "heuristic_repairs": [
+      "Promoted substitutes for Uzbekistan 4-3-3: 9 odiljon XAMROBEKOV -> LW, 20 Azizbek AMONOV ¢ -> RW.",
+      "Omitted lower-confidence starter rows for Uzbekistan: 12 Abduvohid NEMATOV."
+    ],
+    "warnings": [
+      "Formation for Uzbekistan was inferred heuristically as 4-3-3.",
+      "Formation export for Uzbekistan promoted 2 substitutes to complete 11 players."
+    ]
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "country": {
+    "slug": "iraq",
+    "name": "Iraq"
+  },
+  "team": {
+    "name": "Iraq",
+    "formation": "4-3-3"
+  },
+  "players": [
+    {
+      "number": 12,
+      "name": "JALAL HASSAN",
+      "position": "GK",
+      "role": "GK",
+      "slot": "GK"
+    },
+    {
+      "number": 6,
+      "name": "AKAM HASHIM",
+      "position": "DF",
+      "role": "DF",
+      "slot": "LB"
+    },
+    {
+      "number": 3,
+      "name": "HUSSEINALI",
+      "position": "DF",
+      "role": "DF",
+      "slot": "LCB"
+    },
+    {
+      "number": 4,
+      "name": "ZAIDTAHSEEN",
+      "position": "DF",
+      "role": "DF",
+      "slot": "RCB"
+    },
+    {
+      "number": 23,
+      "name": "MERCHAS DOSKI",
+      "position": "DF",
+      "role": "DF",
+      "slot": "RB"
+    },
+    {
+      "number": 8,
+      "name": "IBRAHIM BAVESH",
+      "position": "MF",
+      "role": "MF",
+      "slot": "LCM"
+    },
+    {
+      "number": 16,
+      "name": "AMIR ALAMMARI",
+      "position": "MF",
+      "role": "MF",
+      "slot": "CM"
+    },
+    {
+      "number": 24,
+      "name": "ZAIDISMAEL",
+      "position": "MF",
+      "role": "MF",
+      "slot": "RCM"
+    },
+    {
+      "number": 17,
+      "name": "ALIJUASIM",
+      "position": "FW",
+      "role": "FW",
+      "slot": "LW"
+    },
+    {
+      "number": 9,
+      "name": "ALIALHAMADI",
+      "position": "FW",
+      "role": "FW",
+      "slot": "ST"
+    },
+    {
+      "number": 18,
+      "name": "AVMENHUSSEIN &",
+      "position": "FW",
+      "role": "FW",
+      "slot": "RW"
+    }
+  ],
+  "match": {
+    "opponent_name": "Norway",
+    "opponent_slug": "norway",
+    "team_score": null,
+    "opponent_score": null,
+    "date": "16 June 2026",
+    "venue": "Boston Stadium",
+    "competition": null,
+    "match_id": "Captura de pantalla 2026-06-18 163356",
+    "side": "home"
+  }
+}

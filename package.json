@@ -9,6 +9,7 @@
     "start": "next start",
     "lint": "eslint",
     "export:players:fbref": "node scripts/export-fbref-players.mjs",
+    "export:team-formation-inputs": "node scripts/export-team-formation-inputs.mjs",
     "export:matches": "node scripts/export-match-fixtures.mjs",
     "import:countries": "node scripts/import-qualified-countries.mjs",
     "import:countries:csv": "node scripts/import-qualified-countries.mjs --csv",
@@ -17,15 +18,25 @@
     "formation:svg": "node scripts/generate-formation-svg.mjs --input samples/formation-mexico-input.json --json-output generated/formation-mexico-example.json --svg-output generated/formation-mexico-example.svg",
     "formation:country-update": "node scripts/generate-country-formation-update.mjs --input samples/country-formation-mexico-input.json",
     "formation:upload": "node scripts/upload-formation.mjs",
+    "formation:upload-batch": "node scripts/batch-upload-formations.mjs",
     "formation:validate": "node scripts/backfill-next-match-id.mjs",
     "formation:preview": "node scripts/preview-formation.mjs",
-    "extract:match-summary:formation": "node scripts/extract-match-summary-formation.mjs"
+    "extract:match-summary:formation": "node scripts/extract-match-summary-formation.mjs",
+    "ingest:match-summary:screenshot": "node scripts/ingest-match-summary-screenshot.mjs",
+    "batch:ingest:match-summaries": "node scripts/batch-ingest-match-summaries.mjs",
+    "split:match-summary:teams": "node scripts/split-match-summary-teams.mjs",
+    "match:team-shirt-numbers": "node scripts/match-team-shirt-numbers.mjs",
+    "validate:match-summary:ingest": "node scripts/validate-match-summary-ingest.mjs",
+    "export:shirt-numbers:csv": "node scripts/export-shirt-number-csv.mjs",
+    "import:shirt-numbers": "node scripts/import-player-shirt-numbers.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.108.1",
     "next": "16.2.9",
     "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "react-dom": "19.2.4",
+    "sharp": "^0.35.1",
+    "tesseract.js": "^7.0.0"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",

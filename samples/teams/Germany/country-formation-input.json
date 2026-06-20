@@ -1,0 +1,111 @@
+{
+  "country": {
+    "slug": "germany",
+    "name": "Germany"
+  },
+  "team": {
+    "name": "Germany",
+    "formation": "4-2-3-1"
+  },
+  "players": [
+    {
+      "number": 1,
+      "name": "Manuel NEUER",
+      "position": "GK",
+      "role": "GK",
+      "slot": "GK"
+    },
+    {
+      "number": 4,
+      "name": "JonathanTAH",
+      "position": "DF",
+      "role": "DF",
+      "slot": "LB"
+    },
+    {
+      "number": 15,
+      "name": "Nico SCHLOTTERBECK &",
+      "position": "DF",
+      "role": "DF",
+      "slot": "LCB"
+    },
+    {
+      "number": 6,
+      "name": "JoshuaKIMMICH",
+      "position": "DF",
+      "role": "DF",
+      "slot": "RCB"
+    },
+    {
+      "number": 18,
+      "name": "Nathaniel BROWN",
+      "position": "DF",
+      "role": "DF",
+      "slot": "RB"
+    },
+    {
+      "number": 5,
+      "name": "Aleksandar PAVLOVIC",
+      "position": "MF",
+      "role": "MF",
+      "slot": "LDM"
+    },
+    {
+      "number": 17,
+      "name": "Florian WIRTZ",
+      "position": "MF",
+      "role": "MF",
+      "slot": "RDM"
+    },
+    {
+      "number": 23,
+      "name": "Felix NMECHA &",
+      "position": "MF",
+      "role": "MF",
+      "slot": "LW"
+    },
+    {
+      "number": 19,
+      "name": "Leroy SANE",
+      "position": "MF",
+      "role": "MF",
+      "slot": "CAM"
+    },
+    {
+      "number": 9,
+      "name": "Jamie LEWELING",
+      "position": "MF",
+      "role": "MF",
+      "slot": "RW"
+    },
+    {
+      "number": 7,
+      "name": "KaiHAVERTZ &",
+      "position": "FW",
+      "role": "FW",
+      "slot": "ST"
+    }
+  ],
+  "match": {
+    "opponent_name": "Curaçao",
+    "opponent_slug": "curacao",
+    "team_score": null,
+    "opponent_score": null,
+    "date": "14 June 2026",
+    "venue": "Houston Stadium",
+    "competition": null,
+    "match_id": "Captura de pantalla 2026-06-18 160454",
+    "side": "home"
+  },
+  "source": {
+    "team_artifact_match_id": "Captura de pantalla 2026-06-18 160454",
+    "team_artifact_side": "home",
+    "parsed_match_path": "C:\\Users\\Dante\\Desktop\\Programacion\\WorldCup2026\\wc26\\generated\\match-summary-ingest-final-2026-06-18\\parsed\\Captura de pantalla 2026-06-18 160454.parsed.json",
+    "heuristic_repairs": [
+      "Promoted substitutes for Germany 4-2-3-1: 9 Jamie LEWELING -> RW."
+    ],
+    "warnings": [
+      "Formation export for Germany promoted 1 substitute to complete 11 players."
+    ]
+  }
+}

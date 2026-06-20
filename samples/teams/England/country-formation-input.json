@@ -1,0 +1,100 @@
+{
+  "country": {
+    "slug": "england",
+    "name": "England"
+  },
+  "team": {
+    "name": "England",
+    "formation": "4-3-3"
+  },
+  "players": [
+    {
+      "number": 1,
+      "name": "Jordan PICKFORD",
+      "position": "GK",
+      "role": "GK",
+      "slot": "GK"
+    },
+    {
+      "number": 2,
+      "name": "EzriKONSA",
+      "position": "DF",
+      "role": "DF",
+      "slot": "LB"
+    },
+    {
+      "number": 3,
+      "name": "Nico OREILLY",
+      "position": "DF",
+      "role": "DF",
+      "slot": "LCB"
+    },
+    {
+      "number": 24,
+      "name": "Reece JAMES",
+      "position": "DF",
+      "role": "DF",
+      "slot": "RCB"
+    },
+    {
+      "number": 5,
+      "name": "John STONES",
+      "position": "DF",
+      "role": "DF",
+      "slot": "RB"
+    },
+    {
+      "number": 10,
+      "name": "Jude BELLINGHAM &",
+      "position": "MF",
+      "role": "MF",
+      "slot": "LCM"
+    },
+    {
+      "number": 8,
+      "name": "Elliot ANDERSON",
+      "position": "MF",
+      "role": "MF",
+      "slot": "CM"
+    },
+    {
+      "number": 4,
+      "name": "DeclanRICE",
+      "position": "MF",
+      "role": "MF",
+      "slot": "RCM"
+    },
+    {
+      "number": 18,
+      "name": "Anthony GORDON",
+      "position": "FW",
+      "role": "FW",
+      "slot": "LW"
+    },
+    {
+      "number": 9,
+      "name": "HarryKANE &",
+      "position": "FW",
+      "role": "FW",
+      "slot": "ST"
+    },
+    {
+      "number": 20,
+      "name": "NoniMADUEKE",
+      "position": "FW",
+      "role": "FW",
+      "slot": "RW"
+    }
+  ],
+  "match": {
+    "opponent_name": "Croatia",
+    "opponent_slug": "croatia",
+    "team_score": null,
+    "opponent_score": null,
+    "date": "17 June 2026",
+    "venue": "Dallas Stadium",
+    "competition": null,
+    "match_id": "Captura de pantalla 2026-06-18 163535",
+    "side": "home"
+  }
+}

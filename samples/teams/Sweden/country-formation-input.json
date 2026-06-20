@@ -1,0 +1,100 @@
+{
+  "country": {
+    "slug": "sweden",
+    "name": "Sweden"
+  },
+  "team": {
+    "name": "Sweden",
+    "formation": "5-3-2"
+  },
+  "players": [
+    {
+      "number": 23,
+      "name": "Kristoffer NORDFELDT",
+      "position": "GK",
+      "role": "GK",
+      "slot": "GK"
+    },
+    {
+      "number": 6,
+      "name": "Gabriel GUDMUNDSSON",
+      "position": "DF",
+      "role": "DF",
+      "slot": "LWB"
+    },
+    {
+      "number": 3,
+      "name": "Victor LINDELOF",
+      "position": "DF",
+      "role": "DF",
+      "slot": "LCB"
+    },
+    {
+      "number": 2,
+      "name": "Gustaf LAGERBIELKE",
+      "position": "DF",
+      "role": "DF",
+      "slot": "CB"
+    },
+    {
+      "number": 4,
+      "name": "Isak HIEN",
+      "position": "DF",
+      "role": "DF",
+      "slot": "RCB"
+    },
+    {
+      "number": 21,
+      "name": "Alexander BERNHARDSSON",
+      "position": "DF",
+      "role": "DF",
+      "slot": "RWB"
+    },
+    {
+      "number": 16,
+      "name": "Jesper KARLSTROM",
+      "position": "MF",
+      "role": "MF",
+      "slot": "LCM"
+    },
+    {
+      "number": 10,
+      "name": "Benjamin NVGREN",
+      "position": "MF",
+      "role": "MF",
+      "slot": "CM"
+    },
+    {
+      "number": 18,
+      "name": "VasinAVARI &",
+      "position": "MF",
+      "role": "MF",
+      "slot": "RCM"
+    },
+    {
+      "number": 17,
+      "name": "Viktor GYOKERES &",
+      "position": "FW",
+      "role": "FW",
+      "slot": "LST"
+    },
+    {
+      "number": 9,
+      "name": "aAlexanderIiSAK",
+      "position": "FW",
+      "role": "FW",
+      "slot": "RST"
+    }
+  ],
+  "match": {
+    "opponent_name": "Tunisia",
+    "opponent_slug": "tunisia",
+    "team_score": null,
+    "opponent_score": null,
+    "date": "14 June 2026",
+    "venue": "Monterrey Stadium",
+    "competition": null,
+    "match_id": "Captura de pantalla 2026-06-18 160615",
+    "side": "home"
+  }
+}

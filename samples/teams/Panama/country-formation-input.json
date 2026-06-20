@@ -1,0 +1,113 @@
+{
+  "country": {
+    "slug": "panama",
+    "name": "Panama"
+  },
+  "team": {
+    "name": "Panama",
+    "formation": "5-3-2"
+  },
+  "players": [
+    {
+      "number": 22,
+      "name": "Orlando MOSQUERA",
+      "position": "GK",
+      "role": "GK",
+      "slot": "GK"
+    },
+    {
+      "number": 14,
+      "name": "CarlosHARVEV",
+      "position": "DF",
+      "role": "DF",
+      "slot": "LWB"
+    },
+    {
+      "number": 3,
+      "name": "Jose CORDOBA",
+      "position": "DF",
+      "role": "DF",
+      "slot": "LCB"
+    },
+    {
+      "number": 2,
+      "name": "CesarBLACKMAN",
+      "position": "DF",
+      "role": "DF",
+      "slot": "CB"
+    },
+    {
+      "number": 13,
+      "name": "Jiovany RAMOS",
+      "position": "DF",
+      "role": "DF",
+      "slot": "RCB"
+    },
+    {
+      "number": 16,
+      "name": "Andres ANDRADE",
+      "position": "DF",
+      "role": "DF",
+      "slot": "RWB"
+    },
+    {
+      "number": 7,
+      "name": "Jose Luis RODRIGUEZ",
+      "position": "MF",
+      "role": "MF",
+      "slot": "LCM"
+    },
+    {
+      "number": 6,
+      "name": "Cristian MARTINEZ",
+      "position": "MF",
+      "role": "MF",
+      "slot": "CM"
+    },
+    {
+      "number": 11,
+      "name": "Ecigar Yoel BARCENAS",
+      "position": "MF",
+      "role": "MF",
+      "slot": "RCM"
+    },
+    {
+      "number": 18,
+      "name": "Cecilio WATERMAN",
+      "position": "FW",
+      "role": "FW",
+      "slot": "LST"
+    },
+    {
+      "number": 9,
+      "name": "Tomas RODRIGUEZ",
+      "position": "FW",
+      "role": "FW",
+      "slot": "RST"
+    }
+  ],
+  "match": {
+    "opponent_name": "Ghana",
+    "opponent_slug": "ghana",
+    "team_score": null,
+    "opponent_score": null,
+    "date": "17 June 2026",
+    "venue": "Toronto Stadium",
+    "competition": null,
+    "match_id": "Captura de pantalla 2026-06-18 163517",
+    "side": "away"
+  },
+  "source": {
+    "team_artifact_match_id": "Captura de pantalla 2026-06-18 163517",
+    "team_artifact_side": "away",
+    "parsed_match_path": "C:\\Users\\Dante\\Desktop\\Programacion\\WorldCup2026\\wc26\\generated\\match-summary-ingest-final-2026-06-18\\parsed\\Captura de pantalla 2026-06-18 163517.parsed.json",
+    "heuristic_repairs": [
+      "Promoted substitutes for Panama 5-3-2: 9 Tomas RODRIGUEZ -> RST.",
+      "Omitted lower-confidence starter rows for Panama: 23 Amir MURILLO."
+    ],
+    "warnings": [
+      "Formation for Panama was inferred heuristically as 5-3-2.",
+      "Formation export for Panama promoted 1 substitute to complete 11 players."
+    ]
+  }
+}

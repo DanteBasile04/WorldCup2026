@@ -1,0 +1,112 @@
+{
+  "country": {
+    "slug": "austria",
+    "name": "Austria"
+  },
+  "team": {
+    "name": "Austria",
+    "formation": "4-2-3-1"
+  },
+  "players": [
+    {
+      "number": 1,
+      "name": "Alexander SCHLAGER",
+      "position": "GK",
+      "role": "GK",
+      "slot": "GK"
+    },
+    {
+      "number": 6,
+      "name": "Stefan POSCH",
+      "position": "DF",
+      "role": "DF",
+      "slot": "LB"
+    },
+    {
+      "number": 15,
+      "name": "Philipp LIENHART",
+      "position": "DF",
+      "role": "DF",
+      "slot": "LCB"
+    },
+    {
+      "number": 16,
+      "name": "Phillip MWENE",
+      "position": "DF",
+      "role": "DF",
+      "slot": "RCB"
+    },
+    {
+      "number": 8,
+      "name": "David ALABA",
+      "position": "DF",
+      "role": "DF",
+      "slot": "RB"
+    },
+    {
+      "number": 20,
+      "name": "Konrad LAIMER",
+      "position": "MF",
+      "role": "MF",
+      "slot": "LDM"
+    },
+    {
+      "number": 4,
+      "name": "Xaver SCHLAGER",
+      "position": "MF",
+      "role": "MF",
+      "slot": "RDM"
+    },
+    {
+      "number": 18,
+      "name": "Romano SCHMID &",
+      "position": "MF",
+      "role": "MF",
+      "slot": "LW"
+    },
+    {
+      "number": 9,
+      "name": "Marcel SABITZER",
+      "position": "MF",
+      "role": "MF",
+      "slot": "CAM"
+    },
+    {
+      "number": 10,
+      "name": "Florian GRILLITSCH",
+      "position": "MF",
+      "role": "MF",
+      "slot": "RW"
+    },
+    {
+      "number": 14,
+      "name": "SasaKALAJDZIC",
+      "position": "FW",
+      "role": "FW",
+      "slot": "ST"
+    }
+  ],
+  "match": {
+    "opponent_name": "Jordan",
+    "opponent_slug": "jordan",
+    "team_score": null,
+    "opponent_score": null,
+    "date": "16 June 2026",
+    "venue": "San Francisco Bay Area Stadium",
+    "competition": null,
+    "match_id": "Captura de pantalla 2026-06-18 163429",
+    "side": "home"
+  },
+  "source": {
+    "team_artifact_match_id": "Captura de pantalla 2026-06-18 163429",
+    "team_artifact_side": "home",
+    "parsed_match_path": "C:\\Users\\Dante\\Desktop\\Programacion\\WorldCup2026\\wc26\\generated\\match-summary-ingest-final-2026-06-18\\parsed\\Captura de pantalla 2026-06-18 163429.parsed.json",
+    "heuristic_repairs": [
+      "Promoted substitutes for Austria 4-2-3-1: 10 Florian GRILLITSCH -> RW.",
+      "Omitted lower-confidence starter rows for Austria: 6 Nicolas SEIWALD."
+    ],
+    "warnings": [
+      "Formation export for Austria promoted 1 substitute to complete 11 players."
+    ]
+  }
+}

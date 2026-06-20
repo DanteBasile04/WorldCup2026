@@ -1,0 +1,100 @@
+{
+  "country": {
+    "slug": "turkey",
+    "name": "Turkey"
+  },
+  "team": {
+    "name": "Turkey",
+    "formation": "4-3-3"
+  },
+  "players": [
+    {
+      "number": 23,
+      "name": "UgurcanCAKIR",
+      "position": "GK",
+      "role": "GK",
+      "slot": "GK"
+    },
+    {
+      "number": 2,
+      "name": "ZekiCELIK",
+      "position": "DF",
+      "role": "DF",
+      "slot": "LB"
+    },
+    {
+      "number": 3,
+      "name": "MerihDEMIRAL",
+      "position": "DF",
+      "role": "DF",
+      "slot": "LCB"
+    },
+    {
+      "number": 20,
+      "name": "Ferdi KADIOGLU",
+      "position": "DF",
+      "role": "DF",
+      "slot": "RCB"
+    },
+    {
+      "number": 14,
+      "name": "Abdulkerim BARDAKCI",
+      "position": "DF",
+      "role": "DF",
+      "slot": "RB"
+    },
+    {
+      "number": 10,
+      "name": "Hakan CALHANOGLU",
+      "position": "MF",
+      "role": "MF",
+      "slot": "LCM"
+    },
+    {
+      "number": 6,
+      "name": "OrkunKOKCU",
+      "position": "MF",
+      "role": "MF",
+      "slot": "CM"
+    },
+    {
+      "number": 16,
+      "name": "Ismail YUKSEK",
+      "position": "MF",
+      "role": "MF",
+      "slot": "RCM"
+    },
+    {
+      "number": 8,
+      "name": "ArdaGULER",
+      "position": "FW",
+      "role": "FW",
+      "slot": "LW"
+    },
+    {
+      "number": 7,
+      "name": "Kerem AKTURKOGLU",
+      "position": "FW",
+      "role": "FW",
+      "slot": "ST"
+    },
+    {
+      "number": 21,
+      "name": "Baris Alper VILMAZ",
+      "position": "FW",
+      "role": "FW",
+      "slot": "RW"
+    }
+  ],
+  "match": {
+    "opponent_name": "Australia",
+    "opponent_slug": "australia",
+    "team_score": null,
+    "opponent_score": null,
+    "date": "13 June 2026",
+    "venue": "BC Place Vancouver",
+    "competition": null,
+    "match_id": "Captura de pantalla 2026-06-18 160330",
+    "side": "away"
+  }
+}

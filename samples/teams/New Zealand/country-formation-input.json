@@ -1,0 +1,100 @@
+{
+  "country": {
+    "slug": "new-zealand",
+    "name": "New Zealand"
+  },
+  "team": {
+    "name": "New Zealand",
+    "formation": "4-2-3-1"
+  },
+  "players": [
+    {
+      "number": 1,
+      "name": "Max CROCOMBE",
+      "position": "GK",
+      "role": "GK",
+      "slot": "GK"
+    },
+    {
+      "number": 2,
+      "name": "TIMPAVNE",
+      "position": "DF",
+      "role": "DF",
+      "slot": "LB"
+    },
+    {
+      "number": 5,
+      "name": "Michael BOXALL",
+      "position": "DF",
+      "role": "DF",
+      "slot": "LCB"
+    },
+    {
+      "number": 16,
+      "name": "Finn SURMAN",
+      "position": "DF",
+      "role": "DF",
+      "slot": "RCB"
+    },
+    {
+      "number": 13,
+      "name": "Liberato CACACE",
+      "position": "DF",
+      "role": "DF",
+      "slot": "RB"
+    },
+    {
+      "number": 6,
+      "name": "JoeBELL",
+      "position": "MF",
+      "role": "MF",
+      "slot": "LDM"
+    },
+    {
+      "number": 8,
+      "name": "Marko STAMENIC",
+      "position": "MF",
+      "role": "MF",
+      "slot": "RDM"
+    },
+    {
+      "number": 20,
+      "name": "Callum MCCOWATT",
+      "position": "MF",
+      "role": "MF",
+      "slot": "LW"
+    },
+    {
+      "number": 10,
+      "name": "SarpreetSINGH",
+      "position": "MF",
+      "role": "MF",
+      "slot": "CAM"
+    },
+    {
+      "number": 11,
+      "name": "B66'",
+      "position": "MF",
+      "role": "MF",
+      "slot": "RW"
+    },
+    {
+      "number": 9,
+      "name": "ChrisWoOD",
+      "position": "FW",
+      "role": "FW",
+      "slot": "ST"
+    }
+  ],
+  "match": {
+    "opponent_name": "Iran",
+    "opponent_slug": "iran",
+    "team_score": null,
+    "opponent_score": null,
+    "date": "15 June 2026",
+    "venue": "Los Angeles Stadium",
+    "competition": null,
+    "match_id": "Captura de pantalla 2026-06-18 163226",
+    "side": "away"
+  }
+}

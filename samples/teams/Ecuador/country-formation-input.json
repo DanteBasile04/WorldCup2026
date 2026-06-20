@@ -1,0 +1,100 @@
+{
+  "country": {
+    "slug": "ecuador",
+    "name": "Ecuador"
+  },
+  "team": {
+    "name": "Ecuador",
+    "formation": "3-4-3"
+  },
+  "players": [
+    {
+      "number": 1,
+      "name": "Hernan GALINDEZ",
+      "position": "GK",
+      "role": "GK",
+      "slot": "GK"
+    },
+    {
+      "number": 4,
+      "name": "Joel ORDONEZ",
+      "position": "DF",
+      "role": "DF",
+      "slot": "LCB"
+    },
+    {
+      "number": 3,
+      "name": "PieroHINCAPIE",
+      "position": "DF",
+      "role": "DF",
+      "slot": "CB"
+    },
+    {
+      "number": 6,
+      "name": "Willian PACHO",
+      "position": "DF",
+      "role": "DF",
+      "slot": "RCB"
+    },
+    {
+      "number": 21,
+      "name": "AlanFRANCO",
+      "position": "MF",
+      "role": "MF",
+      "slot": "LM"
+    },
+    {
+      "number": 14,
+      "name": "AlanMINDA",
+      "position": "MF",
+      "role": "MF",
+      "slot": "LCM"
+    },
+    {
+      "number": 15,
+      "name": "Pedro VITE",
+      "position": "MF",
+      "role": "MF",
+      "slot": "RCM"
+    },
+    {
+      "number": 23,
+      "name": "Moises CAICEDO",
+      "position": "MF",
+      "role": "MF",
+      "slot": "RM"
+    },
+    {
+      "number": 13,
+      "name": "Enner VALENCIA",
+      "position": "FW",
+      "role": "FW",
+      "slot": "LW"
+    },
+    {
+      "number": 9,
+      "name": "JohnVEBOAH",
+      "position": "FW",
+      "role": "FW",
+      "slot": "ST"
+    },
+    {
+      "number": 19,
+      "name": "Gonzalo PLATA",
+      "position": "FW",
+      "role": "FW",
+      "slot": "RW"
+    }
+  ],
+  "match": {
+    "opponent_name": "Ivory Coast",
+    "opponent_slug": "ivory-coast",
+    "team_score": null,
+    "opponent_score": null,
+    "date": "14 June 2026",
+    "venue": "Philadelphia Stadium",
+    "competition": null,
+    "match_id": "Captura de pantalla 2026-06-18 160427",
+    "side": "away"
+  }
+}

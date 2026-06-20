@@ -1,0 +1,113 @@
+{
+  "country": {
+    "slug": "spain",
+    "name": "Spain"
+  },
+  "team": {
+    "name": "Spain",
+    "formation": "4-3-3"
+  },
+  "players": [
+    {
+      "number": 23,
+      "name": "Unai SIMON",
+      "position": "GK",
+      "role": "GK",
+      "slot": "GK"
+    },
+    {
+      "number": 14,
+      "name": "Aymeric LAPORTE",
+      "position": "DF",
+      "role": "DF",
+      "slot": "LB"
+    },
+    {
+      "number": 22,
+      "name": "PauCUBARSI",
+      "position": "DF",
+      "role": "DF",
+      "slot": "LCB"
+    },
+    {
+      "number": 2,
+      "name": "Marc PUBILL",
+      "position": "DF",
+      "role": "DF",
+      "slot": "RCB"
+    },
+    {
+      "number": 24,
+      "name": "Marc CUCURELLA",
+      "position": "DF",
+      "role": "DF",
+      "slot": "RB"
+    },
+    {
+      "number": 8,
+      "name": "FabianRUIZ",
+      "position": "MF",
+      "role": "MF",
+      "slot": "LCM"
+    },
+    {
+      "number": 9,
+      "name": "GAVI",
+      "position": "MF",
+      "role": "MF",
+      "slot": "CM"
+    },
+    {
+      "number": 16,
+      "name": "RODRI",
+      "position": "MF",
+      "role": "MF",
+      "slot": "RCM"
+    },
+    {
+      "number": 21,
+      "name": "Mikel OVARZABAL",
+      "position": "FW",
+      "role": "FW",
+      "slot": "LW"
+    },
+    {
+      "number": 7,
+      "name": "Ferran TORRES",
+      "position": "FW",
+      "role": "FW",
+      "slot": "ST"
+    },
+    {
+      "number": 20,
+      "name": "PEDRI",
+      "position": "MF",
+      "role": "MF",
+      "slot": "RW"
+    }
+  ],
+  "match": {
+    "opponent_name": "Cape Verde",
+    "opponent_slug": "cape-verde",
+    "team_score": null,
+    "opponent_score": null,
+    "date": "15 June 2026",
+    "venue": "Atlanta Stadium",
+    "competition": null,
+    "match_id": "Captura de pantalla 2026-06-18 163325",
+    "side": "home"
+  },
+  "source": {
+    "team_artifact_match_id": "Captura de pantalla 2026-06-18 163325",
+    "team_artifact_side": "home",
+    "parsed_match_path": "C:\\Users\\Dante\\Desktop\\Programacion\\WorldCup2026\\wc26\\generated\\match-summary-ingest-final-2026-06-18\\parsed\\Captura de pantalla 2026-06-18 163325.parsed.json",
+    "heuristic_repairs": [
+      "Promoted substitutes for Spain 4-3-3: 2 Marc PUBILL -> RCB.",
+      "Omitted lower-confidence starter rows for Spain: 1 David RAVA u."
+    ],
+    "warnings": [
+      "Formation for Spain was inferred heuristically as 4-3-3.",
+      "Formation export for Spain promoted 1 substitute to complete 11 players."
+    ]
+  }
+}

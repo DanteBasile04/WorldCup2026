@@ -1,0 +1,113 @@
+{
+  "country": {
+    "slug": "croatia",
+    "name": "Croatia"
+  },
+  "team": {
+    "name": "Croatia",
+    "formation": "4-3-3"
+  },
+  "players": [
+    {
+      "number": 1,
+      "name": "Dominik LIVAKOVIC",
+      "position": "GK",
+      "role": "GK",
+      "slot": "GK"
+    },
+    {
+      "number": 2,
+      "name": "Josip STANISIC",
+      "position": "DF",
+      "role": "DF",
+      "slot": "LB"
+    },
+    {
+      "number": 4,
+      "name": "Josko GVARDIOL",
+      "position": "DF",
+      "role": "DF",
+      "slot": "LCB"
+    },
+    {
+      "number": 22,
+      "name": "Luka VUSKOVIC",
+      "position": "DF",
+      "role": "DF",
+      "slot": "RCB"
+    },
+    {
+      "number": 6,
+      "name": "Josip SUTALO",
+      "position": "DF",
+      "role": "DF",
+      "slot": "RB"
+    },
+    {
+      "number": 16,
+      "name": "Martin BATURINA",
+      "position": "MF",
+      "role": "MF",
+      "slot": "LCM"
+    },
+    {
+      "number": 15,
+      "name": "Mario PASALIC",
+      "position": "MF",
+      "role": "MF",
+      "slot": "CM"
+    },
+    {
+      "number": 17,
+      "name": "Petar SUCIC",
+      "position": "MF",
+      "role": "MF",
+      "slot": "RCM"
+    },
+    {
+      "number": 26,
+      "name": "Petar MUSA",
+      "position": "FW",
+      "role": "FW",
+      "slot": "LW"
+    },
+    {
+      "number": 14,
+      "name": "Ivan PERISIC",
+      "position": "FW",
+      "role": "FW",
+      "slot": "ST"
+    },
+    {
+      "number": 10,
+      "name": "MODRIC",
+      "position": "MF",
+      "role": "MF",
+      "slot": "RW"
+    }
+  ],
+  "match": {
+    "opponent_name": "England",
+    "opponent_slug": "england",
+    "team_score": null,
+    "opponent_score": null,
+    "date": "17 June 2026",
+    "venue": "Dallas Stadium",
+    "competition": null,
+    "match_id": "Captura de pantalla 2026-06-18 163535",
+    "side": "away"
+  },
+  "source": {
+    "team_artifact_match_id": "Captura de pantalla 2026-06-18 163535",
+    "team_artifact_side": "away",
+    "parsed_match_path": "C:\\Users\\Dante\\Desktop\\Programacion\\WorldCup2026\\wc26\\generated\\match-summary-ingest-final-2026-06-18\\parsed\\Captura de pantalla 2026-06-18 163535.parsed.json",
+    "heuristic_repairs": [],
+    "warnings": [
+      "starter player 58 MODRIC MF 10 (2) recovered role MF from OCR text.",
+      "starter player 58 MODRIC MF 10 (2) recovered shirt number 10 from OCR text.",
+      "Formation for Croatia was inferred heuristically as 4-3-3.",
+      "Formation export for Croatia recovered 1 player role value from OCR text.",
+      "Formation export for Croatia recovered 1 shirt number value from OCR text."
+    ]
+  }
+}

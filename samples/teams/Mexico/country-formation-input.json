@@ -1,0 +1,111 @@
+{
+  "country": {
+    "slug": "mexico",
+    "name": "Mexico"
+  },
+  "team": {
+    "name": "Mexico",
+    "formation": "4-3-3"
+  },
+  "players": [
+    {
+      "number": 1,
+      "name": "Raul RANGEL",
+      "position": "GK",
+      "role": "GK",
+      "slot": "GK"
+    },
+    {
+      "number": 6,
+      "name": "Johan VASQUEZ",
+      "position": "DF",
+      "role": "DF",
+      "slot": "LB"
+    },
+    {
+      "number": 15,
+      "name": "Israel REVES",
+      "position": "DF",
+      "role": "DF",
+      "slot": "LCB"
+    },
+    {
+      "number": 3,
+      "name": "Cesar MONTES Jj",
+      "position": "DF",
+      "role": "DF",
+      "slot": "RCB"
+    },
+    {
+      "number": 23,
+      "name": "Jesus GALLARDO",
+      "position": "DF",
+      "role": "DF",
+      "slot": "RB"
+    },
+    {
+      "number": 26,
+      "name": "Brian GUTIERREZ",
+      "position": "MF",
+      "role": "MF",
+      "slot": "LCM"
+    },
+    {
+      "number": 8,
+      "name": "AlvaroFIDALGO",
+      "position": "MF",
+      "role": "MF",
+      "slot": "CM"
+    },
+    {
+      "number": 7,
+      "name": "Luis ROMO",
+      "position": "MF",
+      "role": "MF",
+      "slot": "RCM"
+    },
+    {
+      "number": 16,
+      "name": "JulianQUINONES",
+      "position": "FW",
+      "role": "FW",
+      "slot": "LW"
+    },
+    {
+      "number": 25,
+      "name": "Roberto ALVARADO",
+      "position": "FW",
+      "role": "FW",
+      "slot": "ST"
+    },
+    {
+      "number": 11,
+      "name": "Santiago GIMENEZ",
+      "position": "FW",
+      "role": "FW",
+      "slot": "RW"
+    }
+  ],
+  "match": {
+    "opponent_name": "South Africa",
+    "opponent_slug": "south-africa",
+    "team_score": null,
+    "opponent_score": null,
+    "date": "11 June 2026",
+    "venue": "Mexico City Stadium",
+    "competition": null,
+    "match_id": "Captura de pantalla 2026-06-18 155536.png",
+    "side": "home"
+  },
+  "source": {
+    "team_artifact_match_id": "Captura de pantalla 2026-06-18 155536.png",
+    "team_artifact_side": "home",
+    "parsed_match_path": "C:\\Users\\Dante\\Desktop\\Programacion\\WorldCup2026\\wc26\\generated\\match-summary-ingest-final-2026-06-18\\parsed\\Captura de pantalla 2026-06-18 155536.png.parsed.json",
+    "heuristic_repairs": [
+      "Promoted substitutes for Mexico 4-3-3: 7 Luis ROMO -> RCM, 11 Santiago GIMENEZ -> RW."
+    ],
+    "warnings": [
+      "Formation export for Mexico promoted 2 substitutes to complete 11 players."
+    ]
+  }
+}

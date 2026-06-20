@@ -1,0 +1,113 @@
+{
+  "country": {
+    "slug": "ivory-coast",
+    "name": "Ivory Coast"
+  },
+  "team": {
+    "name": "Ivory Coast",
+    "formation": "4-2-3-1"
+  },
+  "players": [
+    {
+      "number": 1,
+      "name": "vahia FOFANA",
+      "position": "GK",
+      "role": "GK",
+      "slot": "GK"
+    },
+    {
+      "number": 3,
+      "name": "Ghislain KONAN",
+      "position": "DF",
+      "role": "DF",
+      "slot": "LB"
+    },
+    {
+      "number": 20,
+      "name": "Emmanuel AGBADOU",
+      "position": "DF",
+      "role": "DF",
+      "slot": "LCB"
+    },
+    {
+      "number": 2,
+      "name": "Ousmane DIOMANDE",
+      "position": "DF",
+      "role": "DF",
+      "slot": "RCB"
+    },
+    {
+      "number": 17,
+      "name": "GuelaDOUE",
+      "position": "DF",
+      "role": "DF",
+      "slot": "RB"
+    },
+    {
+      "number": 8,
+      "name": "FranckKESSIE",
+      "position": "MF",
+      "role": "MF",
+      "slot": "LDM"
+    },
+    {
+      "number": 4,
+      "name": "Jean Michael SERI",
+      "position": "MF",
+      "role": "MF",
+      "slot": "RDM"
+    },
+    {
+      "number": 19,
+      "name": "NicolasPEPE",
+      "position": "FW",
+      "role": "FW",
+      "slot": "LW"
+    },
+    {
+      "number": 12,
+      "name": "Elye WAHI",
+      "position": "FW",
+      "role": "FW",
+      "slot": "CAM"
+    },
+    {
+      "number": 24,
+      "name": "WBazoumanaTOURE",
+      "position": "FW",
+      "role": "FW",
+      "slot": "RW"
+    },
+    {
+      "number": 11,
+      "name": "van DIOMANDE",
+      "position": "FW",
+      "role": "FW",
+      "slot": "ST"
+    }
+  ],
+  "match": {
+    "opponent_name": "Ecuador",
+    "opponent_slug": "ecuador",
+    "team_score": null,
+    "opponent_score": null,
+    "date": "14 June 2026",
+    "venue": "Philadelphia Stadium",
+    "competition": null,
+    "match_id": "Captura de pantalla 2026-06-18 160427",
+    "side": "home"
+  },
+  "source": {
+    "team_artifact_match_id": "Captura de pantalla 2026-06-18 160427",
+    "team_artifact_side": "home",
+    "parsed_match_path": "C:\\Users\\Dante\\Desktop\\Programacion\\WorldCup2026\\wc26\\generated\\match-summary-ingest-final-2026-06-18\\parsed\\Captura de pantalla 2026-06-18 160427.parsed.json",
+    "heuristic_repairs": [
+      "Promoted substitutes for Ivory Coast 4-2-3-1: 2 Ousmane DIOMANDE -> RCB, 4 Jean Michael SERI -> RDM.",
+      "Omitted lower-confidence starter rows for Ivory Coast: 16 Mohamed KONE, 23 Alban LAFONT."
+    ],
+    "warnings": [
+      "Formation for Ivory Coast was inferred heuristically as 4-2-3-1.",
+      "Formation export for Ivory Coast promoted 2 substitutes to complete 11 players."
+    ]
+  }
+}

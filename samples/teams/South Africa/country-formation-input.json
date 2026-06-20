@@ -1,0 +1,100 @@
+{
+  "country": {
+    "slug": "south-africa",
+    "name": "South Africa"
+  },
+  "team": {
+    "name": "South Africa",
+    "formation": "5-3-2"
+  },
+  "players": [
+    {
+      "number": 1,
+      "name": "Ronwen WILLIAMS",
+      "position": "GK",
+      "role": "GK",
+      "slot": "GK"
+    },
+    {
+      "number": 20,
+      "name": "Khuliso MUDAU",
+      "position": "DF",
+      "role": "DF",
+      "slot": "LWB"
+    },
+    {
+      "number": 14,
+      "name": "MbekezeliMBOKAZI",
+      "position": "DF",
+      "role": "DF",
+      "slot": "LCB"
+    },
+    {
+      "number": 6,
+      "name": "Aubrey MODIBA",
+      "position": "DF",
+      "role": "DF",
+      "slot": "CB"
+    },
+    {
+      "number": 19,
+      "name": "NKkosinathiSIBISI",
+      "position": "DF",
+      "role": "DF",
+      "slot": "RCB"
+    },
+    {
+      "number": 21,
+      "name": "Ime OKON",
+      "position": "DF",
+      "role": "DF",
+      "slot": "RWB"
+    },
+    {
+      "number": 13,
+      "name": "B49 SphepheloSITHOLE",
+      "position": "MF",
+      "role": "MF",
+      "slot": "LCM"
+    },
+    {
+      "number": 4,
+      "name": "TebohoMOKOENA",
+      "position": "MF",
+      "role": "MF",
+      "slot": "CM"
+    },
+    {
+      "number": 23,
+      "name": "Jayden ADAMS",
+      "position": "MF",
+      "role": "MF",
+      "slot": "RCM"
+    },
+    {
+      "number": 9,
+      "name": "LyleFOSTER",
+      "position": "FW",
+      "role": "FW",
+      "slot": "LST"
+    },
+    {
+      "number": 15,
+      "name": "Igraam RAVNERS",
+      "position": "FW",
+      "role": "FW",
+      "slot": "RST"
+    }
+  ],
+  "match": {
+    "opponent_name": "Mexico",
+    "opponent_slug": "mexico",
+    "team_score": null,
+    "opponent_score": null,
+    "date": "11 June 2026",
+    "venue": "Mexico City Stadium",
+    "competition": null,
+    "match_id": "Captura de pantalla 2026-06-18 155536.png",
+    "side": "away"
+  }
+}

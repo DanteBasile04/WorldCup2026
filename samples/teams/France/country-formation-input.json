@@ -1,0 +1,109 @@
+{
+  "country": {
+    "slug": "france",
+    "name": "France"
+  },
+  "team": {
+    "name": "France",
+    "formation": "4-2-3-1"
+  },
+  "players": [
+    {
+      "number": 16,
+      "name": "Mike MAIGNAN",
+      "position": "GK",
+      "role": "GK",
+      "slot": "GK"
+    },
+    {
+      "number": 4,
+      "name": "Dayot UPAMECANO",
+      "position": "DF",
+      "role": "DF",
+      "slot": "LB"
+    },
+    {
+      "number": 5,
+      "name": "Jules KOUNDE",
+      "position": "DF",
+      "role": "DF",
+      "slot": "LCB"
+    },
+    {
+      "number": 19,
+      "name": "Theo HERNANDEZ",
+      "position": "DF",
+      "role": "DF",
+      "slot": "RCB"
+    },
+    {
+      "number": 17,
+      "name": "William SALIBA",
+      "position": "DF",
+      "role": "DF",
+      "slot": "RB"
+    },
+    {
+      "number": 8,
+      "name": "Aurelien TCHOUAMENI",
+      "position": "MF",
+      "role": "MF",
+      "slot": "LDM"
+    },
+    {
+      "number": 14,
+      "name": "Adrien RABIOT",
+      "position": "MF",
+      "role": "MF",
+      "slot": "RDM"
+    },
+    {
+      "number": 20,
+      "name": "WDesireDOUE",
+      "position": "FW",
+      "role": "FW",
+      "slot": "LW"
+    },
+    {
+      "number": 7,
+      "name": "OusmaneDEMBELE",
+      "position": "FW",
+      "role": "FW",
+      "slot": "CAM"
+    },
+    {
+      "number": 10,
+      "name": "Kylian MBAPPE &",
+      "position": "FW",
+      "role": "FW",
+      "slot": "RW"
+    },
+    {
+      "number": 11,
+      "name": "Michael OLISE",
+      "position": "FW",
+      "role": "FW",
+      "slot": "ST"
+    }
+  ],
+  "match": {
+    "opponent_name": "Senegal",
+    "opponent_slug": "senegal",
+    "team_score": null,
+    "opponent_score": null,
+    "date": "16 June 2026",
+    "venue": "New York/New Jersey Stadium",
+    "competition": null,
+    "match_id": "Captura de pantalla 2026-06-18 163342",
+    "side": "home"
+  },
+  "source": {
+    "team_artifact_match_id": "Captura de pantalla 2026-06-18 163342",
+    "team_artifact_side": "home",
+    "parsed_match_path": "C:\\Users\\Dante\\Desktop\\Programacion\\WorldCup2026\\wc26\\generated\\match-summary-ingest-final-2026-06-18\\parsed\\Captura de pantalla 2026-06-18 163342.parsed.json",
+    "heuristic_repairs": [],
+    "warnings": [
+      "Formation for France was inferred heuristically as 4-2-3-1."
+    ]
+  }
+}

@@ -1,0 +1,113 @@
+{
+  "country": {
+    "slug": "argentina",
+    "name": "Argentina"
+  },
+  "team": {
+    "name": "Argentina",
+    "formation": "4-3-3"
+  },
+  "players": [
+    {
+      "number": 23,
+      "name": "Emiliano MARTINEZ",
+      "position": "GK",
+      "role": "GK",
+      "slot": "GK"
+    },
+    {
+      "number": 4,
+      "name": "Gonzalo MONTIEL",
+      "position": "DF",
+      "role": "DF",
+      "slot": "LB"
+    },
+    {
+      "number": 25,
+      "name": "Facundo MEDINA",
+      "position": "DF",
+      "role": "DF",
+      "slot": "LCB"
+    },
+    {
+      "number": 3,
+      "name": "Nicolas TAGLIAFICO",
+      "position": "DF",
+      "role": "DF",
+      "slot": "RCB"
+    },
+    {
+      "number": 13,
+      "name": "Cristian ROMERO",
+      "position": "DF",
+      "role": "DF",
+      "slot": "RB"
+    },
+    {
+      "number": 20,
+      "name": "Alexis MAC ALLISTER",
+      "position": "MF",
+      "role": "MF",
+      "slot": "LCM"
+    },
+    {
+      "number": 7,
+      "name": "Rodrigo DE PAUL",
+      "position": "MF",
+      "role": "MF",
+      "slot": "CM"
+    },
+    {
+      "number": 24,
+      "name": "Enzo FERNANDEZ",
+      "position": "MF",
+      "role": "MF",
+      "slot": "RCM"
+    },
+    {
+      "number": 22,
+      "name": "Lautaro MARTINEZ",
+      "position": "FW",
+      "role": "FW",
+      "slot": "LW"
+    },
+    {
+      "number": 16,
+      "name": "Thiago ALMADA",
+      "position": "FW",
+      "role": "FW",
+      "slot": "ST"
+    },
+    {
+      "number": 10,
+      "name": "lLionelMESSI",
+      "position": "FW",
+      "role": "FW",
+      "slot": "RW"
+    }
+  ],
+  "match": {
+    "opponent_name": "Algeria",
+    "opponent_slug": "algeria",
+    "team_score": null,
+    "opponent_score": null,
+    "date": "16 June 2026",
+    "venue": "Kansas City Stadium",
+    "competition": null,
+    "match_id": "Captura de pantalla 2026-06-18 163413",
+    "side": "home"
+  },
+  "source": {
+    "team_artifact_match_id": "Captura de pantalla 2026-06-18 163413",
+    "team_artifact_side": "home",
+    "parsed_match_path": "C:\\Users\\Dante\\Desktop\\Programacion\\WorldCup2026\\wc26\\generated\\match-summary-ingest-final-2026-06-18\\parsed\\Captura de pantalla 2026-06-18 163413.parsed.json",
+    "heuristic_repairs": [
+      "Promoted substitutes for Argentina 4-3-3: 3 Nicolas TAGLIAFICO -> RCB.",
+      "Omitted lower-confidence starter rows for Argentina: 1 JuanMUSSO."
+    ],
+    "warnings": [
+      "Formation for Argentina was inferred heuristically as 4-3-3.",
+      "Formation export for Argentina promoted 1 substitute to complete 11 players."
+    ]
+  }
+}

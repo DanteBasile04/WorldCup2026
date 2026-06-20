@@ -13,10 +13,16 @@ import {
 } from "./presentation";
 import type {
   Country,
+  CountryFormation,
   Group,
   Match,
 } from "@/lib/supabase/database.types";
 import type { MatchWithTeams, StandingWithCountry, PlayerWithCountry } from "@/lib/supabase/queries";
+import {
+  resolveFlagUrl,
+  resolveHeroBackgroundUrl,
+  resolveEmblemUrl,
+} from "@/lib/supabase/storage";
 
 // -- Standing row view model ------------------------------------------------
 
@@ -238,11 +244,43 @@ export type TeamRosterGroupVm = {
   players: TeamPlayerVm[];
 };
 
-/** Formation display state */
+export type StructuredFormationPlayer = {
+  number: number;
+  name: string;
+  role: string;
+  slot: string | null;
+  label: string;
+  x: number;
+  y: number;
+};
+
+export type StructuredFormationDocument = {
+  schemaVersion: number;
+  team: {
+    name: string;
+    formation: string;
+  };
+  players: StructuredFormationPlayer[];
+};
+
 /** Formation display state */
 export type FormationState =
-  | { value: string; status: "published" }
-  | { value: null; status: "unpublished" };
+  | {
+      value: string;
+      formationName: string | null;
+      svg: string | null;
+      structured: StructuredFormationDocument | null;
+      status: "published";
+      source: "structured" | "svg" | "mixed";
+    }
+  | {
+      value: null;
+      formationName: null;
+      svg: null;
+      structured: null;
+      status: "unpublished";
+      source: null;
+    };
 
 /** Team hero view model — crest, flag, trophies, federation */
 export type TeamHeroVm = {
@@ -319,7 +357,7 @@ function buildStandingRow(
     rank,
     teamName: country?.name ?? FALLBACK.teamName,
     teamSlug: country?.slug ?? null,
-    flagUrl: country?.flag_url ?? null,
+    flagUrl: resolveFlagUrl(country?.flag_storage_path ?? null, country?.flag_url ?? null),
     matchesPlayed: standing.matches_played ?? 0,
     wins: standing.wins ?? 0,
     draws: standing.draws ?? 0,
@@ -517,16 +555,252 @@ function buildRosterRows(players: PlayerWithCountry[]): TeamRosterRowVm[] {
   return dedupePlayers(players).map(shapeRosterRow);
 }
 
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return typeof value === "object" && value !== null && !Array.isArray(value);
+}
+
+function safeString(value: unknown): string | null {
+  if (typeof value !== "string") return null;
+  const trimmed = value.trim();
+  return trimmed.length > 0 ? trimmed : null;
+}
+
+function safeNumber(value: unknown): number | null {
+  return typeof value === "number" && Number.isFinite(value) ? value : null;
+}
+
+function escapeXml(value: string): string {
+  return value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&apos;");
+}
+
 /**
- * Determine formation display state.
- * A non-null, non-empty formation string is "published".
- * A null or empty formation is "unpublished" — shown as explicit unavailable state.
+ * Validate the persisted formation JSON enough for UI display.
+ * We only trust the document when the core contract is intact:
+ * schemaVersion, team metadata, and positioned players.
  */
-function buildFormationState(formation: string | null): FormationState {
-  if (formation && formation.trim().length > 0) {
-    return { value: formation, status: "published" };
+function parseStructuredFormation(
+  formationJson: CountryFormation | null,
+): StructuredFormationDocument | null {
+  if (!isRecord(formationJson)) return null;
+
+  const schemaVersion = safeNumber(formationJson.schemaVersion);
+  const team = isRecord(formationJson.team) ? formationJson.team : null;
+  const players = Array.isArray(formationJson.players) ? formationJson.players : null;
+
+  const teamName = safeString(team?.name);
+  const formationName = safeString(team?.formation);
+
+  if (!schemaVersion || !teamName || !formationName || !players || players.length === 0) {
+    return null;
   }
-  return { value: null, status: "unpublished" };
+
+  const normalizedPlayers: StructuredFormationPlayer[] = [];
+
+  for (const player of players) {
+    if (!isRecord(player)) return null;
+
+    const number = safeNumber(player.number);
+    const name = safeString(player.name);
+    const role = safeString(player.role);
+    const label = safeString(player.label) ?? name;
+    const x = safeNumber(player.x);
+    const y = safeNumber(player.y);
+
+    if (!number || !name || !role || !label || x === null || y === null) {
+      return null;
+    }
+
+    normalizedPlayers.push({
+      number,
+      name,
+      role,
+      slot: safeString(player.slot),
+      label,
+      x,
+      y,
+    });
+  }
+
+  return {
+    schemaVersion,
+    team: {
+      name: teamName,
+      formation: formationName,
+    },
+    players: normalizedPlayers,
+  };
+}
+
+/**
+ * Accept only the published inline SVG shape we expect from our local
+ * formation tooling. Reject obvious active-content vectors before handing
+ * the markup to React for inline rendering.
+ */
+function sanitizeFormationSvg(svg: string | null): string | null {
+  const trimmed = safeString(svg);
+  if (!trimmed) return null;
+
+  const forbiddenPatterns = [
+    /<script[\s>]/i,
+    /<foreignObject[\s>]/i,
+    /<iframe[\s>]/i,
+    /\son[a-z]+\s*=/i,
+    /javascript:/i,
+  ];
+
+  if (!trimmed.startsWith("<svg") || !trimmed.endsWith("</svg>")) {
+    return null;
+  }
+
+  if (forbiddenPatterns.some((pattern) => pattern.test(trimmed))) {
+    return null;
+  }
+
+  return trimmed;
+}
+
+function extractFormationNameFromSvg(svg: string | null): string | null {
+  if (!svg) return null;
+
+  const ariaLabelMatch = svg.match(/aria-label\s*=\s*"([^"]+)"/i);
+  const ariaLabel = safeString(ariaLabelMatch?.[1]);
+  if (!ariaLabel) return null;
+
+  const formationMatch = ariaLabel.match(/formation\s+(.+)$/i);
+  return safeString(formationMatch?.[1]);
+}
+
+function resolveFormationAccent(themeToken: TeamThemeToken): string {
+  return themeToken.isNeutral ? "#C41E3A" : themeToken.accent;
+}
+
+function hexToRgb(hex: string): [number, number, number] | null {
+  const clean = hex.replace("#", "");
+  const full =
+    clean.length === 3
+      ? clean
+          .split("")
+          .map((character) => character + character)
+          .join("")
+      : clean;
+
+  if (!/^[0-9a-fA-F]{6}$/.test(full)) {
+    return null;
+  }
+
+  const value = Number.parseInt(full, 16);
+  return [(value >> 16) & 255, (value >> 8) & 255, value & 255];
+}
+
+function rgba(hex: string, alpha: number): string {
+  const rgb = hexToRgb(hex);
+  if (!rgb) {
+    return `rgba(248, 250, 252, ${alpha})`;
+  }
+
+  return `rgba(${rgb[0]}, ${rgb[1]}, ${rgb[2]}, ${alpha})`;
+}
+
+function markerTextColor(accent: string): string {
+  const rgb = hexToRgb(accent);
+  if (!rgb) return "#F8FAFC";
+
+  const brightness = (rgb[0] * 299 + rgb[1] * 587 + rgb[2] * 114) / 1000;
+  return brightness >= 160 ? "#0F172A" : "#F8FAFC";
+}
+
+function renderStructuredFormationSvg(
+  document: StructuredFormationDocument,
+  themeToken: TeamThemeToken,
+): string {
+  const width = 840;
+  const height = 540;
+  const paddingX = 56;
+  const paddingY = 44;
+  const pitchWidth = width - paddingX * 2;
+  const pitchHeight = height - paddingY * 2;
+  const pitchLeft = paddingX;
+  const pitchTop = paddingY;
+  const pitchRight = pitchLeft + pitchWidth;
+  const pitchBottom = pitchTop + pitchHeight;
+  const midfieldX = pitchLeft + pitchWidth / 2;
+  const centerY = pitchTop + pitchHeight / 2;
+  const centerCircleRadius = pitchHeight * 0.13;
+  const penaltyHeight = pitchHeight * 0.42;
+  const goalAreaHeight = pitchHeight * 0.2;
+  const penaltyWidth = pitchWidth * 0.145;
+  const goalAreaWidth = pitchWidth * 0.055;
+  const spotOffset = pitchWidth * 0.086;
+  const playerRadius = 18;
+  const numberFontSize = 14;
+  const labelFontSize = 12;
+  const labelOffset = 30;
+  const accent = resolveFormationAccent(themeToken);
+  const numberColor = markerTextColor(accent);
+  const markerStroke = numberColor === "#0F172A" ? rgba(accent, 0.72) : "rgba(248, 250, 252, 0.92)";
+  const labelText = "#111827";
+  const labelFill = "rgba(248, 250, 252, 0.92)";
+  const labelStroke = rgba(accent, 0.34);
+  const ariaLabel = `${document.team.name} formation ${document.team.formation}`;
+
+  const playerNodes = document.players
+    .map((player) => {
+      const x = paddingX + (player.x / 100) * pitchWidth;
+      const y = paddingY + (player.y / 100) * pitchHeight;
+      const label = player.label;
+      const labelY = y + labelOffset;
+      const labelWidth = Math.max(48, label.length * labelFontSize * 0.62 + 18);
+      const labelHeight = 22;
+      const labelX = x - labelWidth / 2;
+      const labelTop = labelY - 15;
+
+      return `<g><circle cx="${x.toFixed(2)}" cy="${y.toFixed(2)}" r="${playerRadius}" fill="${accent}" stroke="${markerStroke}" stroke-width="2.5"/><text x="${x.toFixed(2)}" y="${(y + 5).toFixed(2)}" text-anchor="middle" font-family="Arial,sans-serif" font-size="${numberFontSize}" font-weight="700" fill="${numberColor}">${escapeXml(String(player.number))}</text><rect x="${labelX.toFixed(2)}" y="${labelTop.toFixed(2)}" width="${labelWidth.toFixed(2)}" height="${labelHeight}" rx="11" fill="${labelFill}" stroke="${labelStroke}" stroke-width="1"/><text x="${x.toFixed(2)}" y="${labelY.toFixed(2)}" text-anchor="middle" font-family="Arial,sans-serif" font-size="${labelFontSize}" font-weight="700" fill="${labelText}">${escapeXml(label)}</text></g>`;
+    })
+    .join("");
+
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}" role="img" aria-label="${escapeXml(ariaLabel)}"><rect width="${width}" height="${height}" fill="#03130b"/><rect x="${pitchLeft}" y="${pitchTop}" width="${pitchWidth}" height="${pitchHeight}" rx="20" fill="#166534" stroke="#dcfce7" stroke-width="3"/><line x1="${midfieldX.toFixed(2)}" y1="${pitchTop}" x2="${midfieldX.toFixed(2)}" y2="${pitchBottom.toFixed(2)}" stroke="#dcfce7" stroke-width="3"/><circle cx="${midfieldX.toFixed(2)}" cy="${centerY.toFixed(2)}" r="${centerCircleRadius.toFixed(2)}" fill="none" stroke="#dcfce7" stroke-width="3"/><circle cx="${midfieldX.toFixed(2)}" cy="${centerY.toFixed(2)}" r="4" fill="#dcfce7"/><circle cx="${(pitchLeft + spotOffset).toFixed(2)}" cy="${centerY.toFixed(2)}" r="4" fill="#dcfce7"/><circle cx="${(pitchRight - spotOffset).toFixed(2)}" cy="${centerY.toFixed(2)}" r="4" fill="#dcfce7"/><rect x="${pitchLeft}" y="${(centerY - penaltyHeight / 2).toFixed(2)}" width="${penaltyWidth.toFixed(2)}" height="${penaltyHeight.toFixed(2)}" fill="none" stroke="#dcfce7" stroke-width="3"/><rect x="${(pitchRight - penaltyWidth).toFixed(2)}" y="${(centerY - penaltyHeight / 2).toFixed(2)}" width="${penaltyWidth.toFixed(2)}" height="${penaltyHeight.toFixed(2)}" fill="none" stroke="#dcfce7" stroke-width="3"/><rect x="${pitchLeft}" y="${(centerY - goalAreaHeight / 2).toFixed(2)}" width="${goalAreaWidth.toFixed(2)}" height="${goalAreaHeight.toFixed(2)}" fill="none" stroke="#dcfce7" stroke-width="3"/><rect x="${(pitchRight - goalAreaWidth).toFixed(2)}" y="${(centerY - goalAreaHeight / 2).toFixed(2)}" width="${goalAreaWidth.toFixed(2)}" height="${goalAreaHeight.toFixed(2)}" fill="none" stroke="#dcfce7" stroke-width="3"/>${playerNodes}</svg>`;
+}
+
+/**
+ * Determine formation display state from the new structured JSON path first,
+ * with a backward-compatible fallback to the stored published SVG.
+ */
+function buildFormationState(
+  formationSvg: string | null,
+  formationJson: CountryFormation | null,
+  themeToken: TeamThemeToken,
+): FormationState {
+  const structured = parseStructuredFormation(formationJson);
+  const storedSvg = sanitizeFormationSvg(formationSvg);
+  const svg = structured
+    ? renderStructuredFormationSvg(structured, themeToken)
+    : storedSvg;
+  const formationName = structured?.team.formation ?? extractFormationNameFromSvg(storedSvg);
+
+  if (svg || formationName) {
+    return {
+      value: formationName ?? "Published formation",
+      formationName: formationName ?? null,
+      svg,
+      structured,
+      status: "published",
+      source: structured && storedSvg ? "mixed" : structured ? "structured" : "svg",
+    };
+  }
+
+  return {
+    value: null,
+    formationName: null,
+    svg: null,
+    structured: null,
+    status: "unpublished",
+    source: null,
+  };
 }
 
 // -- Third-place ranking builder -------------------------------------------
@@ -607,7 +881,7 @@ function buildThirdPlaceRanking(
         rank: 0, // assigned below
         teamName: country?.name ?? FALLBACK.teamName,
         teamSlug: country?.slug ?? null,
-        flagUrl: country?.flag_url ?? null,
+        flagUrl: resolveFlagUrl(country?.flag_storage_path ?? null, country?.flag_url ?? null),
         groupName,
         matchesPlayed: standing.matches_played ?? 0,
         wins: standing.wins ?? 0,
@@ -725,8 +999,12 @@ export function buildTeamDetailVm(
     hero: {
       name: country.name,
       slug: country.slug,
-      flagUrl: country.flag_url,
-      emblemUrl: country.emblem_url,
+      flagUrl: resolveHeroBackgroundUrl(
+        country.flag_banner_storage_path,
+        country.flag_storage_path,
+        country.flag_url,
+      ),
+      emblemUrl: resolveEmblemUrl(country.emblem_storage_path, country.emblem_url),
       federation: country.federation,
       trophies: country.trophies,
       palette: paletteHero,
@@ -737,7 +1015,7 @@ export function buildTeamDetailVm(
       rows: rosterRows,
       isEmpty: rosterGroups.isEmpty,
     },
-    formation: buildFormationState(country.formation),
+    formation: buildFormationState(country.formation, country.formation_json, themeToken),
     standings: standings.map((s, i) => buildStandingRow(s, i + 1)),
     matches: matches.map(buildMatchCard),
     palette: paletteBadge,

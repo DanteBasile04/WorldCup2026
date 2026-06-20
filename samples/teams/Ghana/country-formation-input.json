@@ -1,0 +1,111 @@
+{
+  "country": {
+    "slug": "ghana",
+    "name": "Ghana"
+  },
+  "team": {
+    "name": "Ghana",
+    "formation": "4-3-3"
+  },
+  "players": [
+    {
+      "number": 1,
+      "name": "LawrenceAtiZIGI",
+      "position": "GK",
+      "role": "GK",
+      "slot": "GK"
+    },
+    {
+      "number": 4,
+      "name": "Jonas ADJETEV",
+      "position": "DF",
+      "role": "DF",
+      "slot": "LB"
+    },
+    {
+      "number": 14,
+      "name": "Gideon MENSAH",
+      "position": "DF",
+      "role": "DF",
+      "slot": "LCB"
+    },
+    {
+      "number": 26,
+      "name": "Marvin SENAVA",
+      "position": "DF",
+      "role": "DF",
+      "slot": "RCB"
+    },
+    {
+      "number": 18,
+      "name": "Jerome OPOKU",
+      "position": "DF",
+      "role": "DF",
+      "slot": "RB"
+    },
+    {
+      "number": 15,
+      "name": "Elishaowusu",
+      "position": "MF",
+      "role": "MF",
+      "slot": "LCM"
+    },
+    {
+      "number": 11,
+      "name": "Antoine SEMENVO",
+      "position": "MF",
+      "role": "MF",
+      "slot": "CM"
+    },
+    {
+      "number": 3,
+      "name": "CalebVIRENKVI",
+      "position": "MF",
+      "role": "MF",
+      "slot": "RCM"
+    },
+    {
+      "number": 24,
+      "name": "ErnestNUAMAH",
+      "position": "FW",
+      "role": "FW",
+      "slot": "LW"
+    },
+    {
+      "number": 22,
+      "name": "Kamaldeen SULEMANA",
+      "position": "FW",
+      "role": "FW",
+      "slot": "ST"
+    },
+    {
+      "number": 13,
+      "name": "Christopher BONSU BAAH =",
+      "position": "FW",
+      "role": "FW",
+      "slot": "RW"
+    }
+  ],
+  "match": {
+    "opponent_name": "Panama",
+    "opponent_slug": "panama",
+    "team_score": null,
+    "opponent_score": null,
+    "date": "17 June 2026",
+    "venue": "Toronto Stadium",
+    "competition": null,
+    "match_id": "Captura de pantalla 2026-06-18 163517",
+    "side": "home"
+  },
+  "source": {
+    "team_artifact_match_id": "Captura de pantalla 2026-06-18 163517",
+    "team_artifact_side": "home",
+    "parsed_match_path": "C:\\Users\\Dante\\Desktop\\Programacion\\WorldCup2026\\wc26\\generated\\match-summary-ingest-final-2026-06-18\\parsed\\Captura de pantalla 2026-06-18 163517.parsed.json",
+    "heuristic_repairs": [
+      "Promoted substitutes for Ghana 4-3-3: 13 Christopher BONSU BAAH = -> RW."
+    ],
+    "warnings": [
+      "Formation export for Ghana promoted 1 substitute to complete 11 players."
+    ]
+  }
+}

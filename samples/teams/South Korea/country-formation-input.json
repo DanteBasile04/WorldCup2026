@@ -1,0 +1,111 @@
+{
+  "country": {
+    "slug": "south-korea",
+    "name": "South Korea"
+  },
+  "team": {
+    "name": "South Korea",
+    "formation": "4-2-3-1"
+  },
+  "players": [
+    {
+      "number": 1,
+      "name": "KIM Seunggyu",
+      "position": "GK",
+      "role": "GK",
+      "slot": "GK"
+    },
+    {
+      "number": 2,
+      "name": "LEEHanbeom",
+      "position": "DF",
+      "role": "DF",
+      "slot": "LB"
+    },
+    {
+      "number": 4,
+      "name": "KIMMinjae",
+      "position": "DF",
+      "role": "DF",
+      "slot": "LCB"
+    },
+    {
+      "number": 13,
+      "name": "LEETaeseok",
+      "position": "DF",
+      "role": "DF",
+      "slot": "RCB"
+    },
+    {
+      "number": 22,
+      "name": "SEOL Youngwoo",
+      "position": "DF",
+      "role": "DF",
+      "slot": "RB"
+    },
+    {
+      "number": 19,
+      "name": "LEEKangin",
+      "position": "MF",
+      "role": "MF",
+      "slot": "LDM"
+    },
+    {
+      "number": 8,
+      "name": "PAIK Seungho",
+      "position": "MF",
+      "role": "MF",
+      "slot": "RDM"
+    },
+    {
+      "number": 3,
+      "name": "LEEGihyuk",
+      "position": "MF",
+      "role": "MF",
+      "slot": "LW"
+    },
+    {
+      "number": 10,
+      "name": "LEEJaesung",
+      "position": "MF",
+      "role": "MF",
+      "slot": "CAM"
+    },
+    {
+      "number": 17,
+      "name": "BAE Junho",
+      "position": "MF",
+      "role": "MF",
+      "slot": "RW"
+    },
+    {
+      "number": 7,
+      "name": "SONHeungmin",
+      "position": "FW",
+      "role": "FW",
+      "slot": "ST"
+    }
+  ],
+  "match": {
+    "opponent_name": "Czech Republic",
+    "opponent_slug": "czech-republic",
+    "team_score": null,
+    "opponent_score": null,
+    "date": "11 June 2026",
+    "venue": "Guadalajara Stadium",
+    "competition": null,
+    "match_id": "Captura de pantalla 2026-06-18 155648",
+    "side": "home"
+  },
+  "source": {
+    "team_artifact_match_id": "Captura de pantalla 2026-06-18 155648",
+    "team_artifact_side": "home",
+    "parsed_match_path": "C:\\Users\\Dante\\Desktop\\Programacion\\WorldCup2026\\wc26\\generated\\match-summary-ingest-final-2026-06-18\\parsed\\Captura de pantalla 2026-06-18 155648.parsed.json",
+    "heuristic_repairs": [
+      "Promoted substitutes for South Korea 4-2-3-1: 17 BAE Junho -> RW."
+    ],
+    "warnings": [
+      "Formation export for South Korea promoted 1 substitute to complete 11 players."
+    ]
+  }
+}

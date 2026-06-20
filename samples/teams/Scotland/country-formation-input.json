@@ -1,0 +1,100 @@
+{
+  "country": {
+    "slug": "scotland",
+    "name": "Scotland"
+  },
+  "team": {
+    "name": "Scotland",
+    "formation": "4-3-3"
+  },
+  "players": [
+    {
+      "number": 1,
+      "name": "X] ANgusGUNN",
+      "position": "GK",
+      "role": "GK",
+      "slot": "GK"
+    },
+    {
+      "number": 2,
+      "name": "AaronHICKEV",
+      "position": "DF",
+      "role": "DF",
+      "slot": "LB"
+    },
+    {
+      "number": 3,
+      "name": "Andy ROBERTSON",
+      "position": "DF",
+      "role": "DF",
+      "slot": "LCB"
+    },
+    {
+      "number": 13,
+      "name": "Jack HENDRY",
+      "position": "DF",
+      "role": "DF",
+      "slot": "RCB"
+    },
+    {
+      "number": 5,
+      "name": "Grant HANLEV",
+      "position": "DF",
+      "role": "DF",
+      "slot": "RB"
+    },
+    {
+      "number": 7,
+      "name": "JohnMCGINN",
+      "position": "MF",
+      "role": "MF",
+      "slot": "LCM"
+    },
+    {
+      "number": 4,
+      "name": "Scott MCTOMINAY",
+      "position": "MF",
+      "role": "MF",
+      "slot": "CM"
+    },
+    {
+      "number": 19,
+      "name": "Lewis FERGUSON",
+      "position": "MF",
+      "role": "MF",
+      "slot": "RCM"
+    },
+    {
+      "number": 17,
+      "name": "Ben GANNON-DOAK",
+      "position": "FW",
+      "role": "FW",
+      "slot": "LW"
+    },
+    {
+      "number": 10,
+      "name": "Che ADAMS",
+      "position": "FW",
+      "role": "FW",
+      "slot": "ST"
+    },
+    {
+      "number": 20,
+      "name": "Lawrence SHANKLAND",
+      "position": "FW",
+      "role": "FW",
+      "slot": "RW"
+    }
+  ],
+  "match": {
+    "opponent_name": "Haiti",
+    "opponent_slug": "haiti",
+    "team_score": null,
+    "opponent_score": null,
+    "date": "13 June 2026",
+    "venue": "Boston Stadium",
+    "competition": null,
+    "match_id": "Captura de pantalla 2026-06-18 160142",
+    "side": "away"
+  }
+}

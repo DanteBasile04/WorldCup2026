@@ -92,7 +92,7 @@ export default async function TeamPage({ params }: PageProps) {
 
             {/* Formation */}
             <div className="mt-8">
-              <TeamFormationCard formation={vm.formation} />
+              <TeamFormationCard formation={vm.formation} themeToken={vm.themeToken} />
             </div>
 
             {/* Tournament position */}

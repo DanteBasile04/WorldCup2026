@@ -1,0 +1,113 @@
+{
+  "country": {
+    "slug": "haiti",
+    "name": "Haiti"
+  },
+  "team": {
+    "name": "Haiti",
+    "formation": "4-2-3-1"
+  },
+  "players": [
+    {
+      "number": 1,
+      "name": "Johny PLACIDE",
+      "position": "GK",
+      "role": "GK",
+      "slot": "GK"
+    },
+    {
+      "number": 2,
+      "name": "carlens ARCUS",
+      "position": "DF",
+      "role": "DF",
+      "slot": "LB"
+    },
+    {
+      "number": 4,
+      "name": "Ricardo ADE",
+      "position": "DF",
+      "role": "DF",
+      "slot": "LCB"
+    },
+    {
+      "number": 3,
+      "name": "Keeto THERMONCY",
+      "position": "DF",
+      "role": "DF",
+      "slot": "RCB"
+    },
+    {
+      "number": 8,
+      "name": "Martin EXPERIENCE",
+      "position": "DF",
+      "role": "DF",
+      "slot": "RB"
+    },
+    {
+      "number": 17,
+      "name": "Danley JEAN JACQUES",
+      "position": "MF",
+      "role": "MF",
+      "slot": "LDM"
+    },
+    {
+      "number": 10,
+      "name": "Jean-Ricner BELLEGARDE",
+      "position": "MF",
+      "role": "MF",
+      "slot": "RDM"
+    },
+    {
+      "number": 15,
+      "name": "Ruben PROVIDENCE",
+      "position": "FW",
+      "role": "FW",
+      "slot": "LW"
+    },
+    {
+      "number": 11,
+      "name": "Louicius DEEDSON",
+      "position": "FW",
+      "role": "FW",
+      "slot": "CAM"
+    },
+    {
+      "number": 18,
+      "name": "WilsonISIDOR",
+      "position": "FW",
+      "role": "FW",
+      "slot": "RW"
+    },
+    {
+      "number": 20,
+      "name": "Frantzdy PIERROT",
+      "position": "FW",
+      "role": "FW",
+      "slot": "ST"
+    }
+  ],
+  "match": {
+    "opponent_name": "Scotland",
+    "opponent_slug": "scotland",
+    "team_score": null,
+    "opponent_score": null,
+    "date": "13 June 2026",
+    "venue": "Boston Stadium",
+    "competition": null,
+    "match_id": "Captura de pantalla 2026-06-18 160142",
+    "side": "home"
+  },
+  "source": {
+    "team_artifact_match_id": "Captura de pantalla 2026-06-18 160142",
+    "team_artifact_side": "home",
+    "parsed_match_path": "C:\\Users\\Dante\\Desktop\\Programacion\\WorldCup2026\\wc26\\generated\\match-summary-ingest-final-2026-06-18\\parsed\\Captura de pantalla 2026-06-18 160142.parsed.json",
+    "heuristic_repairs": [
+      "Promoted substitutes for Haiti 4-2-3-1: 3 Keeto THERMONCY -> RCB.",
+      "Omitted lower-confidence starter rows for Haiti: 12 Alexandre PIERRE."
+    ],
+    "warnings": [
+      "Formation for Haiti was inferred heuristically as 4-2-3-1.",
+      "Formation export for Haiti promoted 1 substitute to complete 11 players."
+    ]
+  }
+}

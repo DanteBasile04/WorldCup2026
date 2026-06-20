@@ -18,9 +18,13 @@ export type Database = {
         Row: {
           colors: string | null
           emblem_url: string | null
+          emblem_storage_path: string | null
           federation: string | null
+          flag_banner_storage_path: string | null
+          flag_storage_path: string | null
           flag_url: string | null
           formation: string | null
+          formation_json: Json | null
           id: number
           name: string
           slug: string
@@ -30,9 +34,13 @@ export type Database = {
         Insert: {
           colors?: string | null
           emblem_url?: string | null
+          emblem_storage_path?: string | null
           federation?: string | null
+          flag_banner_storage_path?: string | null
+          flag_storage_path?: string | null
           flag_url?: string | null
           formation?: string | null
+          formation_json?: Json | null
           id?: number
           name: string
           slug: string
@@ -42,9 +50,13 @@ export type Database = {
         Update: {
           colors?: string | null
           emblem_url?: string | null
+          emblem_storage_path?: string | null
           federation?: string | null
+          flag_banner_storage_path?: string | null
+          flag_storage_path?: string | null
           flag_url?: string | null
           formation?: string | null
+          formation_json?: Json | null
           id?: number
           name?: string
           slug?: string
@@ -209,6 +221,7 @@ export type Database = {
           name: string
           position: string
           preferred_foot: string | null
+          shirt_number: number | null
           weight_kg: number | null
         }
         Insert: {
@@ -220,6 +233,7 @@ export type Database = {
           name: string
           position: string
           preferred_foot?: string | null
+          shirt_number?: number | null
           weight_kg?: number | null
         }
         Update: {
@@ -231,6 +245,7 @@ export type Database = {
           name?: string
           position?: string
           preferred_foot?: string | null
+          shirt_number?: number | null
           weight_kg?: number | null
         }
         Relationships: [
@@ -389,6 +404,7 @@ export const Constants = {
 // this file, keep these aliases at the bottom.
 // ---------------------------------------------------------------------------
 export type Country = Tables<"country">
+export type CountryFormation = Tables<"country">["formation_json"]
 export type Group = Tables<"grp">
 export type GroupStanding = Tables<"group_standing">
 export type Match = Tables<"match">

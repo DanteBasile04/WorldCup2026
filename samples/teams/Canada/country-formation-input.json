@@ -1,0 +1,111 @@
+{
+  "country": {
+    "slug": "canada",
+    "name": "Canada"
+  },
+  "team": {
+    "name": "Canada",
+    "formation": "4-3-3"
+  },
+  "players": [
+    {
+      "number": 16,
+      "name": "Maxime CREPEAU",
+      "position": "GK",
+      "role": "GK",
+      "slot": "GK"
+    },
+    {
+      "number": 2,
+      "name": "Alistair JOHNSTON",
+      "position": "DF",
+      "role": "DF",
+      "slot": "LB"
+    },
+    {
+      "number": 13,
+      "name": "Derek CORNELIUS",
+      "position": "DF",
+      "role": "DF",
+      "slot": "LCB"
+    },
+    {
+      "number": 4,
+      "name": "Luc DEFOUGEROLLES",
+      "position": "DF",
+      "role": "DF",
+      "slot": "RCB"
+    },
+    {
+      "number": 22,
+      "name": "Richie LARVEA",
+      "position": "DF",
+      "role": "DF",
+      "slot": "RB"
+    },
+    {
+      "number": 11,
+      "name": "LiamMILLAR",
+      "position": "MF",
+      "role": "MF",
+      "slot": "LCM"
+    },
+    {
+      "number": 8,
+      "name": "ismael KONE",
+      "position": "MF",
+      "role": "MF",
+      "slot": "CM"
+    },
+    {
+      "number": 7,
+      "name": "StephenEUSTAQUIO",
+      "position": "MF",
+      "role": "MF",
+      "slot": "RCM"
+    },
+    {
+      "number": 17,
+      "name": "Tajon BUCHANAN",
+      "position": "FW",
+      "role": "FW",
+      "slot": "LW"
+    },
+    {
+      "number": 12,
+      "name": "Tani OLUWASEVI",
+      "position": "FW",
+      "role": "FW",
+      "slot": "ST"
+    },
+    {
+      "number": 20,
+      "name": "AliAHMED",
+      "position": "FW",
+      "role": "FW",
+      "slot": "RW"
+    }
+  ],
+  "match": {
+    "opponent_name": "Bosnia and Herzegovina",
+    "opponent_slug": "bosnia-and-herzegovina",
+    "team_score": null,
+    "opponent_score": null,
+    "date": "12 June 2026",
+    "venue": "Toronto Stadium",
+    "competition": null,
+    "match_id": "Captura de pantalla 2026-06-18 160037",
+    "side": "home"
+  },
+  "source": {
+    "team_artifact_match_id": "Captura de pantalla 2026-06-18 160037",
+    "team_artifact_side": "home",
+    "parsed_match_path": "C:\\Users\\Dante\\Desktop\\Programacion\\WorldCup2026\\wc26\\generated\\match-summary-ingest-final-2026-06-18\\parsed\\Captura de pantalla 2026-06-18 160037.parsed.json",
+    "heuristic_repairs": [
+      "Promoted substitutes for Canada 4-3-3: 20 AliAHMED -> RW."
+    ],
+    "warnings": [
+      "Formation export for Canada promoted 1 substitute to complete 11 players."
+    ]
+  }
+}

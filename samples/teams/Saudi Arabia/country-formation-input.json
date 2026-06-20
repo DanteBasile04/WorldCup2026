@@ -1,0 +1,111 @@
+{
+  "country": {
+    "slug": "saudi-arabia",
+    "name": "Saudi Arabia"
+  },
+  "team": {
+    "name": "Saudi Arabia",
+    "formation": "5-3-2"
+  },
+  "players": [
+    {
+      "number": 21,
+      "name": "MOHAMMED ALOWAIS",
+      "position": "GK",
+      "role": "GK",
+      "slot": "GK"
+    },
+    {
+      "number": 12,
+      "name": "SAUD ABDULHAMID",
+      "position": "DF",
+      "role": "DF",
+      "slot": "LWB"
+    },
+    {
+      "number": 4,
+      "name": "ABDULELAHALAMRI &",
+      "position": "DF",
+      "role": "DF",
+      "slot": "LCB"
+    },
+    {
+      "number": 5,
+      "name": "HASSAN ALTAMBAKTI",
+      "position": "DF",
+      "role": "DF",
+      "slot": "CB"
+    },
+    {
+      "number": 26,
+      "name": "MOHAMMED ABU ALSHAMAT",
+      "position": "DF",
+      "role": "DF",
+      "slot": "RCB"
+    },
+    {
+      "number": 24,
+      "name": "MOTEBALHARBI",
+      "position": "DF",
+      "role": "DF",
+      "slot": "RWB"
+    },
+    {
+      "number": 23,
+      "name": "MOHAMED KANNO",
+      "position": "MF",
+      "role": "MF",
+      "slot": "LCM"
+    },
+    {
+      "number": 15,
+      "name": "ABDULLAH ALKHAIBARI",
+      "position": "MF",
+      "role": "MF",
+      "slot": "CM"
+    },
+    {
+      "number": 7,
+      "name": "MUSABALJUWAVR",
+      "position": "MF",
+      "role": "MF",
+      "slot": "RCM"
+    },
+    {
+      "number": 8,
+      "name": "AIMAN VAHVA",
+      "position": "FW",
+      "role": "FW",
+      "slot": "LST"
+    },
+    {
+      "number": 11,
+      "name": "SALEH ALSHEHRI",
+      "position": "FW",
+      "role": "FW",
+      "slot": "RST"
+    }
+  ],
+  "match": {
+    "opponent_name": "Uruguay",
+    "opponent_slug": "uruguay",
+    "team_score": null,
+    "opponent_score": null,
+    "date": "15 June 2026",
+    "venue": "Miami Stadium",
+    "competition": null,
+    "match_id": "Captura de pantalla 2026-06-18 163303",
+    "side": "home"
+  },
+  "source": {
+    "team_artifact_match_id": "Captura de pantalla 2026-06-18 163303",
+    "team_artifact_side": "home",
+    "parsed_match_path": "C:\\Users\\Dante\\Desktop\\Programacion\\WorldCup2026\\wc26\\generated\\match-summary-ingest-final-2026-06-18\\parsed\\Captura de pantalla 2026-06-18 163303.parsed.json",
+    "heuristic_repairs": [
+      "Promoted substitutes for Saudi Arabia 5-3-2: 8 AIMAN VAHVA -> LST, 11 SALEH ALSHEHRI -> RST."
+    ],
+    "warnings": [
+      "Formation export for Saudi Arabia promoted 2 substitutes to complete 11 players."
+    ]
+  }
+}

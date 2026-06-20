@@ -360,14 +360,17 @@ export function createCountryFormationUpdate(input, options = {}) {
   const sql = buildCountryFormationUpdateSql({
     country,
     formationSvg: svg,
+    formationJson: document,
     tableName: options.tableName,
-    columnName: options.columnName,
+    formationColumn: options.formationColumn,
+    formationJsonColumn: options.formationJsonColumn,
   });
 
   return {
     schemaVersion: 1,
     country,
     document,
+    formationJson: document,
     formationSvg: svg,
     sql,
   };
@@ -376,15 +379,23 @@ export function createCountryFormationUpdate(input, options = {}) {
 export function buildCountryFormationUpdateSql({
   country,
   formationSvg,
+  formationJson,
   tableName = "public.country",
-  columnName = "formation",
+  formationColumn = "formation",
+  formationJsonColumn = "formation_json",
 }) {
   const normalizedCountry = normalizeCountry(country);
   const whereClause = normalizedCountry.slug
     ? `slug = ${toSqlLiteral(normalizedCountry.slug)}`
     : `name = ${toSqlLiteral(normalizedCountry.name)}`;
 
-  return `update ${tableName} set ${columnName} = ${toSqlLiteral(formationSvg)} where ${whereClause};`;
+  const setClauses = [`${formationColumn} = ${toSqlLiteral(formationSvg)}`];
+
+  if (formationJson != null) {
+    setClauses.push(`${formationJsonColumn} = ${toSqlLiteral(JSON.stringify(formationJson))}::jsonb`);
+  }
+
+  return `update ${tableName} set ${setClauses.join(", ")} where ${whereClause};`;
 }
 
 export function getFormationLayout(formation) {

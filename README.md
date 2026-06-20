@@ -26,46 +26,61 @@ pnpm build
 
 ## Importación inicial de selecciones
 
-Genera un CSV con las selecciones clasificadas para importarlo manualmente en `public.country` desde Supabase:
+Generate a CSV with the qualified teams so it can be imported manually into `public.country` in Supabase:
 
 ```bash
 pnpm import:countries -- --dry-run
 pnpm import:countries
 ```
 
-Se genera `generated/countries-import.csv` con estas columnas:
+The script generates `generated/countries-import.csv` with these columns:
 
 - `name`
 - `federation`
 - `flag_url`
+- `flag_storage_path`
 - `emblem_url`
+- `emblem_storage_path`
 
-No incluye `slug` porque lo genera la base de datos, ni campos opcionales como `colors`, `story`, `trophies` o `formation`.
+It still does not include `slug` because the database generates it, and it does not touch optional fields such as `colors`, `story`, `trophies`, or `formation`.
 
-### Importar en Supabase
+### Import into Supabase
 
-1. Ejecutá `pnpm import:countries`.
-2. Abrí Supabase Dashboard → **Table Editor** → `country`.
-3. Elegí **Insert** → **Import data from CSV**.
-4. Subí `generated/countries-import.csv`.
-5. Confirmá el mapeo solo para `name`, `federation`, `flag_url` y `emblem_url`.
-6. Dejá que Supabase genere `slug` automáticamente.
+1. Run `pnpm import:countries`.
+2. Open Supabase Dashboard → **Table Editor** → `country`.
+3. Choose **Insert** → **Import data from CSV**.
+4. Upload `generated/countries-import.csv`.
+5. Confirm the mapping for `name`, `federation`, `flag_url`, `flag_storage_path`, `emblem_url`, and `emblem_storage_path`.
+6. Let Supabase generate `slug` automatically.
 
-Si querés que el script escriba directo en Supabase:
+If some rows were imported before this change and are still missing `flag_storage_path` or `emblem_storage_path`, the smallest safe backfill is to run:
 
 ```bash
 pnpm import:countries:write
 ```
 
-Ese modo sigue leyendo la tabla de clasificados desde Wikipedia 2026, usa URLs de Wikimedia para banderas y resuelve escudos probables desde páginas de selecciones. Por defecto preserva datos ya cargados; usá `--overwrite-media` solo si querés reemplazarlos a propósito.
+That direct-write mode now fills the storage-path columns using the same `flags/<slug>.svg` and `emblems/<slug>.svg` convention the app already resolves first, without requiring `--overwrite-media`.
 
-## Generador de formaciones SVG
+If you want the script to write directly into Supabase:
 
-El contrato principal es:
+```bash
+pnpm import:countries:write
+```
 
-**JSON estructurado -> layout reutilizable -> SVG inline compacto**
+That mode still reads the 2026 qualified teams from Wikipedia, uses Wikimedia URLs for flags, and resolves likely emblems from team pages. By default it preserves already loaded data; use `--overwrite-media` only when you intentionally want to replace media values.
 
-Ese SVG está pensado para guardarse directamente en `public.country.formation` dentro de Supabase.
+## Formation generator and upload
+
+The formation pipeline now persists two artifacts for each team:
+
+- `public.country.formation` stores the published inline SVG used by the current app read path.
+- `public.country.formation_json` stores the structured formation document for future UI rendering and queries.
+
+See [`docs/formation-persistence.md`](docs/formation-persistence.md) for the migration, storage contract, and batch upload commands.
+
+## Shirt-number import
+
+See [`docs/shirt-number-import.md`](docs/shirt-number-import.md) for the migration, prerequisites, dry-run flow, and real import command.
 
 ### Ejemplo base
 
@@ -101,65 +116,77 @@ node scripts/generate-country-formation-update.mjs \
   --output-dir generated/custom
 ```
 
-### Preview local antes de exportar
+### Local preview before export
 
-Si querés revisar visualmente la formación antes de exportarla o escribirla en la base:
+If you want to inspect the formation before exporting or writing it to the database:
 
 ```bash
 pnpm formation:preview --input samples/country-formation-mexico-input.json --open
 ```
 
-Eso genera una página HTML local y la abre en el navegador.
+That generates a local HTML page and opens it in the browser.
 
-También admite otros formatos:
+It also accepts text authoring input:
 
 ```bash
 pnpm formation:preview --text "mexico 4-3-3
-1 Ochoa GK
-2 Araujo DF
-3 Montes DF
-4 Vasquez DF
-5 Gallardo DF
-6 Alvarez MF
-7 Chavez MF
-8 Herrera MF
-9 Gimenez FW
-10 Vega FW
-11 Lozano FW" --open
+1 Guillermo Ochoa GK
+2 | Julian Araujo | DF | Araujo | RB
+3 | Cesar Montes | DF | Montes | RCB
+4 | Johan Vazquez | DF | Vazquez | LCB
+5 | Jesus Gallardo | DF | Gallardo | LB
+6 | Edson Alvarez | MF | Alvarez | DM
+7 | Luis Chavez | MF | Chavez | LCM
+8 | Hector Herrera | MF | Herrera | RCM
+9 | Santiago Gimenez | FW | Gimenez | ST
+10 | Alexis Vega | FW | Vega | LW
+11 | Hirving Lozano | FW | Lozano | RW" --open
 
-pnpm formation:preview --slug mexico --formation 4-3-3 --players "1,Ochoa,GK;2,Araujo,DF;3,Montes,DF;4,Vasquez,DF;5,Gallardo,DF;6,Alvarez,MF;7,Chavez,MF;8,Herrera,MF;9,Gimenez,FW;10,Vega,FW;11,Lozano,FW" --open
+pnpm formation:preview --slug mexico --formation 4-3-3 --players "1,Guillermo Ochoa,GK,Ochoa,GK;2,Julian Araujo,DF,Araujo,RB;3,Cesar Montes,DF,Montes,RCB;4,Johan Vazquez,DF,Vazquez,LCB;5,Jesus Gallardo,DF,Gallardo,LB;6,Edson Alvarez,MF,Alvarez,DM;7,Luis Chavez,MF,Chavez,LCM;8,Hector Herrera,MF,Herrera,RCM;9,Santiago Gimenez,FW,Gimenez,ST;10,Alexis Vega,FW,Vega,LW;11,Hirving Lozano,FW,Lozano,RW" --open
 ```
 
-Flags útiles:
+Useful flags:
 
-- `--open` → abre el preview en el navegador
-- `--output <path>` → guarda el HTML en otra ruta
-- `--stdout` → imprime el HTML
-- `--stdin` → lee input compacto desde stdin
+- `--open` → open the preview in the browser
+- `--output <path>` → write the HTML to another path
+- `--stdout` → print the HTML
+- `--stdin` → read authoring text from stdin
 
-Por defecto se escribe en `generated/preview-formation.html`.
+By default the script writes to `generated/preview-formation.html`.
 
-### Estructura del input
+### Input structure
 
 ```json
 {
   "country": { "slug": "mexico", "name": "Mexico" },
   "team": { "name": "Mexico", "formation": "4-1-2-3" },
   "players": [
-    { "number": 1, "name": "Raul RANGEL", "role": "GK", "slot": "GK" }
+    { "number": 1, "name": "Raul RANGEL", "role": "GK", "label": "Rangel", "slot": "GK" }
   ]
 }
 ```
 
-Reglas:
+Text authoring rows support both formats:
 
-- `country.slug` es la mejor opción para generar SQL
-- `country.name` queda como fallback
-- `team.name` y `team.formation` son obligatorios
-- `players` es obligatorio
-- `slot` es opcional, pero recomendado para mantener estabilidad en el layout
+```text
+mexico 4-3-3
+1 Guillermo Ochoa GK
+2 | Julian Araujo | DF | Araujo | RB
+3 | Cesar Montes | DF | Montes | RCB
+```
 
-### Layouts soportados
+Rules:
+
+- `country.slug` is the best identifier for SQL generation
+- `country.name` is the fallback identifier
+- `team.name` and `team.formation` are required
+- `players` is required
+- `label` is optional in JSON and text, and defaults to `name`
+- `slot` is optional, but recommended when you want durable placement stability
+- Legacy text rows still support `<number> <name> <role>`
+- Extended text rows support `<number> | <full name> | <role> | <short label> | <slot>`
+
+### Supported layouts
 
 - `4-1-2-3`
 - `4-4-2`
@@ -175,7 +202,7 @@ Reglas:
 - `5-3-2`
 - `5-2-3`
 
-Si la formación no está soportada, el script falla con un error claro mostrando las opciones válidas.
+If the formation is not supported, the script fails with a clear error listing the valid options.
 
 ### Compatibilidad con PDF / match summary
 

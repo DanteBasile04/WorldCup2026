@@ -10,12 +10,20 @@ import {
   getOptionValue,
   getQualifiedTeams,
   normalizeName,
+  slugifyName,
   sleep,
 } from "./lib/qualified-countries.mjs";
 
 const WIKIPEDIA_API = "https://en.wikipedia.org/w/api.php";
 const DEFAULT_OUTPUT_PATH = "generated/countries-import.csv";
-const CSV_COLUMNS = ["name", "federation", "flag_url", "emblem_url"];
+const CSV_COLUMNS = [
+  "name",
+  "federation",
+  "flag_url",
+  "flag_storage_path",
+  "emblem_url",
+  "emblem_storage_path",
+];
 
 const argv = process.argv.slice(2);
 const args = new Set(argv);
@@ -303,7 +311,7 @@ function createSupabaseClient() {
 async function writeCountries(supabase, records) {
   const { data: existingCountries, error: readError } = await supabase
     .from("country")
-    .select("id,name,federation,flag_url,emblem_url");
+    .select("id,name,slug,federation,flag_url,flag_storage_path,emblem_url,emblem_storage_path");
 
   if (readError) throw new Error(`Could not read country rows: ${readError.message}`);
 
@@ -315,7 +323,7 @@ async function writeCountries(supabase, records) {
 
   for (const record of records) {
     const existing = existingByName.get(normalizeName(record.name));
-    const row = toCountryRow(record);
+    const row = toCountryRow(record, existing?.slug ?? null);
 
     if (!existing) {
       inserts.push(row);
@@ -369,19 +377,29 @@ function escapeCsvValue(value) {
   return `"${text.replaceAll('"', '""')}"`;
 }
 
-function toCountryRow(record) {
+function toCountryRow(record, existingSlug = null) {
+  const slug = existingSlug ?? slugifyName(record.name);
+
   return {
     name: record.name,
     federation: record.federation,
     flag_url: record.flag_url,
+    flag_storage_path: buildStoragePath("flags", slug),
     emblem_url: record.emblem_url,
+    emblem_storage_path: buildStoragePath("emblems", slug),
   };
 }
 
 function changedFields(existing, next) {
   const update = {};
 
-  for (const key of ["federation", "flag_url", "emblem_url"]) {
+  for (const key of [
+    "federation",
+    "flag_url",
+    "flag_storage_path",
+    "emblem_url",
+    "emblem_storage_path",
+  ]) {
     const existingValue = normalizeNullable(existing[key]);
     const nextValue = normalizeNullable(next[key]);
 
@@ -391,6 +409,12 @@ function changedFields(existing, next) {
   }
 
   return update;
+}
+
+function buildStoragePath(directory, slug) {
+  const normalizedSlug = normalizeNullable(slug);
+  if (!normalizedSlug) return null;
+  return `${directory}/${normalizedSlug}.svg`;
 }
 
 function printPlan(records, { dryRun, mode, result, outputPath }) {

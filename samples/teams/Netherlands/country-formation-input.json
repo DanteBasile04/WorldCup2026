@@ -1,0 +1,100 @@
+{
+  "country": {
+    "slug": "netherlands",
+    "name": "Netherlands"
+  },
+  "team": {
+    "name": "Netherlands",
+    "formation": "4-3-3"
+  },
+  "players": [
+    {
+      "number": 1,
+      "name": "Bart VERBRUGGEN",
+      "position": "GK",
+      "role": "GK",
+      "slot": "GK"
+    },
+    {
+      "number": 4,
+      "name": "Virgil VANDIJK &",
+      "position": "DF",
+      "role": "DF",
+      "slot": "LB"
+    },
+    {
+      "number": 6,
+      "name": "Jan Paul VAN HECKE",
+      "position": "DF",
+      "role": "DF",
+      "slot": "LCB"
+    },
+    {
+      "number": 22,
+      "name": "Denzel DUMFRIES",
+      "position": "DF",
+      "role": "DF",
+      "slot": "RCB"
+    },
+    {
+      "number": 15,
+      "name": "Micky VAN DE VEN or",
+      "position": "DF",
+      "role": "DF",
+      "slot": "RB"
+    },
+    {
+      "number": 8,
+      "name": "Ryan GRAVENBERCH",
+      "position": "MF",
+      "role": "MF",
+      "slot": "LCM"
+    },
+    {
+      "number": 21,
+      "name": "Frenkie DE JONG",
+      "position": "MF",
+      "role": "MF",
+      "slot": "CM"
+    },
+    {
+      "number": 14,
+      "name": "Tijjani REINDERS",
+      "position": "MF",
+      "role": "MF",
+      "slot": "RCM"
+    },
+    {
+      "number": 18,
+      "name": "WDonyell MALEN",
+      "position": "FW",
+      "role": "FW",
+      "slot": "LW"
+    },
+    {
+      "number": 24,
+      "name": "SUMMERVILLE",
+      "position": "FW",
+      "role": "FW",
+      "slot": "ST"
+    },
+    {
+      "number": 11,
+      "name": "Cody GAKPO",
+      "position": "FW",
+      "role": "FW",
+      "slot": "RW"
+    }
+  ],
+  "match": {
+    "opponent_name": "Japan",
+    "opponent_slug": "japan",
+    "team_score": null,
+    "opponent_score": null,
+    "date": "14 June 2026",
+    "venue": "Dallas Stadium",
+    "competition": null,
+    "match_id": "Captura de pantalla 2026-06-18 160521",
+    "side": "home"
+  }
+}

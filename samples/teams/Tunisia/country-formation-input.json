@@ -1,0 +1,109 @@
+{
+  "country": {
+    "slug": "tunisia",
+    "name": "Tunisia"
+  },
+  "team": {
+    "name": "Tunisia",
+    "formation": "5-2-3"
+  },
+  "players": [
+    {
+      "number": 1,
+      "name": "Mouhib CHAMAKH",
+      "position": "GK",
+      "role": "GK",
+      "slot": "GK"
+    },
+    {
+      "number": 20,
+      "name": "VanVALERY",
+      "position": "DF",
+      "role": "DF",
+      "slot": "LWB"
+    },
+    {
+      "number": 3,
+      "name": "Montassar TALBI",
+      "position": "DF",
+      "role": "DF",
+      "slot": "LCB"
+    },
+    {
+      "number": 2,
+      "name": "AliABDI",
+      "position": "DF",
+      "role": "DF",
+      "slot": "CB"
+    },
+    {
+      "number": 4,
+      "name": "OmarREKIK",
+      "position": "DF",
+      "role": "DF",
+      "slot": "RCB"
+    },
+    {
+      "number": 21,
+      "name": "Mohamed Amine BENHMIDA",
+      "position": "DF",
+      "role": "DF",
+      "slot": "RWB"
+    },
+    {
+      "number": 10,
+      "name": "Hannibal MEUBRI",
+      "position": "MF",
+      "role": "MF",
+      "slot": "LCM"
+    },
+    {
+      "number": 13,
+      "name": "RaniKHEDIRA",
+      "position": "MF",
+      "role": "MF",
+      "slot": "RCM"
+    },
+    {
+      "number": 17,
+      "name": "Ellyes SKHIRI",
+      "position": "MF",
+      "role": "MF",
+      "slot": "LW"
+    },
+    {
+      "number": 8,
+      "name": "EliasSAAD",
+      "position": "FW",
+      "role": "FW",
+      "slot": "ST"
+    },
+    {
+      "number": 25,
+      "name": "AnisSLIMANE",
+      "position": "MF",
+      "role": "MF",
+      "slot": "RW"
+    }
+  ],
+  "match": {
+    "opponent_name": "Sweden",
+    "opponent_slug": "sweden",
+    "team_score": null,
+    "opponent_score": null,
+    "date": "14 June 2026",
+    "venue": "Monterrey Stadium",
+    "competition": null,
+    "match_id": "Captura de pantalla 2026-06-18 160615",
+    "side": "away"
+  },
+  "source": {
+    "team_artifact_match_id": "Captura de pantalla 2026-06-18 160615",
+    "team_artifact_side": "away",
+    "parsed_match_path": "C:\\Users\\Dante\\Desktop\\Programacion\\WorldCup2026\\wc26\\generated\\match-summary-ingest-final-2026-06-18\\parsed\\Captura de pantalla 2026-06-18 160615.parsed.json",
+    "heuristic_repairs": [],
+    "warnings": [
+      "Formation for Tunisia was inferred heuristically as 5-2-3."
+    ]
+  }
+}

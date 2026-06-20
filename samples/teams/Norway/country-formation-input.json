@@ -1,0 +1,109 @@
+{
+  "country": {
+    "slug": "norway",
+    "name": "Norway"
+  },
+  "team": {
+    "name": "Norway",
+    "formation": "3-4-3"
+  },
+  "players": [
+    {
+      "number": 1,
+      "name": "iv OrjanNVLAND",
+      "position": "GK",
+      "role": "GK",
+      "slot": "GK"
+    },
+    {
+      "number": 5,
+      "name": "David MOLLERWOLFE",
+      "position": "DF",
+      "role": "DF",
+      "slot": "LCB"
+    },
+    {
+      "number": 3,
+      "name": "Kristoffer AJER",
+      "position": "DF",
+      "role": "DF",
+      "slot": "CB"
+    },
+    {
+      "number": 17,
+      "name": "Torbjorn HEGGEM",
+      "position": "DF",
+      "role": "DF",
+      "slot": "RCB"
+    },
+    {
+      "number": 14,
+      "name": "Fredrik AURSNES",
+      "position": "MF",
+      "role": "MF",
+      "slot": "LM"
+    },
+    {
+      "number": 8,
+      "name": "Sander BERGE",
+      "position": "MF",
+      "role": "MF",
+      "slot": "LCM"
+    },
+    {
+      "number": 10,
+      "name": "Martin ODEGAARD",
+      "position": "MF",
+      "role": "MF",
+      "slot": "RCM"
+    },
+    {
+      "number": 9,
+      "name": "ErlingHAALAND",
+      "position": "FW",
+      "role": "FW",
+      "slot": "RM"
+    },
+    {
+      "number": 20,
+      "name": "AntonioNUSA",
+      "position": "FW",
+      "role": "FW",
+      "slot": "LW"
+    },
+    {
+      "number": 7,
+      "name": "Alexander SORLOTH",
+      "position": "FW",
+      "role": "FW",
+      "slot": "ST"
+    },
+    {
+      "number": 26,
+      "name": "Julian RYERSON",
+      "position": "FW",
+      "role": "FW",
+      "slot": "RW"
+    }
+  ],
+  "match": {
+    "opponent_name": "Iraq",
+    "opponent_slug": "iraq",
+    "team_score": null,
+    "opponent_score": null,
+    "date": "16 June 2026",
+    "venue": "Boston Stadium",
+    "competition": null,
+    "match_id": "Captura de pantalla 2026-06-18 163356",
+    "side": "away"
+  },
+  "source": {
+    "team_artifact_match_id": "Captura de pantalla 2026-06-18 163356",
+    "team_artifact_side": "away",
+    "parsed_match_path": "C:\\Users\\Dante\\Desktop\\Programacion\\WorldCup2026\\wc26\\generated\\match-summary-ingest-final-2026-06-18\\parsed\\Captura de pantalla 2026-06-18 163356.parsed.json",
+    "heuristic_repairs": [],
+    "warnings": [
+      "Formation for Norway was inferred heuristically as 3-4-3."
+    ]
+  }
+}
