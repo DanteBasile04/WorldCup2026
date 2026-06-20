@@ -1,36 +1,57 @@
 # World Cup 2026
 
-Aplicación en Next.js (App Router) conectada a Supabase con datos públicos de solo lectura.
+Next.js App Router application connected to Supabase with public read-only data.
 
-## Inicio rápido
+## Local workflow boundary
+
+This repo now uses a **partial Bun migration** for local development:
+
+| Use case | Recommended command path |
+|---|---|
+| App install / dev / lint / build | `bun install`, `bun dev`, `bun run lint`, `bun run build` |
+| OCR / import / export / data scripts in `scripts/` | `node scripts/...` |
+| Rollback / fallback | Existing `pnpm` workflow still works while this stays a partial migration |
+
+`pnpm-lock.yaml` stays in the repo as the current rollback artifact. `bun.lock` is intentionally local-only for now so this migration stays small and reversible.
+
+## Quick path
 
 ```bash
-pnpm install
+bun install
 cp .env.example .env.local
-pnpm dev
+bun dev
 ```
 
-Configurá estas variables en `.env.local`:
+Set these variables in `.env.local`:
 
 ```bash
 NEXT_PUBLIC_SUPABASE_URL=https://xenpsrdxdozzlszaktwa.supabase.co
 NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=tu_publishable_key
 ```
 
-## Verificación
+## Verification
 
 ```bash
-pnpm lint
-pnpm build
+bun run lint
+bun run build
 ```
 
-## Importación inicial de selecciones
+## Deploy to Vercel
+
+Use the pinned production path documented in [`docs/deployment-vercel-supabase.md`](docs/deployment-vercel-supabase.md).
+
+- Vercel install command: `pnpm install --frozen-lockfile`
+- Vercel build command: `pnpm build`
+- Runtime variables in Vercel: `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`
+- Local-only write secret: `SUPABASE_COUNTRY_IMPORT_KEY` stays out of Vercel for the current app deploy
+
+## Initial team import
 
 Generate a CSV with the qualified teams so it can be imported manually into `public.country` in Supabase:
 
 ```bash
-pnpm import:countries -- --dry-run
-pnpm import:countries
+node scripts/import-qualified-countries.mjs --dry-run
+node scripts/import-qualified-countries.mjs
 ```
 
 The script generates `generated/countries-import.csv` with these columns:
@@ -46,7 +67,7 @@ It still does not include `slug` because the database generates it, and it does 
 
 ### Import into Supabase
 
-1. Run `pnpm import:countries`.
+1. Run `node scripts/import-qualified-countries.mjs`.
 2. Open Supabase Dashboard → **Table Editor** → `country`.
 3. Choose **Insert** → **Import data from CSV**.
 4. Upload `generated/countries-import.csv`.
@@ -56,7 +77,7 @@ It still does not include `slug` because the database generates it, and it does 
 If some rows were imported before this change and are still missing `flag_storage_path` or `emblem_storage_path`, the smallest safe backfill is to run:
 
 ```bash
-pnpm import:countries:write
+node scripts/import-qualified-countries.mjs --write
 ```
 
 That direct-write mode now fills the storage-path columns using the same `flags/<slug>.svg` and `emblems/<slug>.svg` convention the app already resolves first, without requiring `--overwrite-media`.
@@ -64,7 +85,7 @@ That direct-write mode now fills the storage-path columns using the same `flags/
 If you want the script to write directly into Supabase:
 
 ```bash
-pnpm import:countries:write
+node scripts/import-qualified-countries.mjs --write
 ```
 
 That mode still reads the 2026 qualified teams from Wikipedia, uses Wikimedia URLs for flags, and resolves likely emblems from team pages. By default it preserves already loaded data; use `--overwrite-media` only when you intentionally want to replace media values.
@@ -82,33 +103,33 @@ See [`docs/formation-persistence.md`](docs/formation-persistence.md) for the mig
 
 See [`docs/shirt-number-import.md`](docs/shirt-number-import.md) for the migration, prerequisites, dry-run flow, and real import command.
 
-### Ejemplo base
+### Base example
 
 ```bash
-pnpm formation:svg
-pnpm formation:country-update
+node scripts/generate-formation-svg.mjs --input samples/formation-mexico-input.json --json-output generated/formation-mexico-example.json --svg-output generated/formation-mexico-example.svg
+node scripts/generate-country-formation-update.mjs --input samples/country-formation-mexico-input.json
 ```
 
-Esto lee `samples/formation-mexico-input.json` y genera:
+This reads `samples/formation-mexico-input.json` and generates:
 
 - `generated/formation-mexico-example.json`
 - `generated/formation-mexico-example.svg`
 
-El flujo `formation:country-update` lee `samples/country-formation-mexico-input.json` y genera:
+The `formation:country-update` flow reads `samples/country-formation-mexico-input.json` and generates:
 
 - `generated/mexico-formation-update.json`
 - `generated/mexico-formation-update.svg`
 - `generated/mexico-formation-update.sql`
 
-Usalo cuando tu contrato sea:
+Use it when your contract is:
 
-**país + formación + jugadores -> artefacto listo para Supabase**
+**country + formation + players -> artifact ready for Supabase**
 
 ```bash
-pnpm formation:country-update
+node scripts/generate-country-formation-update.mjs --input samples/country-formation-mexico-input.json
 ```
 
-También podés apuntar a otro JSON y cambiar la carpeta de salida:
+You can also point to another JSON file and change the output directory:
 
 ```bash
 node scripts/generate-country-formation-update.mjs \
@@ -121,7 +142,7 @@ node scripts/generate-country-formation-update.mjs \
 If you want to inspect the formation before exporting or writing it to the database:
 
 ```bash
-pnpm formation:preview --input samples/country-formation-mexico-input.json --open
+node scripts/preview-formation.mjs --input samples/country-formation-mexico-input.json --open
 ```
 
 That generates a local HTML page and opens it in the browser.
@@ -129,7 +150,7 @@ That generates a local HTML page and opens it in the browser.
 It also accepts text authoring input:
 
 ```bash
-pnpm formation:preview --text "mexico 4-3-3
+node scripts/preview-formation.mjs --text "mexico 4-3-3
 1 Guillermo Ochoa GK
 2 | Julian Araujo | DF | Araujo | RB
 3 | Cesar Montes | DF | Montes | RCB
@@ -142,7 +163,7 @@ pnpm formation:preview --text "mexico 4-3-3
 10 | Alexis Vega | FW | Vega | LW
 11 | Hirving Lozano | FW | Lozano | RW" --open
 
-pnpm formation:preview --slug mexico --formation 4-3-3 --players "1,Guillermo Ochoa,GK,Ochoa,GK;2,Julian Araujo,DF,Araujo,RB;3,Cesar Montes,DF,Montes,RCB;4,Johan Vazquez,DF,Vazquez,LCB;5,Jesus Gallardo,DF,Gallardo,LB;6,Edson Alvarez,MF,Alvarez,DM;7,Luis Chavez,MF,Chavez,LCM;8,Hector Herrera,MF,Herrera,RCM;9,Santiago Gimenez,FW,Gimenez,ST;10,Alexis Vega,FW,Vega,LW;11,Hirving Lozano,FW,Lozano,RW" --open
+node scripts/preview-formation.mjs --slug mexico --formation 4-3-3 --players "1,Guillermo Ochoa,GK,Ochoa,GK;2,Julian Araujo,DF,Araujo,RB;3,Cesar Montes,DF,Montes,RCB;4,Johan Vazquez,DF,Vazquez,LCB;5,Jesus Gallardo,DF,Gallardo,LB;6,Edson Alvarez,MF,Alvarez,DM;7,Luis Chavez,MF,Chavez,LCM;8,Hector Herrera,MF,Herrera,RCM;9,Santiago Gimenez,FW,Gimenez,ST;10,Alexis Vega,FW,Vega,LW;11,Hirving Lozano,FW,Lozano,RW" --open
 ```
 
 Useful flags:
@@ -204,44 +225,44 @@ Rules:
 
 If the formation is not supported, the script fails with a clear error listing the valid options.
 
-### Compatibilidad con PDF / match summary
+### PDF / match-summary compatibility
 
-El flujo viejo de FIFA Match Summary sigue existiendo como adaptador opcional:
-
-```bash
-pnpm extract:match-summary:formation
-pnpm extract:match-summary:formation -- --lineup-file path/to/formation.txt
-```
-
-Ese wrapper transforma el texto al mismo input estructurado antes de llamar al generador genérico.
-
-## Exportación inicial de historias de selecciones
-
-Exporta el lead de Wikipedia en español de cada selección clasificada a un CSV para importación manual:
+The legacy FIFA Match Summary flow still exists as an optional adapter:
 
 ```bash
-pnpm import:country-stories
+node scripts/extract-match-summary-formation.mjs
+node scripts/extract-match-summary-formation.mjs --lineup-file path/to/formation.txt
 ```
 
-Genera `generated/country-stories-import.csv` con:
+That wrapper converts the text into the same structured input before calling the generic generator.
+
+## Initial country-story export
+
+Export the Spanish Wikipedia lead for each qualified team to a CSV for manual import:
+
+```bash
+node scripts/export-country-stories.mjs
+```
+
+It generates `generated/country-stories-import.csv` with:
 
 - `slug`
 - `name`
 - `story`
 
-### Importar historias en Supabase
+### Import stories into Supabase
 
-1. Ejecutá `pnpm import:country-stories`.
-2. Abrí `generated/country-stories-import.csv`.
-3. Matcheá por `slug` o `name` con `public.country`.
-4. Importá o mergeá solo los valores de `story`.
-5. Si el script marca selecciones para revisión manual, dejalas vacías hasta conseguir la fuente.
+1. Run `node scripts/export-country-stories.mjs`.
+2. Open `generated/country-stories-import.csv`.
+3. Match by `slug` or `name` against `public.country`.
+4. Import or merge only the `story` values.
+5. If the script flags teams for manual review, leave them blank until you have a verified source.
 
-## Notas
+## Notes
 
-- `SUPABASE_COUNTRY_IMPORT_KEY` en `.env.local` se usa solo para `pnpm import:countries:write`.
-- No subas claves reales ni service-role keys al repo.
-- `--skip-emblems` evita la búsqueda de escudos.
-- `--shallow-emblems` evita el fallback más lento por infobox.
+- `SUPABASE_COUNTRY_IMPORT_KEY` in `.env.local` is only used for `node scripts/import-qualified-countries.mjs --write`.
+- Do not commit real keys or service-role keys to the repo.
+- `--skip-emblems` skips emblem discovery.
+- `--shallow-emblems` skips the slower infobox fallback.
 
-> La importación manual por CSV no hace el mismo merge/update que el modo direct-write. Usala sobre una tabla vacía o controlá bien los datos existentes antes de importar.
+> Manual CSV import does not perform the same merge/update behavior as direct-write mode. Use it on an empty table or review existing data carefully before importing.

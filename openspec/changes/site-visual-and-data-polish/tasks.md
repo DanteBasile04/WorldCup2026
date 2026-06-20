@@ -82,3 +82,21 @@ All 22 original tasks verified complete in previous apply. See `verify-report.md
 - [x] 12.2 Remove Confederation field from Info card — remove `confederation` from `TeamInfoVm` type, `buildTeamInfoVm()`, `fillInfoFallbacks()`, and `team-info-card.tsx` rendering; update JSDoc comments
 - [x] 12.3 `pnpm build` — zero type/import errors
 - [x] 12.4 `pnpm lint` — zero lint regressions
+
+### Phase 13: Formation Card Rendering Correction
+
+- [x] 13.1 Extend team formation VM state to prefer validated `country.formation_json` metadata with backward-compatible SVG fallback from `country.formation`
+- [x] 13.2 Render the published formation SVG inline on `/teams/[slug]`, keep the published badge, and preserve explicit unpublished / missing-graphic states
+- [x] 13.3 Verify the formation render slice with targeted linting and project type-check/build validation
+
+### Phase 14: Formation Text Authoring Labels + Slots
+
+- [x] 14.1 Create a shared formation authoring parser that keeps legacy text rows and adds pipe-delimited `label` + optional `slot` support
+- [x] 14.2 Reuse the shared parser in `scripts/upload-formation.mjs` and `scripts/preview-formation.mjs`, and surface the resolved label in the preview table
+- [x] 14.3 Update concise authoring docs/examples and run targeted verification for legacy + extended text flows
+
+### Phase 15: Formation Visual Polish
+
+- [x] 15.1 Prefer app-rendered formation SVG from `country.formation_json` so team pages can refresh marker styling without waiting for stored SVG rewrites
+- [x] 15.2 Apply team accent styling to formation player markers and switch player labels to a dark readable text treatment with safe fallback to stored SVG-only formations
+- [x] 15.3 Update concise formation persistence docs and run targeted verification for the touched render path

@@ -6,8 +6,8 @@ This is the smallest safe path to move validated shirt-number matches from the l
 
 1. Apply `supabase/migrations/20260619_add_player_shirt_number.sql` to the target Supabase database.
 2. Ensure the CSV exists at `generated/match-summary-ingest/shirt-number-updates/shirt-numbers.csv` or pass `--input <path>`.
-3. Dry-run the importer: `pnpm import:shirt-numbers`
-4. Real import after review: `pnpm import:shirt-numbers -- --write`
+3. Dry-run the importer: `node scripts/import-player-shirt-numbers.mjs`
+4. Real import after review: `node scripts/import-player-shirt-numbers.mjs --write`
 
 ## Prerequisites
 
@@ -30,11 +30,11 @@ This is the smallest safe path to move validated shirt-number matches from the l
 
 ```bash
 # Default input path, dry-run only
-pnpm import:shirt-numbers
+node scripts/import-player-shirt-numbers.mjs
 
 # Real write to Supabase after the migration is applied
-pnpm import:shirt-numbers -- --write
+node scripts/import-player-shirt-numbers.mjs --write
 
 # Alternate CSV path
-pnpm import:shirt-numbers -- --input generated/custom/shirt-numbers.csv
+node scripts/import-player-shirt-numbers.mjs --input generated/custom/shirt-numbers.csv
 ```

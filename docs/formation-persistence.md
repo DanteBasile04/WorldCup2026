@@ -5,8 +5,8 @@ The app now keeps the current published SVG path **and** stores the structured f
 ## Quick path
 
 1. Apply `supabase/migrations/20260619_add_country_formation_json.sql`.
-2. Dry-run all canonical formations: `pnpm formation:upload-batch`
-3. Real upload of all 48 teams: `pnpm formation:upload-batch -- --write`
+2. Dry-run all canonical formations: `node scripts/batch-upload-formations.mjs`
+3. Real upload of all 48 teams: `node scripts/batch-upload-formations.mjs --write`
 
 ## Storage contract
 
@@ -31,15 +31,15 @@ The app now keeps the current published SVG path **and** stores the structured f
 
 ```bash
 # Validate all canonical team formation inputs without writing to Supabase
-pnpm formation:upload-batch
+node scripts/batch-upload-formations.mjs
 
 # Upload all 48 canonical formations after the migration is applied
-pnpm formation:upload-batch -- --write
+node scripts/batch-upload-formations.mjs --write
 ```
 
 ## Text authoring contract
 
-Use the same text contract in both `pnpm formation:preview` and `pnpm formation:upload`.
+Use the same text contract in both `node scripts/preview-formation.mjs` and `node scripts/upload-formation.mjs`.
 
 ```text
 <country-slug> <formation>
