@@ -4,7 +4,7 @@ The app now keeps the current published SVG path **and** stores the structured f
 
 ## Quick path
 
-1. Apply `supabase/migrations/20260619_add_country_formation_json.sql`.
+1. Apply `supabase/migrations/20260619224304_add_country_formation_json.sql`.
 2. Dry-run all canonical formations: `node scripts/batch-upload-formations.mjs`
 3. Real upload of all 48 teams: `node scripts/batch-upload-formations.mjs --write`
 
